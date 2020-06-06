@@ -2,21 +2,18 @@ const users = require("express").Router()
 
 const {createUser, getUser, deleteUser} = require("../../Queries/UserQueries")
 
-
-//Nested Route
-const usersImagesRouter = require('./UsersNestedRoutes/NestedImages');
-const userJobsPostsRouter
-const userAppliedJobsRouter = 
-const userSavedJobsRouter = 
+//Nested User Routes
+const userJobsPostsRouter = require("./NestedUsersRoutes/userJobsPosts")
+const userAppliedJobsRouter = require("./NestedUsersRoutes/userAppliedJobs")
+const userSavedJobsRouter = require("./NestedUsersRoutes/userSavedJobs")
 
 users.use('/', userJobsPostsRouter);
-users.use()
+users.use('/', userAppliedJobsRouter)
+users.use('/', userSavedJobsRouter)
 
+//User Routes
 users.post("/", createUser)
-
 users.delete("/:id", deleteUser)
-
-users.get("/:username", getUser)
-
+users.get("/:id", getUser)
 
 module.exports = users;
