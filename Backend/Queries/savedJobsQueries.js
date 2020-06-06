@@ -19,7 +19,7 @@ const createSavedJob = async (req, res, next) => {
     }
 };
 
-const getAllSavedJobs = async (req, res, next) => {
+const getSavedJobsByUser = async (req, res, next) => {
     try {
         let getSavedJobs = await db.any(
             "SELECT savedjobs.id FROM savedJobs JOIN jobs ON jobs.id = savedjobs.jobs_id JOIN users ON users.id = jobs.users_id HAVING users.id = $1", req.params.id
@@ -73,7 +73,7 @@ const deleteSavedJob = async (req, res) => {
 
 module.exports = {
     createSavedJob,
-    getAllSavedJobs,
+    getSavedJobsByUser,
     getSavedJob,
     deleteSavedJob
 }
