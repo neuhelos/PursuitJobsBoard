@@ -19,7 +19,7 @@ const createAppliedJob = async (req, res, next) => {
     }
 };
 
-const getAllAppliedJobs = async (req, res, next) => {
+const getAppliedJobsByUser = async (req, res, next) => {
     try {
         let getAppliedJobs = await db.any(
             "SELECT * FROM appliedJobs JOIN jobs ON jobs.id = appliedjobs.jobs_id JOIN users ON users.id = jobs.users_id HAVING users.id = $1", 
@@ -75,7 +75,7 @@ const deleteAppliedJob = async (req, res) => {
 
 module.exports = {
     createAppliedJob,
-    getAllAppliedJobs,
+    getAppliedJobsByUser,
     getAppliedJob,
     deleteAppliedJob
 }
