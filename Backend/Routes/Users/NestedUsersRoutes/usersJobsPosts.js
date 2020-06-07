@@ -1,7 +1,7 @@
-const usersAppliedJobs = require('express').Router({mergeParams: true})
-const { getAppliedJobsByUser } = require("../../../Queries/appliedJobsQueries")
+const usersJobsPosts = require('express').Router({mergeParams: true})
+const {createJobPost, getJobsPostsByUser } = require("../../../Queries/JobsQueries")
 
-usersAppliedJobs.get('/:id/appliedjobs', getAppliedJobsByUser)
+usersJobsPosts.post('/:id/jobs', createJobPost)
+usersJobsPosts.get('/:id/jobs', getJobsPostsByUser)
 
-
-module.exports = usersAppliedJobs
+module.exports = usersJobsPosts
