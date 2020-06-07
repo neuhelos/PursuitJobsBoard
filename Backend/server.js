@@ -17,10 +17,10 @@ app.use(express.static(path.join(__dirname, "Public")));
 const usersRouter = require('./routes/users');
 app.use("/api/users", usersRouter)
 
-const usersRouter = require("./Routes/Users/Users");
-const jobsRouter = require("./Routes/");
-const savedJobsRouter = require("./Routes/Votes/Votes");
-const appliedJobsRouter = require("./Routes/Hashtags/Hashtags");
+const usersRouter = require("./Routes/Users/users");
+const jobsRouter = require("./Routes/Jobs/jobs");
+const savedJobsRouter = require("./Routes/SavedJobs/savedJobs");
+const appliedJobsRouter = require("./Routes/AppliedJobs/appliedJobs");
 const uploadRouter = require("./Routes/Upload/upload")
 
 app.use("/users", usersRouter);
