@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-const { //destructuring imported .env keys
+const {
     APIKEY,
     AUTHDOMAIN,
     DATABASEURL,
@@ -12,7 +12,7 @@ const { //destructuring imported .env keys
     MEASUREMENTID
 } = process.env;
 
-const firebaseConfig = { //setting env config object
+const firebaseConfig = { 
   apiKey: APIKEY,
   authDomain: AUTHDOMAIN,
   databaseURL: DATABASEURL,
