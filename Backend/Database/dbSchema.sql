@@ -19,9 +19,9 @@ CREATE TABLE users  (
 
 CREATE TABLE jobs (
     id SERIAL PRIMARY KEY,
-    created_at TIMESTAMPTZ DEFAULT NOW(),
+    posted TIMESTAMPTZ DEFAULT NOW(),
     jobs_title VARCHAR,
-    jobs_link VARCHAR,
+    jobs_link VARCHAR UNIQUE,
     jobs_description VARCHAR,
     job_location VARCHAR,
     job_type TEXT,
