@@ -1,6 +1,6 @@
 const users = require("express").Router()
 
-const {createUser, getUser, deleteUser} = require("../../Queries/UserQueries")
+const {createUser, getUser, deleteUser} = require("../../Queries/usersQueries")
 
 //Nested User Routes
 const usersJobsPostsRouter = require("./NestedUsersRoutes/usersJobsPosts")

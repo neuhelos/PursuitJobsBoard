@@ -37,7 +37,7 @@ const getJobsPostsByUser = async (req, res, next) => {
     }
 }
 
-const getJob = async (req, res, next) => {
+const getJobPost = async (req, res, next) => {
     try {
         let job = await db.one(
         "SELECT * FROM jobs WHERE id = $1",
@@ -92,6 +92,7 @@ const deleteJobsPost = async (req, res, next) => {
 
 module.exports = {
     createJobPost,
+    getJobPost,
     getJobsPostsByUser,
     getAllJobsPosts,
     deleteJobsPost
