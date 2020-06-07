@@ -11,7 +11,7 @@ jobs.use('/', jobsJobsPostsRouter);
 jobs.use('/', jobsAppliedJobsRouter)
 jobs.use('/', jobsSavedJobsRouter)
 
-//User Routes
+//Jobs Routes
 jobs.get("/",getAllJobsPosts)
 jobs.get("/:id", )
 jobs.delete("/:id", deleteUser)
