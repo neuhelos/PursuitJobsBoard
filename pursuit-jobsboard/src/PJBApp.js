@@ -1,10 +1,19 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components'
 
-function App() {
+import LandingPage from "./features/Authentication/LandingPage"
+
+const theme = {
+
+}
+
+const App = () => {
   return (
-    <div className="App">
-      
-    </div>
+    <ThemeProvider theme={theme}>
+      <>
+        <LandingPage />
+      </>
+    </ThemeProvider>
   );
 }
 

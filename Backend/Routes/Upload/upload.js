@@ -1,4 +1,4 @@
-const upload = require("../../Utilities/multer")
+const upload = require("../../Utilitique/multer")
 const uploadRoute = require("express").Router()
 
 uploadRoute.post("/upload", upload.single("image"), (req, res, next) => {
