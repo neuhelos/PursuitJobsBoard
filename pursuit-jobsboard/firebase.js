@@ -2,25 +2,25 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 const {
-    APIKEY,
-    AUTHDOMAIN,
-    DATABASEURL,
-    PROJECTID,
-    STORAGEBUCKET,
-    MESSAGINGSENDERID,
-    APPID,
-    MEASUREMENTID
+    REACT_APP_APIKEY,
+    REACT_APP_AUTHDOMAIN,
+    REACT_APP_DATABASEURL,
+    REACT_APP_PROJECTID,
+    REACT_APP_STORAGEBUCKET,
+    REACT_APP_MESSAGINGSENDERID,
+    REACT_APP_APPID,
+    REACT_APP_MEASUREMENTID
 } = process.env;
 
 const firebaseConfig = { 
-  apiKey: APIKEY,
-  authDomain: AUTHDOMAIN,
-  databaseURL: DATABASEURL,
-  projectId: PROJECTID,
-  storageBucket: STORAGEBUCKET,
-  messagingSenderId: MESSAGINGSENDERID,
-  appId: APPID,
-  measurementId: MEASUREMENTID
+  apiKey: REACT_APP_APIKEY,
+  authDomain: REACT_APP_AUTHDOMAIN,
+  databaseURL: REACT_APP_DATABASEURL,
+  projectId: REACT_APP_PROJECTID,
+  storageBucket: REACT_APP_STORAGEBUCKET,
+  messagingSenderId: REACT_APP_MESSAGINGSENDERID,
+  appId: REACT_APP_APPID,
+  measurementId: REACT_APP_MEASUREMENTID
 };
 
 firebase.initializeApp(firebaseConfig);
