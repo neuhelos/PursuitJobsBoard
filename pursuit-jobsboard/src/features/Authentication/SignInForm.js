@@ -1,7 +1,10 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { useInput } from '../../Utilitron/CustomHookery'
+
+import {getFirebaseIdToken} from '../../util/firebaseFunctions'
+import firebase from 'firebase'
 
 import styled, { ThemeProvider } from 'styled-components'
 import { Composition } from 'atomic-layout'
@@ -12,24 +15,27 @@ import Input from "./Input";
 import Error from "./Error";
 
 const SignInFormTitle = styled.title`
-    font-size: 2rem;
+    font-size: 20rem;
 `
 
-
-
-
 const SignInForm = () => {
-    
+
+
     const email = useInput("");
     const password = useInput("")
     
+    const dispatch = useDispatch()
     const error = useSelector()
     const history = useHistory();
+
     
+
+
     const handleSubmit = async event => {
         event.preventDefault();
         try {
             await signIn(email,password);
+            dispatch
             history.push("/Home")
         } catch (error) {
         setError("Please Enter a Valid Email or Email Already Exists");
@@ -56,7 +62,7 @@ const SignInForm = () => {
 
                 <div>
                 <button type="submit">
-                    SIGN IN
+                    FIND YOUR FUTURE
                 </button>
                 </div>
             </form>
