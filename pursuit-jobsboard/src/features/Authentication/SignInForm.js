@@ -30,39 +30,37 @@ const SignInForm = () => {
         event.preventDefault();
         try {
             await signIn(email,password);
-            history.push("/")
-        } catch (err) {
+            history.push("/Home")
+        } catch (error) {
         setError("Please Enter a Valid Email or Email Already Exists");
         }
     };
 
 
     return (
-        <>
-        <div className="signInForm">
-        <SignInFormTitle>SIGN IN</SignInFormTitle>
-        <form className="form" onSubmit={handleSubmit}>
-            <div>
-            <Input
-                placeholder={"Enter Email"}
-                input={email}
-            />
-            </div>
-            <div>
-            <Input
-                placeholder={"Enter Password"}
-                input={password}
-            />
-            </div>
+        <div>
+            <SignInFormTitle>SIGN IN</SignInFormTitle>
+            <form className="form" onSubmit={handleSubmit}>
+                <div>
+                <Input
+                    placeholder={"Enter Email"}
+                    input={email}
+                />
+                </div>
+                <div>
+                <Input
+                    placeholder={"Enter Password"}
+                    input={password}
+                />
+                </div>
 
-            <div>
-            <button type="submit">
-                SIGN IN
-            </button>
-            </div>
-        </form>
-        </div>
-    </>
+                <div>
+                <button type="submit">
+                    SIGN IN
+                </button>
+                </div>
+            </form>
+    </div>
     )
 }
 

@@ -1,18 +1,22 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components'
 
+import GlobalStyle from "./features/BaseComponents/GlobalStyle"
 import LandingPage from "./features/Authentication/LandingPage"
 
-const theme = {
-
-}
 
 const App = () => {
+
+  const theme = {
+  
+  }
+
+
+
   return (
     <ThemeProvider theme={theme}>
-      <>
+        <GlobalStyle />
         <LandingPage />
-      </>
     </ThemeProvider>
   );
 }
