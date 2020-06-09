@@ -2,14 +2,15 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { useInput } from '../../Utilitron/CustomHookery'
+import { setCurrentUser } from './authenticationSlice'
 
 import {getFirebaseIdToken} from '../../util/firebaseFunctions'
 import firebase from 'firebase'
+import { signIn } from '../../Utilitron/firebaseFunctions'
 
 import styled, { ThemeProvider } from 'styled-components'
 import { Composition } from 'atomic-layout'
 
-import { signIn } from '../../Utilitron/firebaseFunctions'
 
 import Input from "./Input";
 import Error from "./Error";
@@ -20,7 +21,6 @@ const SignInFormTitle = styled.title`
 
 const SignInForm = () => {
 
-
     const email = useInput("");
     const password = useInput("")
     
@@ -28,8 +28,21 @@ const SignInForm = () => {
     const error = useSelector()
     const history = useHistory();
 
+    const userSession = user => {
+        if(user) {
+            const {email, uid} = user
+            getFirebaseIdToken().then(token => { //get token
+                dispatch(setCurrentUser({email, uid, token}))
+            })
+        } else {
+            dispatch(setCurrentUser(null))
+        }
+    }
     
-
+    useEffect( () => {
+        const authStateObserver = firebase.auth().onAuthStateChanged(userSession)
+        return authStateObserver
+    }, [])
 
     const handleSubmit = async event => {
         event.preventDefault();

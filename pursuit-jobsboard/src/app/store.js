@@ -5,7 +5,7 @@ import authenticationReducer from '../features/Authentication/authenticationSlic
 
 export default configureStore({
   reducer: {
-      currentUser: authenticationReducer
+      currentUserSession: authenticationReducer
   },
   middleware: [...getDefaultMiddleware(), logger],
 });

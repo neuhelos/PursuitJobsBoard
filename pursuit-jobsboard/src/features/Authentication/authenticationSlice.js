@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const authenticationSlice = createSlice({
-    name: "currentUser",
+    name: "currentUserSession",
     initialState: {},
     reducers: {
         setCurrentUser: (state, action) => {
@@ -10,5 +10,5 @@ export const authenticationSlice = createSlice({
     },
 })
 
-export const {setCurrentUser} = authenticationSlice.actions
+export const { setCurrentUser } = authenticationSlice.actions
 export default authenticationSlice.reducer 
