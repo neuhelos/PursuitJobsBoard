@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import SignInForm from "./SignInForm"
+import SignInForm from "../Authentication/SignInForm"
 import Modal from "./Modal"
 
 

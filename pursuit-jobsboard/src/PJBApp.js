@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components'
 
 import GlobalStyle from "./features/BaseComponents/GlobalStyle"
-import LandingPage from "./features/Authentication/LandingPage"
+import LandingPage from "./features/LandingPage.js/LandingPage"
 
 
 const App = () => {
