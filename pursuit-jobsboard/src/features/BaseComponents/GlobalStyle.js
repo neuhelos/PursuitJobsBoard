@@ -14,7 +14,6 @@ const GlobalStyle = createGlobalStyle`
     *,
     *::before,
     *::after{box-sizing:border-box;}
-    html{font-size: 1px;/*for using REM units*/}
     body{
         font-size: 12rem;
         font-weight: 400;
@@ -34,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
     html {
+        font-size: 1px;
         font-family: 'Roboto', sans-serif;
         margin: 0;
         padding: 0;

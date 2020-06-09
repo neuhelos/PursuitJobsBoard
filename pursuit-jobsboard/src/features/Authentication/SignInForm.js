@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 import { useInput } from '../../Utilitron/CustomHookery'
 import { setCurrentUser } from './authenticationSlice'
 
+import firebase from '../../Utilitron/firebase'
 import {getFirebaseIdToken} from '../../Utilitron/firebaseFunctions'
-import firebase from 'firebase'
 import { signIn } from '../../Utilitron/firebaseFunctions'
 
 import styled, { ThemeProvider } from 'styled-components'
@@ -77,7 +77,7 @@ const SignInForm = () => {
                 </div>
             </form>
 
-            {error} ? <Error errorMessage={error} /> : null
+            {error ? <Error errorMessage={error} /> : null}
 
     </div>
     )
