@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from './node_modules/firebase'
 
 export const signOut = () => {
     return firebase.auth().signOut()

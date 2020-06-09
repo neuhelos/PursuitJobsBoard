@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import { useInput } from '../../Utilitron/CustomHookery'
+import { useInput } from '../../utilitron/CustomHookery'
 import { setCurrentUser } from './authenticationSlice'
 
-import firebase from '../../Utilitron/firebase'
-import {getFirebaseIdToken} from '../../Utilitron/firebaseFunctions'
-import { signIn } from '../../Utilitron/firebaseFunctions'
+import firebase from '../../utilitron/firebase'
+import {getFirebaseIdToken} from '../../utilitron/firebaseFunctions'
+import { signIn } from '../../utilitron/firebaseFunctions'
 
 import styled, { ThemeProvider } from 'styled-components'
 import { Composition } from 'atomic-layout'

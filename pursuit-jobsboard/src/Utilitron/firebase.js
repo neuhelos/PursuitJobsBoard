@@ -1,5 +1,5 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from './node_modules/firebase/app';
+import './node_modules/firebase/auth';
 
 const {
     REACT_APP_APIKEY,
