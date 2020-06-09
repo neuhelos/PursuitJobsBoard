@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import SignInForm from "../Authentication/SignInForm"
-import Modal from "./Modal"
+import PJBModal from "../BaseComponents/Modal"
 
-
-
-const LandingPage = ({  }) => {
+const LandingPage = () => {
     
-
     const [modalIsOpen,setIsOpen] = useState(false)
-
 
     const openModal = () =>  {
         setIsOpen(true);
@@ -19,37 +15,13 @@ const LandingPage = ({  }) => {
     }
 
 
-
   return (
-    <>
-      <div className="LandingPage">
 
-        <div className="landingPageHeader">
-        </div>
-
-
-        
-
-            {error ? <Error className="Error" message={error} /> : null}
-
-            <div className="signUpLink" onClick={openModal}>
-              <p className="signUpLink">
-                SIGN UP
-              </p>
-            </div>
-
-            <div className="modalParentContainer">
-            <ClickModal className="modal" modalIsOpen={modalIsOpen} modalClose={closeModal}>
-                <SignUpPage modalClose={closeModal} onLogin={onLogin}/>
-                {/* <div>{!error ? <Error className="Error" message={error} /> : null}</div> */}
-            </ClickModal>
-            </div>
-           
-
-          </div>
-        </div>
+      <div>
+      <SignInForm />
+      <PJBModal modalIsOpen={modalIsOpen} modalClose={closeModal}/>
       </div>
-    </>
+
   );
 };
 

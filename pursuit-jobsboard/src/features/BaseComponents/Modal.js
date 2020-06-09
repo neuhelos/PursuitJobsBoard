@@ -12,16 +12,14 @@ const customStyles = {
   }
 };
 
-const Modal = ({ children, modalIsOpen, modalClose }) => {
-  const afterOpenModal = () => {
-  };
+const PJBModal = ({ children, modalIsOpen, modalClose }) => {
 
   return (
-    <div className="modalContainer">
+    <div>
       <Modal
         style={customStyles}
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
+        //onAfterOpen={afterOpenModal}
         onRequestClose={modalClose}
         contentLabel="Modal"
         className="modal"
@@ -33,4 +31,4 @@ const Modal = ({ children, modalIsOpen, modalClose }) => {
   );
 }
 
-export default Modal;
+export default PJBModal;

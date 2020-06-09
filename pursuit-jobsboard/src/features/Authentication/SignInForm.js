@@ -1,19 +1,18 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { useInput } from '../../Utilitron/CustomHookery'
 import { setCurrentUser } from './authenticationSlice'
 
-import {getFirebaseIdToken} from '../../util/firebaseFunctions'
+import {getFirebaseIdToken} from '../../Utilitron/firebaseFunctions'
 import firebase from 'firebase'
 import { signIn } from '../../Utilitron/firebaseFunctions'
 
 import styled, { ThemeProvider } from 'styled-components'
 import { Composition } from 'atomic-layout'
 
-
-import Input from "./Input";
-import Error from "./Error";
+import Input from "../BaseComponents/Input";
+import Error from "../BaseComponents/Error";
 
 const SignInFormTitle = styled.title`
     font-size: 20rem;
@@ -21,40 +20,38 @@ const SignInFormTitle = styled.title`
 
 const SignInForm = () => {
 
-    const email = useInput("");
-    const password = useInput("")
-    
-    const dispatch = useDispatch()
-    const error = useSelector()
+    const dispatch = useDispatch();
     const history = useHistory();
+    
+    const email = useInput("");
+    const password = useInput("");
+    const [error, setError] = useState("")
 
     const userSession = user => {
         if(user) {
             const {email, uid} = user
-            getFirebaseIdToken().then(token => { //get token
+            getFirebaseIdToken().then(token => {
                 dispatch(setCurrentUser({email, uid, token}))
             })
         } else {
             dispatch(setCurrentUser(null))
         }
-    }
+    };
     
     useEffect( () => {
         const authStateObserver = firebase.auth().onAuthStateChanged(userSession)
         return authStateObserver
-    }, [])
+    }, []);
 
     const handleSubmit = async event => {
         event.preventDefault();
         try {
             await signIn(email,password);
-            dispatch
             history.push("/Home")
         } catch (error) {
-        setError("Please Enter a Valid Email or Email Already Exists");
+            setError("Please Enter a Valid Email Address or Email Already Exists");
         }
     };
-
 
     return (
         <div>
@@ -79,8 +76,11 @@ const SignInForm = () => {
                 </button>
                 </div>
             </form>
+
+            {error} ? <Error errorMessage={error} /> : null
+
     </div>
     )
-}
+};
 
 export default SignInForm;
