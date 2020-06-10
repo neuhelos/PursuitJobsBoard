@@ -49,31 +49,25 @@ const SignInForm = () => {
             await signIn(email,password);
             history.push("/Home")
         } catch (error) {
+            email.clearInput()
+            password.clearInput()
             setError("Please Enter a Valid Email Address or Email Already Exists");
         }
     };
 
     return (
         <div>
-            <SignInFormTitle>SIGN IN</SignInFormTitle>
             <form className="form" onSubmit={handleSubmit}>
+                <SignInFormTitle>SIGN IN</SignInFormTitle>
                 <div>
-                <Input
-                    placeholder={"Enter Email"}
-                    input={email}
-                />
+                    <Input placeholder={"Enter Email"} input={email}/>
                 </div>
                 <div>
-                <Input
-                    placeholder={"Enter Password"}
-                    input={password}
-                />
+                    <Input placeholder={"Enter Password"} input={password}/>
                 </div>
 
                 <div>
-                <button type="submit">
-                    FIND YOUR FUTURE
-                </button>
+                    <button type="submit"> FIND YOUR FUTURE</button>
                 </div>
             </form>
 

@@ -1,5 +1,5 @@
-import firebase from './node_modules/firebase/app';
-import './node_modules/firebase/auth';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 const {
     REACT_APP_APIKEY,
@@ -20,7 +20,7 @@ const firebaseConfig = {
   storageBucket: REACT_APP_STORAGEBUCKET,
   messagingSenderId: REACT_APP_MESSAGINGSENDERID,
   appId: REACT_APP_APPID,
-  measurementId: REACT_APP_MEASUREMENTID
+  measurementId: REACT_APP_MEASUREMENTID 
 };
 
 firebase.initializeApp(firebaseConfig);

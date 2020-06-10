@@ -1,4 +1,4 @@
-import {useState, useEffect} from './node_modules/react'
+import {useState, useEffect} from 'react'
 
 export const useInput = (initialValue) => {
     const [value, setValue] = useState(initialValue)
