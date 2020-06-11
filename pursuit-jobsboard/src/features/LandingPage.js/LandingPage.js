@@ -17,10 +17,10 @@ const LandingPage = () => {
 
   return (
 
-      <div>
-      <SignInForm />
-      <PJBModal modalIsOpen={modalIsOpen} modalClose={closeModal}/>
-      </div>
+    <div>
+        <SignInForm />
+        <PJBModal modalIsOpen={modalIsOpen} modalClose={closeModal}/>
+    </div>
 
   );
 };

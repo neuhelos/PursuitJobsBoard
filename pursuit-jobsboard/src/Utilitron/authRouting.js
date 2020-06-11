@@ -2,17 +2,18 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import {Route, Redirect} from 'react-router-dom'
 
-
-export const ProtectedRoute = ({children, ...rest}) => { 
-
+export const PublicRoute = ({children, ...rest}) => { 
     const currentUser = useSelector( state => state.currentUserSession )
 
     return (
-        <Route 
-            {...rest}
-            render={({location}) => {
-                return currentUser ? children : <Redirect to="/signin"/>
-            }}
-        />
+        <Route {...rest} render={ () => !currentUser ? children : <Redirect to="/jobboard"/>} />
+    )
+}
+
+export const ProtectedRoute = ({children, ...rest}) => { 
+    const currentUser = useSelector( state => state.currentUserSession )
+
+    return (
+        <Route {...rest} render={ () => currentUser ? children : <Redirect to="/"/>} />
     )
 }

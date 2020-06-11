@@ -1,33 +1,62 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { Switch } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
+
+import firebase from "./utilitron/firebase"
+
+import { setCurrentUser } from './features/Authentication/authenticationSlice'
+import { getFirebaseIdToken } from './utilitron/firebaseFunctions'
 
 import GlobalStyle from "./styling/GlobalStyle"
 import LandingPage from "./features/LandingPage.js/LandingPage"
+import NavBar from "./features/NavBar/Navbar"
 import JobBoard from "./features/JobBoard/JobBoard"
 import Profile from "./features/Profile/Profile"
-import { ProtectedRoute } from "./utilitron/authRouting"
+import { PublicRoute, ProtectedRoute } from "./utilitron/authRouting"
 
 import { theme } from "./styling/theme"
 
 const PJBApp = () => {
 
+  const dispatch = useDispatch()
+
+  const userSession = user => {
+    if(user) {
+        const {email, uid} = user
+        getFirebaseIdToken().then(token => {
+            dispatch(setCurrentUser({email, uid, token}))
+        })
+    } else {
+        dispatch(setCurrentUser(null))
+    }
+  };
+
+  useEffect( () => {
+      const authStateObserver = firebase.auth().onAuthStateChanged(userSession)
+      return authStateObserver
+  }, []);
+
   return (
+    
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Switch>
-        <Route exact path="/" >
+        <PublicRoute exact path="/">
           <LandingPage />
-        </Route>
-        <ProtectedRoute path="/jobboard" >
+        </PublicRoute>
+        <ProtectedRoute path="/jobboard">
+          <NavBar />
           <JobBoard />
         </ProtectedRoute>
         <ProtectedRoute path="/profile">
+          <NavBar />
           <Profile />
         </ProtectedRoute>
       </Switch>
     </ThemeProvider>
-  );
+
+  )
 }
 
 export default PJBApp;

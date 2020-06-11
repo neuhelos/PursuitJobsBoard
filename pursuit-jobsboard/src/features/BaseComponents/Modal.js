@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 
 const customStyles = {
@@ -14,6 +14,12 @@ const customStyles = {
 
 const PJBModal = ({ children, modalIsOpen, modalClose }) => {
 
+  const [isOpen,setIsOpen] = useState(false)
+
+  const closeModal = () => {
+    setIsOpen(false);
+  }
+
   return (
     <div>
       <Modal
@@ -24,6 +30,7 @@ const PJBModal = ({ children, modalIsOpen, modalClose }) => {
         contentLabel="Modal"
         className="modal"
         overlayClassName="overlay"
+        closeModal={closeModal}
       >
         {children}
       </Modal>
