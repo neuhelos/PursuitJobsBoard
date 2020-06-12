@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
+
+import styled from 'styled-components'
 import { signOut } from '../../utilitron/firebaseFunctions'
+
 
 import Modal from '../BaseComponents/Modal'
 
-const NavBar = () => {
+
+const NavBar = styled.nav`
+        
+    `
+
+const PJBNavBar = () => {
 
     const history = useHistory();
 
@@ -25,7 +33,7 @@ const NavBar = () => {
     }
 
     return(
-        <nav>
+        <NavBar>
             
             { NavButton ? <NavLink to={"/jobboard"}><button className="navButton toggleButton" onClick={handleNavButton}>HOME</button></NavLink> : <NavLink to={"/profile"}><button className="navButton toggleButton"  onClick={handleNavButton}>PROFILE</button></NavLink> }
             <button onClick={signout}>SIGN OUT</button>
@@ -33,8 +41,8 @@ const NavBar = () => {
             <Modal>
 
             </Modal>
-        </nav>
+        </NavBar>
     )
 }
 
-export default NavBar
+export default PJBNavBar

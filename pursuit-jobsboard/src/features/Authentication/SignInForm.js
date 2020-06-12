@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux'
 import { useInput } from '../../utilitron/CustomHookery'
 
 import { signIn } from '../../utilitron/firebaseFunctions'
@@ -8,7 +9,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import { Composition } from 'atomic-layout'
 
 import Input from "../BaseComponents/Input";
-import Error from "../BaseComponents/Error";
+import Error from "../Error/Error";
 
 const SignInFormTitle = styled.h1`
     font-size: 20rem;
@@ -21,6 +22,7 @@ const SignInForm = () => {
     const email = useInput("");
     const password = useInput("");
     const [error, setError] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleSubmit = async event => {
         event.preventDefault();
@@ -30,7 +32,6 @@ const SignInForm = () => {
         } catch (error) {
             email.clearInput()
             password.clearInput()
-            console.log(error)
             setError("Please Enter a Valid Email Address or Email Already Exists");
         }
     };
@@ -52,8 +53,7 @@ const SignInForm = () => {
             </form>
 
             {error ? <Error errorMessage={error} /> : null}
-
-    </div>
+        </div>
     )
 };
 

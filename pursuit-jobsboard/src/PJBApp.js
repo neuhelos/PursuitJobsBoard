@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { Switch } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 
 import firebase from "./utilitron/firebase"
-
 import { setCurrentUser } from './features/Authentication/authenticationSlice'
 import { getFirebaseIdToken } from './utilitron/firebaseFunctions'
 
@@ -13,11 +12,13 @@ import LandingPage from "./features/LandingPage.js/LandingPage"
 import NavBar from "./features/NavBar/Navbar"
 import JobBoard from "./features/JobBoard/JobBoard"
 import Profile from "./features/Profile/Profile"
-import { PublicRoute, ProtectedRoute } from "./utilitron/authRouting"
+import { PublicRoute, ProtectedRoute } from "./utilitron/AuthRouting"
 
 import { theme } from "./styling/theme"
 
 const PJBApp = () => {
+
+  const currentUser = useSelector( state => state.currentUserSession )
 
   const dispatch = useDispatch()
 
@@ -41,16 +42,15 @@ const PJBApp = () => {
     
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      { currentUser ? <NavBar /> : null }
       <Switch>
         <PublicRoute exact path="/">
           <LandingPage />
         </PublicRoute>
         <ProtectedRoute path="/jobboard">
-          <NavBar />
           <JobBoard />
         </ProtectedRoute>
         <ProtectedRoute path="/profile">
-          <NavBar />
           <Profile />
         </ProtectedRoute>
       </Switch>

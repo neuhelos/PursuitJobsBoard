@@ -11,4 +11,4 @@ export const authenticationSlice = createSlice({
 })
 
 export const { setCurrentUser } = authenticationSlice.actions
-export default authenticationSlice.reducer 
+export default authenticationSlice.reducer
