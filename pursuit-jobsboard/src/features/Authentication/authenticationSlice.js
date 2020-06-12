@@ -10,5 +10,6 @@ export const authenticationSlice = createSlice({
     },
 })
 
+export const selectCurrentUserId = state => state.currentUserSession.id
 export const { setCurrentUser } = authenticationSlice.actions
 export default authenticationSlice.reducer

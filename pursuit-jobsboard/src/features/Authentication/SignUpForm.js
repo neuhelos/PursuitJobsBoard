@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { useInput } from '../../utilitron/CustomHookery'
+import { APIURL } from '../../utilitron/APIURL'
+import { selectCurrentUserId } from './authenticationSlice'
 
 import Input from '../BaseComponents/Image'
 
@@ -14,6 +16,9 @@ const SignUpFormTitle = styled.h1`
 
 const PJBSignUpForm = () => {
     
+    const currentUser = useSelector(selectCurrentUserId)
+    const url = APIURL()
+
     const email = useInput("")
     const password = useInput("")
     const name = useInput("")
@@ -26,10 +31,22 @@ const PJBSignUpForm = () => {
         setImage(event.target.files[0]);
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async event => {
+        event.preventDefault();
+        event.target.image.value = null;
+        const formData = new FormData();
+        formData.append("image", image);
+        const config = {
+            headers: {"content-type": "multipart/form-data"}
+        };
+        try {
+            let res = await axios.post(`${url}/upload`, formData, config);
+            
+            modalClose();
+        } catch (error) {
         
-    }
-
+        }
+      };
     
     return (
 
