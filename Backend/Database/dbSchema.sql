@@ -15,7 +15,7 @@ CREATE TABLE users  (
     profile_image VARCHAR,
     linkedin_link VARCHAR,
     github_link VARCHAR
-)
+);
 
 CREATE TABLE jobs (
     id SERIAL PRIMARY KEY,

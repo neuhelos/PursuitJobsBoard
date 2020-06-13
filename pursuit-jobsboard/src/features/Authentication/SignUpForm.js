@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { useInput } from '../../utilitron/CustomHookery'
 import { APIURL } from '../../utilitron/APIURL'
-
+import { signUp } from '../../utilitron/firebaseFunctions'
 import { formValidator } from './formValidation'
 
 import Input from '../BaseComponents/Input'
@@ -39,8 +39,9 @@ const PJBSignUpForm = () => {
     }
     
     const handleSubmit = async event => {
-        if (emailValidation.formIsValid && passwordValidation.formIsValid && nameValidation) {
+        if (emailValidation.formIsValid && passwordValidation.formIsValid && nameValidation.formIsValid) {
             event.preventDefault();
+            debugger
             event.target.image.value = null;
             const formData = new FormData();
             formData.append("image", image);
@@ -48,9 +49,11 @@ const PJBSignUpForm = () => {
                 headers: {"content-type": "multipart/form-data"}
             };
             try {
-                let res = await axios.post(`${apiURL}/upload`, formData, config);
-                let imageUrl = res.data.imageUrl;
-                let createUser = await axios.post(`${apiURL}}/users`, {
+                let upload = await axios.post(`${apiURL}/upload`, formData, config);
+                let imageUrl = upload.data.imageUrl;
+                let res = await signUp(email.value, password.value)
+                let createUser = await axios.post(`${apiURL}/users`, {
+                    id: res.user.uid,
                     email: email.value,
                     preferred_name: name.value,
                     profile_image: imageUrl,
@@ -77,11 +80,12 @@ const PJBSignUpForm = () => {
             { passwordValidation.error ? <Error errorMessage={passwordValidation.error} /> : null }
             <Input placeholder={"Enter Your Preferred Name"} input={name} required />
             { nameValidation.error ? <Error errorMessage={nameValidation.error} /> : null }
-            <Input type={"file"} name={image} onChange={event => handleImageUpload(event)} />
+            <input type={"file"} name="image" onChange={event => handleImageUpload(event)} />
             <Input placeholder={"Enter Your LinkedIn Profile Link"} input={linkedIn} />
             { linkedInValidation.error ? <Error errorMessage={linkedInValidation.error } /> : null }
             <Input placeholder={"Enter Your GitHub Profile Link"} input={github} />
             { githubValidation.error ? <Error errorMessage={githubValidation.error} /> : null }
+            <button type="submit"> CREATE YOUR PROFILE</button>
         </SignUpForm>
     )
 }

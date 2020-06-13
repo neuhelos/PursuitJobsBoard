@@ -4,7 +4,6 @@ const cors = require('cors');
 const path = require("path");
 require('dotenv').config();
 
-const {upload} = require('./Utilities/multer')
 
 const PORT = process.env.PORT;
 
@@ -13,9 +12,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "Public")));
-
-const usersRouter = require('./routes/users');
-app.use("/api/users", usersRouter)
 
 const usersRouter = require("./Routes/Users/users");
 const jobsRouter = require("./Routes/Jobs/jobs");

@@ -3,7 +3,7 @@ const uploadRoute = require("express").Router()
 
 uploadRoute.post("/upload", upload.single("image"), (req, res, next) => {
     try {
-        let url = "http://localhost:4000/ImageUploads/" + req.file.filename;
+        let url = "http://localhost:3000/ImageUploads/" + req.file.filename;
         res.json({
             imageUrl: url,
             message: "File Uploaded"
