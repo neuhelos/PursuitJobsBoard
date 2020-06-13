@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
 import axios from 'axios'
 import styled from 'styled-components'
 
@@ -7,7 +6,6 @@ import { useInput } from '../../utilitron/CustomHookery'
 import { APIURL } from '../../utilitron/APIURL'
 
 import { formValidator } from './formValidation'
-
 
 import Input from '../BaseComponents/Input'
 import Error from '../Error/Error'
@@ -41,7 +39,7 @@ const PJBSignUpForm = () => {
     }
     
     const handleSubmit = async event => {
-        if (emailValidation.formIsValid && passwordValidation.formIsValid) {
+        if (emailValidation.formIsValid && passwordValidation.formIsValid && nameValidation) {
             event.preventDefault();
             event.target.image.value = null;
             const formData = new FormData();
@@ -66,7 +64,7 @@ const PJBSignUpForm = () => {
             } catch (error) {
                 console.log(error)
             }
-      };
+        };
     }
 
     return (
