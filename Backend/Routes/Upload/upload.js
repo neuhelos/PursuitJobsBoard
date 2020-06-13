@@ -1,15 +1,15 @@
-const upload = require("../../Utilitique/multer")
+const upload = require("../../multer")
 const uploadRoute = require("express").Router()
 
-uploadRoute.post("/upload", upload.single("image"), (req, res, next) => {
+uploadRoute.post("/", upload.single("image"), (req, res, next) => {
     try {
-        let url = "http://localhost:3000/ImageUploads/" + req.file.filename;
+        let url = `"http://localhost:3000/ImageUploads/${req.file.filename}`;
         res.json({
             imageUrl: url,
             message: "File Uploaded"
         });
     } catch (error) {
-        res.status(400).json({
+        res.status(404).json({
         status: error,
         message: "Upload Failed"
         });

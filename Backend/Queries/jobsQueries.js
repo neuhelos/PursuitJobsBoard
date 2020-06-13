@@ -26,7 +26,7 @@ const getJobsPostsByUser = async (req, res, next) => {
         )
         res.status(200).json({
             status: "Success",
-            message: "Job Posted",
+            message: "User Job Posts",
             payload: getJobsPostsByUser
         });
     } catch (err) {

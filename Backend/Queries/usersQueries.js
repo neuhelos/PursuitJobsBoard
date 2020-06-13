@@ -1,6 +1,7 @@
 const db = require("../Database/database");
 
 const getUser = async (req, res) => {
+
   try {
     let user = await db.one(
       "SELECT * FROM users WHERE id = $1",
@@ -22,7 +23,7 @@ const getUser = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     let newUser = await db.one(
-      "INSERT INTO users (id, email, preferred_name, profile_image, linkedIn_link, github_link) VALUES(${id}, ${email}, ${preferred_name}, ${profile_image}, ${linkedIn_link}, ${github_link}) RETURNING *",
+      "INSERT INTO users (id, email, preferred_name, profile_image, linkedin_link, github_link) VALUES(${id}, ${email}, ${preferred_name}, ${profile_image}, ${linkedin_link}, ${github_link}) RETURNING *",
       req.body
     );
     res.status(200).json({
@@ -30,9 +31,9 @@ const createUser = async (req, res) => {
       message: "New User Created",
       payload: newUser
     });
-  } catch (err) {
+  } catch (error) {
     res.status(404).json({
-      status: err,
+      status: error,
       message: "User Creation Failed",
     });
   }

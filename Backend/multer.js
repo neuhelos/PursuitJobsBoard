@@ -3,8 +3,8 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "./Backend/Public/ImageUploads");
-    },
+        cb(null, "./Public/ImageUploads");
+    }, 
     filename: function(req, file, cb) {
         cb(null, `${Date.now()}-${file.originalname}`);
     }
@@ -12,10 +12,10 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, cb) => {
     if (
-        filetype.mimetype === "image/jpeg" ||
-        filetype.mimetype === "image/svg" ||
-        filetype.mimetype === "image/png" ||
-        filetype.mimetype === "image/gif"
+        file.mimetype === "image/jpeg" ||
+        file.mimetype === "image/svg" ||
+        file.mimetype === "image/png" ||
+        file.mimetype === "image/gif"
     ) {
         cb(null, true);
     } else {

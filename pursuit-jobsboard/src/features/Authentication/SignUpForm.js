@@ -41,7 +41,6 @@ const PJBSignUpForm = () => {
     const handleSubmit = async event => {
         if (emailValidation.formIsValid && passwordValidation.formIsValid && nameValidation.formIsValid) {
             event.preventDefault();
-            debugger
             event.target.image.value = null;
             const formData = new FormData();
             formData.append("image", image);

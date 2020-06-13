@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS appliedjobs;
 CREATE TABLE users  (
     id VARCHAR PRIMARY KEY,
     email VARCHAR NOT NULL UNIQUE,
-    preferredname VARCHAR,
+    preferred_name VARCHAR,
     profile_image VARCHAR,
     linkedin_link VARCHAR,
     github_link VARCHAR
