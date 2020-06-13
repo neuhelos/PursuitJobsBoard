@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 
-export const useInput = (initialValue) => {
+export const useInput = (initialValue, type) => {
     const [value, setValue] = useState(initialValue)
 
     const handleChange = (event) => {
@@ -11,6 +11,6 @@ export const useInput = (initialValue) => {
         setValue("")
     }
 
-    return {value, onChange: handleChange, clearinput}
+    return {value, type: type, onChange: handleChange, clearinput}
 }
 

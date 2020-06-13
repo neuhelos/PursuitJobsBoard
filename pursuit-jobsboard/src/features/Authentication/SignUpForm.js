@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import axios from 'axios'
 import styled from 'styled-components'
 
 import { useInput } from '../../utilitron/CustomHookery'
 import { APIURL } from '../../utilitron/APIURL'
-import { selectCurrentUserId } from './authenticationSlice'
 
-import Input from '../BaseComponents/Image'
+import { formValidator } from './formValidation'
+
+
+import Input from '../BaseComponents/Input'
+import Error from '../Error/Error'
 
 const SignUpForm = styled.form`
 
@@ -15,49 +20,70 @@ const SignUpFormTitle = styled.h1`
 `
 
 const PJBSignUpForm = () => {
+        
+    const apiURL = APIURL()
     
-    const currentUser = useSelector(selectCurrentUserId)
-    const url = APIURL()
+    const email = useInput("", "email")
+    const password = useInput("", "password")
+    const name = useInput("", "alphanumeric")
+    const [image, setImage] = useState(null, "file")
+    const linkedIn = useInput("", "url")
+    const github = useInput("", "url")    
 
-    const email = useInput("")
-    const password = useInput("")
-    const name = useInput("")
-    const [image, setImage] = useState(null)
-    const github = useInput("")
-    const linkedin = useInput("")
+    const emailValidation = formValidator(email)
+    const passwordValidation = formValidator(password)
+    const nameValidation = formValidator(name)
+    const linkedInValidation = formValidator(linkedIn)
+    const githubValidation = formValidator(github)
 
-
-    const handleImageUpload = () => {
+    const handleImageUpload = event => {
         setImage(event.target.files[0]);
     }
-
-    const handleSubmit = async event => {
-        event.preventDefault();
-        event.target.image.value = null;
-        const formData = new FormData();
-        formData.append("image", image);
-        const config = {
-            headers: {"content-type": "multipart/form-data"}
-        };
-        try {
-            let res = await axios.post(`${url}/upload`, formData, config);
-            
-            modalClose();
-        } catch (error) {
-        
-        }
-      };
     
+    const handleSubmit = async event => {
+        if (emailValidation.formIsValid && passwordValidation.formIsValid) {
+            event.preventDefault();
+            event.target.image.value = null;
+            const formData = new FormData();
+            formData.append("image", image);
+            const config = {
+                headers: {"content-type": "multipart/form-data"}
+            };
+            try {
+                let res = await axios.post(`${apiURL}/upload`, formData, config);
+                let imageUrl = res.data.imageUrl;
+                let createUser = await axios.post(`${apiURL}}/users`, {
+                    email: email.value,
+                    preferred_name: name.value,
+                    profile_image: imageUrl,
+                    linkedIn_link: linkedIn.value,
+                    github_link: github.value
+                });
+        
+            if (createUser) {
+                //modalClose()
+            }
+            } catch (error) {
+                console.log(error)
+            }
+      };
+    }
+
     return (
 
-        <SignUpForm>
-            <SignUpFormTitle>BEGIN YOUR DREAM JOB JOURNEY</SignUpFormTitle>
+        <SignUpForm onSubmit={handleSubmit}>
+            <SignUpFormTitle>FIND YOUR DREAM JOB</SignUpFormTitle>
             <Input placeholder={"Enter Your Email"} input={email} required/>
+            { emailValidation.error ? <Error errorMessage={emailValidation.error} /> : null }
             <Input type={"password"} placeholder={"Enter Your Password"} input={password} autoComplete="on" required />
+            { passwordValidation.error ? <Error errorMessage={passwordValidation.error} /> : null }
             <Input placeholder={"Enter Your Preferred Name"} input={name} required />
-            <Input type={"file"} name={image} onChange={event => handleUpload(event)} />
-            <Input placeholder={"Enter Your LinkedIn Profile Link"} input={github} />
-            <Input placeholder={"Enter Your GitHub Profile Link"} input={linkedin} />
+            { nameValidation.error ? <Error errorMessage={nameValidation.error} /> : null }
+            <Input type={"file"} name={image} onChange={event => handleImageUpload(event)} />
+            <Input placeholder={"Enter Your LinkedIn Profile Link"} input={linkedIn} />
+            { linkedInValidation.error ? <Error errorMessage={linkedInValidation.error } /> : null }
+            <Input placeholder={"Enter Your GitHub Profile Link"} input={github} />
+            { githubValidation.error ? <Error errorMessage={githubValidation.error} /> : null }
         </SignUpForm>
     )
 }

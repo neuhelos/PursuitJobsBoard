@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import SignInForm from "../Authentication/SignInForm"
 import PJBModal from "../BaseComponents/Modal"
+import SignUpForm from "../Authentication/SignUpForm"
 
 const LandingPage = () => {
     
@@ -19,6 +20,7 @@ const LandingPage = () => {
 
     <div>
         <SignInForm />
+        <SignUpForm />
         <PJBModal modalIsOpen={modalIsOpen} modalClose={closeModal}/>
     </div>
 
