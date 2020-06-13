@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { useInput } from '../../utilitron/CustomHookery'
 import { APIURL } from '../../utilitron/APIURL'
 import { signUp } from '../../utilitron/firebaseFunctions'
-import { formValidator } from './formValidation'
+import { formValidator } from '../../utilitron/formValidation'
 
 import Input from '../BaseComponents/Input'
 import Error from '../Error/Error'
@@ -28,11 +28,47 @@ const PJBSignUpForm = () => {
     const linkedIn = useInput("", "url")
     const github = useInput("", "url")    
 
+
+    const [emailError, setEmailError] = useState(false)
     const emailValidation = formValidator(email)
+    const validateEmail = () => {
+        if(emailValidation.error){
+            setEmailError(true)
+        }
+    }
+    
+    const [passwordError, setPasswordError] = useState(false)
     const passwordValidation = formValidator(password)
+    const validatePassword = () => {
+        if(passwordValidation.error){
+            setPasswordError(true)
+        }
+    }
+    
     const nameValidation = formValidator(name)
-    const linkedInValidation = formValidator(linkedIn)
+    const [nameError, setNameError] = useState(false)
+    const validateName = () => {
+        if(nameValidation.error){
+            setNameError(true)
+        }
+    }
+    
     const githubValidation = formValidator(github)
+    const [githubError, setGithubError] = useState(false)
+    const validateGithub = () => {
+        if(githubValidation.error){
+            setGithubError(true)
+        }
+    }
+    
+    const linkedInValidation = formValidator(linkedIn)
+    const [linkedInError, setLinkedInError] = useState(false)
+    const validateLinkedIn = () => {
+        if(linkedInValidation.error){
+            setLinkedInError(true)
+        }
+    }
+
 
     const handleImageUpload = event => {
         setImage(event.target.files[0]);
@@ -73,17 +109,17 @@ const PJBSignUpForm = () => {
 
         <SignUpForm onSubmit={handleSubmit}>
             <SignUpFormTitle>FIND YOUR DREAM JOB</SignUpFormTitle>
-            <Input placeholder={"Enter Your Email"} input={email} required/>
-            { emailValidation.error ? <Error errorMessage={emailValidation.error} /> : null }
-            <Input type={"password"} placeholder={"Enter Your Password"} input={password} autoComplete="on" required />
-            { passwordValidation.error ? <Error errorMessage={passwordValidation.error} /> : null }
-            <Input placeholder={"Enter Your Preferred Name"} input={name} required />
-            { nameValidation.error ? <Error errorMessage={nameValidation.error} /> : null }
+            <Input placeholder={"Enter Your Email"} onBlur={validateEmail} input={email} required/>
+            { emailError ? <Error errorMessage={emailValidation.error} /> : null }
+            <Input type={"password"} placeholder={"Enter Your Password"} onBlur={validatePassword} input={password} autoComplete="on" required />
+            { passwordError ? <Error errorMessage={passwordValidation.error} /> : null }
+            <Input placeholder={"Enter Your Preferred Name"} onBlur={validateName} input={name} required />
+            { nameError ? <Error errorMessage={nameValidation.error} /> : null }
             <input type={"file"} name="image" onChange={event => handleImageUpload(event)} />
-            <Input placeholder={"Enter Your LinkedIn Profile Link"} input={linkedIn} />
-            { linkedInValidation.error ? <Error errorMessage={linkedInValidation.error } /> : null }
-            <Input placeholder={"Enter Your GitHub Profile Link"} input={github} />
-            { githubValidation.error ? <Error errorMessage={githubValidation.error} /> : null }
+            <Input placeholder={"Enter Your LinkedIn Profile Link"} onBlur={validateLinkedIn} input={linkedIn} />
+            { linkedInError ? <Error errorMessage={linkedInValidation.error } /> : null }
+            <Input placeholder={"Enter Your GitHub Profile Link"} onBlur={validateGithub} input={github} />
+            { githubError ? <Error errorMessage={githubValidation.error} /> : null }
             <button type="submit"> CREATE YOUR PROFILE</button>
         </SignUpForm>
     )
