@@ -6,6 +6,7 @@ import { useInput } from '../../utilitron/CustomHookery'
 import { signIn } from '../../utilitron/firebaseFunctions'
 
 import styled, { ThemeProvider } from 'styled-components'
+import { Button } from '../../styling/theme'
 import { Composition } from 'atomic-layout'
 
 import Input from "../BaseComponents/Input";
@@ -14,6 +15,8 @@ import Error from "../Error/Error";
 const SignInFormTitle = styled.h1`
     font-size: 20rem;
 `
+
+const StyledButton = styled(Button)``
 
 const SignInForm = () => {
 
@@ -30,8 +33,8 @@ const SignInForm = () => {
             await signIn(email.value,password.value);
             history.push("/jobboard")
         } catch (error) {
-            email.clearInput()
-            password.clearInput()
+            email.clearinput()
+            password.clearinput()
             setError("Please Enter a Valid Email Address or Email Already Exists");
         }
     };
@@ -48,7 +51,7 @@ const SignInForm = () => {
                 </div>
 
                 <div>
-                    <button type="submit"> FIND YOUR FUTURE</button>
+                    <StyledButton type="submit"> FIND YOUR FUTURE</StyledButton>
                 </div>
             </form>
 

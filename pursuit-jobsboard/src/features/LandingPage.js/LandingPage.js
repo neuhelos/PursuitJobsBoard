@@ -1,18 +1,20 @@
 import React, { useState } from "react";
+import styled from 'styled-components'
 
-import SignInForm from "../Authentication/SignInForm"
-import PJBModal from "../BaseComponents/Modal"
-import SignUpForm from "../Authentication/SignUpForm"
+import SignInForm from '../Authentication/SignInForm'
+import SignUpForm from '../Authentication/SignUpForm'
+import Modal from '../BaseComponents/Modal'
+
+import { Button } from '../../styling/theme'
+
+const StyledButton = styled(Button)``
 
 const LandingPage = () => {
     
-    const [modalIsOpen,setIsOpen] = useState(false)
+    const [isOpen,setIsOpen] = useState(false)
 
-    const openModal = () =>  {
-        setIsOpen(true);
-    }
-    const closeModal = () => {
-        setIsOpen(false);
+    const toggleModal = () => {
+      setIsOpen(!isOpen)
     }
 
 
@@ -20,8 +22,10 @@ const LandingPage = () => {
 
     <div>
         <SignInForm />
-        <SignUpForm />
-        <PJBModal modalIsOpen={modalIsOpen} modalClose={closeModal}/>
+        <StyledButton onClick={toggleModal}> CREATE AN ACCOUNT </StyledButton>
+        <Modal isOpen={isOpen} toggleModal={toggleModal}>
+          <SignUpForm toggleModal={toggleModal} />
+        </Modal>
     </div>
 
   );

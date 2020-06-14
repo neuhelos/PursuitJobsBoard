@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 
@@ -10,6 +11,8 @@ import { formValidator } from '../../utilitron/formValidation'
 import Input from '../BaseComponents/Input'
 import Error from '../Error/Error'
 
+import { Button } from '../../styling/theme'
+
 const SignUpForm = styled.form`
 
 `
@@ -17,8 +20,11 @@ const SignUpFormTitle = styled.h1`
     font-size: 20rem;
 `
 
-const PJBSignUpForm = () => {
-        
+const StyledButton = styled(Button)``
+
+const PJBSignUpForm = ({toggleModal}) => {
+    
+    const history = useHistory()
     const apiURL = APIURL()
     
     const email = useInput("", "email")
@@ -97,7 +103,8 @@ const PJBSignUpForm = () => {
                 });
         
             if (createUser) {
-                //modalClose()
+                toggleModal()
+                history.push("/jobboard")
             }
             } catch (error) {
                 console.log(error)
@@ -120,7 +127,7 @@ const PJBSignUpForm = () => {
             { linkedInError ? <Error errorMessage={linkedInValidation.error } /> : null }
             <Input placeholder={"Enter Your GitHub Profile Link"} onBlur={validateGithub} input={github} />
             { githubError ? <Error errorMessage={githubValidation.error} /> : null }
-            <button type="submit"> CREATE YOUR PROFILE</button>
+            <StyledButton type="submit"> CREATE YOUR PROFILE</StyledButton>
         </SignUpForm>
     )
 }

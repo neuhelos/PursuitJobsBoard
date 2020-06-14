@@ -1,40 +1,24 @@
-import React, { useState } from "react";
-import Modal from "react-modal";
+import React from "react";
+import Modal from 'styled-react-modal'
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
-  }
-};
+const StyledModal = Modal.styled`
+  display: flex;
+  width: 100rem;
+  height: 100rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
-const PJBModal = ({ children, modalIsOpen, modalClose }) => {
-
-  const [isOpen,setIsOpen] = useState(false)
-
-  const closeModal = () => {
-    setIsOpen(false);
-  }
+const PJBModal = ({ children, isOpen, toggleModal }) => {
 
   return (
-    <div>
-      <Modal
-        style={customStyles}
-        isOpen={modalIsOpen}
-        //onAfterOpen={afterOpenModal}
-        onRequestClose={modalClose}
-        contentLabel="Modal"
-        className="modal"
-        overlayClassName="overlay"
-        closeModal={closeModal}
-      >
+      <StyledModal
+        isOpen={isOpen}
+        onBackgroundClick={toggleModal}
+        onEscapeKeydown={toggleModal}>
         {children}
-      </Modal>
-    </div>
+      </StyledModal>
   );
 }
 

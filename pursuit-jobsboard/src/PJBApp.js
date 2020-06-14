@@ -2,19 +2,21 @@ import React, { useEffect } from 'react';
 import { Switch } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
+import { ModalProvider } from 'styled-react-modal'
 
-import firebase from "./utilitron/firebase"
+import firebase from './utilitron/firebase'
 import { setCurrentUser } from './features/Authentication/authenticationSlice'
 import { getFirebaseIdToken } from './utilitron/firebaseFunctions'
 
-import GlobalStyle from "./styling/GlobalStyle"
-import LandingPage from "./features/LandingPage.js/LandingPage"
-import NavBar from "./features/NavBar/Navbar"
-import JobBoard from "./features/JobBoard/JobBoard"
-import Profile from "./features/Profile/Profile"
-import { PublicRoute, ProtectedRoute } from "./utilitron/AuthRouting"
+import GlobalStyle from './styling/GlobalStyle'
+import LandingPage from './features/LandingPage.js/LandingPage'
+import NavBar from './features/NavBar/Navbar'
+import JobBoard from './features/JobBoard/JobBoard'
+import Profile from './features/Profile/Profile'
+import { PublicRoute, ProtectedRoute } from './utilitron/AuthRouting'
 
-import { theme } from "./styling/theme"
+import { theme } from './styling/theme'
+import { ModalOverlay } from './styling/modalOverlay'
 
 const PJBApp = () => {
 
@@ -42,18 +44,20 @@ const PJBApp = () => {
     
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      { currentUser ? <NavBar /> : null }
-      <Switch>
-        <PublicRoute exact path="/">
-          <LandingPage />
-        </PublicRoute>
-        <ProtectedRoute path="/jobboard">
-          <JobBoard />
-        </ProtectedRoute>
-        <ProtectedRoute path="/profile">
-          <Profile />
-        </ProtectedRoute>
-      </Switch>
+      <ModalProvider backgroundComponent={ModalOverlay}>
+        { currentUser ? <NavBar /> : null }
+        <Switch>
+          <PublicRoute exact path="/">
+            <LandingPage />
+          </PublicRoute>
+          <ProtectedRoute path="/jobboard">
+            <JobBoard />
+          </ProtectedRoute>
+          <ProtectedRoute path="/profile">
+            <Profile />
+          </ProtectedRoute>
+        </Switch>
+      </ModalProvider>
     </ThemeProvider>
 
   )

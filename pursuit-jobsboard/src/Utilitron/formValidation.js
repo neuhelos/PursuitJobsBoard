@@ -7,12 +7,12 @@ export const formValidator = (input) => {
 
         if (!input.value) {
             formIsValid = false;
-            error = "Required Field."
+            error = "Please enter a name with at least 3 or more alphanumeric characters."
         }
         if (typeof input.value !== "undefined") {
-            if (!input.value.match(/^[a-zA-Z0-9]*$/)) {
+            if (!input.value.match(/^.{3,}[a-zA-Z0-9]*$/)) {
             formIsValid = false;
-            error = "Please enter valid alphanumeric characters only."
+            error = "Please enter at least 3 or more alphanumeric characters."
             }
         }
     }
@@ -37,9 +37,9 @@ export const formValidator = (input) => {
             error = "Please enter a password.";
         }
         if (input.value !== "undefined") {
-            if (!input.value.match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
+            if (!input.value.match(/^.*(?=.{10,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
             formIsValid = false;
-            error = "Please enter a password that meets security requirements.";
+            error = "Please use at least 10 characters including uppercase letter(s), numbers and special characters(@#$%&).";
             }
         }
     }
