@@ -13,7 +13,7 @@ import Input from "../BaseComponents/Input";
 import Error from "../Error/Error";
 
 const SignInFormTitle = styled.h1`
-    font-size: 20rem;
+    font-size: 2rem;
 `
 
 const StyledButton = styled(Button)``

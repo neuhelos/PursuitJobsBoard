@@ -7,12 +7,10 @@ import { Provider } from 'react-redux';
 import PJBApp from './PJBApp';
 
 ReactDOM.render(
-  <React.StrictMode>
     <Router>
       <Provider store={store}>
         <PJBApp />
       </Provider>
-    </Router>
-  </React.StrictMode>,
+    </Router>,
   document.getElementById('root')
 );

@@ -16,7 +16,7 @@ import Profile from './features/Profile/Profile'
 import { PublicRoute, ProtectedRoute } from './utilitron/AuthRouting'
 
 import { theme } from './styling/theme'
-import { ModalOverlay } from './styling/modalOverlay'
+import { ModalOverlay } from './styling/ModalOverlay'
 
 const PJBApp = () => {
 

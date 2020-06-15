@@ -17,7 +17,7 @@ const SignUpForm = styled.form`
 
 `
 const SignUpFormTitle = styled.h1`
-    font-size: 20rem;
+    font-size: 2rem;
 `
 
 const StyledButton = styled(Button)``

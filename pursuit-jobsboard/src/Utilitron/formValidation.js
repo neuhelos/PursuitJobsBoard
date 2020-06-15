@@ -3,7 +3,7 @@ export const formValidator = (input) => {
     let formIsValid = true;
     let error = ""
     
-    if(input.type === "alphanumeric"){
+    if(input.validationType === "alphanumeric"){
 
         if (!input.value) {
             formIsValid = false;
@@ -17,7 +17,7 @@ export const formValidator = (input) => {
         }
     }
     
-    if(input.type === "email"){
+    if(input.validationType === "email"){
         if (!input.value) {
             formIsValid = false;
             error = "Please enter an email.";
@@ -31,7 +31,7 @@ export const formValidator = (input) => {
         }
     }
         
-    if(input.type === "password"){
+    if(input.validationType === "password"){
         if (!input.value) {
             formIsValid = false;
             error = "Please enter a password.";
@@ -44,7 +44,7 @@ export const formValidator = (input) => {
         }
     }
 
-    if(input.type === "url"){
+    if(input.validationType === "url"){
         if (!input.value) {
             formIsValid = false;
             error = "Please enter a url.";
@@ -55,6 +55,12 @@ export const formValidator = (input) => {
             formIsValid = false;
             error = "Please enter a valid url.";
             }
+        }
+    }
+
+    if(input.validationType === "date"){
+        if (input.value !== "undefined") {
+            console.log(input.value)
         }
     }
     

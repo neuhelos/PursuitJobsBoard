@@ -15,9 +15,9 @@ const GlobalStyle = createGlobalStyle`
     *::before,
     *::after{box-sizing:border-box;}
     body{
-        font-size: 12rem;
+        font-size: 1rem;
         font-weight: 400;
-        line-height: 1.3;
+        line-height: 1.5rem;
         color: #222;
     }
     a{text-decoration:none; color:inherit; cursor:pointer;}
@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
     html {
-        font-size: 1px;
+        font-size: 16px;
         font-family: 'Roboto', sans-serif;
         margin: 0;
         padding: 0;

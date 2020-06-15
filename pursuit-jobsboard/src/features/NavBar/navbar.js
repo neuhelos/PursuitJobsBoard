@@ -4,8 +4,8 @@ import styled from 'styled-components'
 
 import { signOut } from '../../utilitron/firebaseFunctions'
 
-import Modal from '../BaseComponents/Modal'
-import AddJobPostForm from '../JobPosts/AddJobPostForm'
+import PJBModal from '../BaseComponents/Modal'
+import AddJobsPostForm from '../JobsPosts/AddJobsPostForm'
 
 import { Button } from '../../styling/theme'
 
@@ -39,12 +39,13 @@ const PJBNavBar = () => {
     return(
         <NavBar>
             
-            { NavButton ? <NavLink to={"/jobboard"}><button className="navButton toggleButton" onClick={handleNavButton}>HOME</button></NavLink> : <NavLink to={"/profile"}><button className="navButton toggleButton"  onClick={handleNavButton}>PROFILE</button></NavLink> }
+            { NavButton ? <NavLink to={"/jobboard"}><button onClick={handleNavButton}>HOME</button></NavLink> : <NavLink to={"/profile"}><button onClick={handleNavButton}>PROFILE</button></NavLink> }
+            <StyledButton onClick={toggleModal}>ADD JOB POST</StyledButton>
             <StyledButton onClick={signout}>SIGN OUT</StyledButton>
 
-            <Modal>
-                <AddJobPostForm />
-            </Modal>
+            <PJBModal isOpen={isOpen} toggleModal={toggleModal}>
+                <AddJobsPostForm toggleModal={toggleModal}/>
+            </PJBModal>
         </NavBar>
     )
 }
