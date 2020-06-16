@@ -1,11 +1,13 @@
 import React from 'react'
 
+import JobsSearchForm from './JobsSearchForm'
+
 const JobBoard = () => {
     
 
     return (
         <div>
-            "HOME"
+            <JobsSearchForm />
         </div>
     )
 }
