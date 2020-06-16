@@ -27,6 +27,11 @@ const SignInForm = () => {
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
+    const handleGuestLogin = async () => {
+        await signIn("demo@nilber.dev","nilber");
+        history.push("/jobboard")
+    }
+
     const handleSubmit = async event => {
         event.preventDefault();
         try {
@@ -54,6 +59,8 @@ const SignInForm = () => {
                     <StyledButton type="submit"> FIND YOUR FUTURE</StyledButton>
                 </div>
             </form>
+
+            <StyledButton onClick={handleGuestLogin}>GUEST LOGIN</StyledButton>
 
             {error ? <Error errorMessage={error} /> : null}
         </div>
