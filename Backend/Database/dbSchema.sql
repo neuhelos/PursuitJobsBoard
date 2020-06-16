@@ -44,5 +44,5 @@ CREATE TABLE appliedjobs (
 
 INSERT INTO users (id, email, preferred_name, profile_image, linkedin_link, github_link)
     VALUES 
-    ('1','guestDemo@nilber.dev', 'Guest', 'http://localhost:3000/ImageUploads/Guest_Avatar.jpg', 'www.linkedin.com', 'www.github.com')
+    ('9kpHHly62nOnVvEGHPSOnAP55og1','guest@nilber.dev', 'Guest', 'https://pursuitjobsboard.herokuapp.com/ImageUploads/Guest_Avatar.jpg', 'www.linkedin.com', 'www.github.com')
 

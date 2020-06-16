@@ -27,7 +27,7 @@ const SignInForm = () => {
     const [error, setError] = useState("")
 
     const handleGuestLogin = async () => {
-        await signIn("demo@nilber.dev","nilber");
+        await signIn("guest@nilber.dev","nilber");
         history.push("/jobboard")
     }
 
