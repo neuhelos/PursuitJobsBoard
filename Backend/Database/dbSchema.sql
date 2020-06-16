@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS pursuitjobsboard;
-CREATE DATABASE pursuitjobsboard;
+-- DROP DATABASE IF EXISTS pursuitjobsboard;
+-- CREATE DATABASE pursuitjobsboard;
 
-\c pursuitjobsboard;
+-- \c pursuitjobsboard;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS jobs;
@@ -44,5 +44,5 @@ CREATE TABLE appliedjobs (
 
 INSERT INTO users (id, email, preferred_name, profile_image, linkedin_link, github_link)
     VALUES 
-    ('1','guestDemo@nilber.dev', 'Guest', 'http://localhost:3000/ImageUploads/Guest_Avatar.jpg', 'www.linkedin.com', 'www.github.com'),  
+    ('1','guestDemo@nilber.dev', 'Guest', 'http://localhost:3000/ImageUploads/Guest_Avatar.jpg', 'www.linkedin.com', 'www.github.com')
 
