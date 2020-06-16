@@ -95,11 +95,11 @@ const PJBSignUpForm = ({toggleModal}) => {
                 let res = await signUp(email.value, password.value)
                 let createUser = await axios.post(`${apiURL}/users`, {
                     id: res.user.uid,
-                    email: email.value,
-                    preferred_name: name.value,
-                    profile_image: imageUrl,
-                    linkedIn_link: linkedIn.value,
-                    github_link: github.value
+                    "email": email.value,
+                    "preferred_name": name.value,
+                    "profile_image": imageUrl,
+                    "linkedIn_link": linkedIn.value,
+                    "github_link": github.value
                 });
         
             if (createUser) {

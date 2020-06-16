@@ -9,8 +9,8 @@ DROP TABLE IF EXISTS savedjobs;
 DROP TABLE IF EXISTS appliedjobs;
 
 CREATE TABLE users  (
-    id VARCHAR PRIMARY KEY,
-    email VARCHAR NOT NULL UNIQUE,
+    id VARCHAR PRIMARY KEY NOT NULL,
+    email VARCHAR NOT NULL UNIQUE NOT NULL,
     preferred_name VARCHAR,
     profile_image VARCHAR,
     linkedin_link VARCHAR,
@@ -20,13 +20,13 @@ CREATE TABLE users  (
 CREATE TABLE jobs (
     id SERIAL PRIMARY KEY,
     posted TIMESTAMPTZ DEFAULT NOW(),
-    jobs_title VARCHAR,
-    jobs_link VARCHAR UNIQUE,
-    jobs_description VARCHAR,
+    job_title VARCHAR,
+    job_link VARCHAR UNIQUE,
+    job_description VARCHAR,
     job_location VARCHAR,
     job_type TEXT,
     remote_status TEXT,
-    job_closingdate DATE,
+    job_closingdate VARCHAR,
     user_id VARCHAR REFERENCES users(id)
 );
 

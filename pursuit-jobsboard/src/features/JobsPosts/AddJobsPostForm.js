@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import axios from 'axios'
 
 import { APIURL } from '../../utilitron/APIURL'
 import { useInput, useSelect } from '../../utilitron/CustomHookery'
 import { formValidator } from '../../utilitron/formValidation'
+import { selectCurrentUserId } from '../Authentication/authenticationSlice'
 
 import AddJobsPostSelect from './AddJobsPostSelect'
 import { jobTypeSelectOptions } from './JobTypeSelectOptions'
@@ -33,6 +36,7 @@ const StyledButton = styled(Button)``
 const PJBAddJobPostForm = ({ toggleModal }) => {
     
     const apiURL = APIURL()
+    const userId = useSelector(selectCurrentUserId)
     
     const jobTitle = useInput("", "alphanumeric")
     const jobDescription = useInput("", "alphanumeric")
@@ -40,8 +44,8 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
     const jobLocation = useInput("", "alphanumeric")
     const jobClosingDate = useInput("", "date")    
 
-    const remoteSelect = useSelect("")
     const jobTypeSelect = useSelect("")
+    const remoteSelect = useSelect("")
 
     const [jobLinkError, setJobLinkError] = useState(false)
     const jobLinkValidation = formValidator(jobLink)
@@ -50,13 +54,22 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
             setJobLinkError(true)
         }
     }
+    
     const handleSubmit = async (event) => {
         event.preventDefault()
+        let res = await axios.post(`${apiURL}/users/${userId}/jobs`, {
+            job_title: jobTitle.value,
+            job_link: jobLink.value,
+            job_description: jobDescription.value,
+            job_location: jobLocation.value,
+            job_type: jobTypeSelect.value,
+            remote_status: remoteSelect.value,
+            job_closingdate: jobClosingDate.value,
+        })
+        console.log(res)
         toggleModal()
-        let res = await axios.post(`${apiURL}/`)
-
     }
-    
+
     return (
         <AddJobPostForm onSubmit={handleSubmit}>
             <Input placeholder={"Enter Job Title"} input={jobTitle} required/>

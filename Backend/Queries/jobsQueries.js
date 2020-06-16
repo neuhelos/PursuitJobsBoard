@@ -3,8 +3,8 @@ const db = require("../Database/database");
 const createJobPost = async (req, res) => {
     try {
         let newJobPost = await db.one(
-        "INSERT INTO jobs (job_title, job_link, job_description, job_location, job_type, remote_status, job_closingdate, user_id) VALUES($1, $2, $3, $4, $5) RETURNING id",
-        [req.body.jobTitle, req.body.jobLink, req.body.description, req.body.type, req.body.remote, req.body.closingDate, req.params.id]
+        "INSERT INTO jobs (job_title, job_link, job_description, job_location, job_type, remote_status, job_closingdate, user_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id",
+        [req.body.job_title, req.body.job_link, req.body.job_description, req.body.job_location, req.body.job_type, req.body.remote_status, req.body.job_closingdate, req.params.id]
         );
         res.status(200).json({
         status: "Success",
@@ -65,7 +65,7 @@ const getAllJobsPosts = async (req, res, next) => {
         res.status(200).json({
         status: "Success",
         message: "All Jobs Posts in Database",
-        payload: allJobPosts
+        payload: allJobsPosts
         });
     } catch (error) {
         res.status(404).json({
