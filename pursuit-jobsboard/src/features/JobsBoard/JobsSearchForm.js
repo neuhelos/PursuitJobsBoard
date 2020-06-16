@@ -22,7 +22,7 @@ const JobsSearchForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        let res = axios.get(`${apiURL}/search`,{
+        let res = axios.get(`${apiURL}/jobs/search`,{
             query: querySearch.value,
             location: locationSearch.value
         })

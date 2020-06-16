@@ -11,7 +11,7 @@ import { getFirebaseIdToken } from './utilitron/firebaseFunctions'
 import GlobalStyle from './styling/GlobalStyle'
 import LandingPage from './features/LandingPage.js/LandingPage'
 import NavBar from './features/NavBar/Navbar'
-import JobBoard from './features/JobBoard/JobBoard'
+import JobsBoard from './features/JobsBoard/JobsBoard'
 import Profile from './features/Profile/Profile'
 import { PublicRoute, ProtectedRoute } from './utilitron/AuthRouting'
 
@@ -51,7 +51,7 @@ const PJBApp = () => {
             <LandingPage />
           </PublicRoute>
           <ProtectedRoute path="/jobboard">
-            <JobBoard />
+            <JobsBoard />
           </ProtectedRoute>
           <ProtectedRoute path="/profile">
             <Profile />

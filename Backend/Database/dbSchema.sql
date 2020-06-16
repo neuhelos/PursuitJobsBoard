@@ -41,3 +41,8 @@ CREATE TABLE appliedjobs (
     users_id VARCHAR REFERENCES users(id),
     jobs_id INT REFERENCES jobs(id) ON DELETE CASCADE
 );
+
+INSERT INTO users (id, email, preferred_name, profile_image, linkedin_link, github_link)
+    VALUES 
+    ('1','guestDemo@nilber.dev', 'Guest', 'http://localhost:3000/ImageUploads/Guest_Avatar.jpg', 'www.linkedin.com', 'www.github.com'),  
+

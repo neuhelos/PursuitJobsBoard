@@ -1,15 +1,17 @@
 import React from 'react'
 
 import JobsSearchForm from './JobsSearchForm'
+import JobsPostFeed from './JobsPostFeed'
 
-const JobBoard = () => {
+const JobsBoard = () => {
     
 
     return (
         <div>
             <JobsSearchForm />
+            <JobsPostFeed />
         </div>
     )
 }
 
-export default JobBoard;
+export default JobsBoard;
