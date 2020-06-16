@@ -25,8 +25,7 @@ const SignInForm = () => {
     const email = useInput("");
     const password = useInput("");
     const [error, setError] = useState("")
-    const [isLoading, setIsLoading] = useState(false)
-
+\
     const handleGuestLogin = async () => {
         await signIn("demo@nilber.dev","nilber");
         history.push("/jobboard")
