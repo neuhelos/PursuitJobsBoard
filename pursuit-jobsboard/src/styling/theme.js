@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const theme = {
 
+
 }
 
 export const Button = styled.button`

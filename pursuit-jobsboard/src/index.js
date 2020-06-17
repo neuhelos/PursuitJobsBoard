@@ -6,6 +6,8 @@ import store from './app/store';
 import { Provider } from 'react-redux';
 import PJBApp from './PJBApp';
 
+import 'typeface-roboto'
+
 ReactDOM.render(
     <Router>
       <Provider store={store}>

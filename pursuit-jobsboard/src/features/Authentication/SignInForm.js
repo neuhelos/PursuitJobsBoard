@@ -5,6 +5,7 @@ import { useInput } from '../../utilitron/CustomHookery'
 
 import { signIn } from '../../utilitron/firebaseFunctions'
 
+
 import styled, { ThemeProvider } from 'styled-components'
 import { Button } from '../../styling/theme'
 import { Composition } from 'atomic-layout'
@@ -16,7 +17,17 @@ const SignInFormTitle = styled.h1`
     font-size: 2rem;
 `
 
-const StyledButton = styled(Button)``
+
+
+
+const StyledButton = styled.button`
+    color: black;
+    font-size: 1rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    border: 2px solid black;
+    border-radius: 3px;
+`
 
 const SignInForm = () => {
 
@@ -58,7 +69,6 @@ const SignInForm = () => {
                     <StyledButton type="submit"> FIND YOUR FUTURE</StyledButton>
                 </div>
             </form>
-
             <StyledButton onClick={handleGuestLogin}>GUEST LOGIN</StyledButton>
 
             {error ? <Error errorMessage={error} /> : null}

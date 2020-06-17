@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
 
+
 const GlobalStyle = createGlobalStyle`
+    
     body{margin:0};
     main{display:block};
     h1{font-size:2em;margin:.67em 0};
@@ -29,8 +31,6 @@ const GlobalStyle = createGlobalStyle`
     cite {font-style:normal;}
     fieldset{border-width:0; padding:0; margin:0;}
     /* CSS Reset code provided by Elad Shechter */
-
-    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
     html {
         font-size: 16px;
