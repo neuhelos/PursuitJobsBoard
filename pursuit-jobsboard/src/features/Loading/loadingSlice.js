@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { signIn, signOut } from '../../utilitron/firebaseFunctions'
+import { fetchAllJobsPosts } from '../JobsBoard/jobsPostSlice'
 
 export const loadingSlice = createSlice({
     name: 'loading',
@@ -9,12 +9,12 @@ export const loadingSlice = createSlice({
         toggleLoading: (state, action) => !state
     },
     extraReducers: {
-        
+        [fetchAllJobsPosts.pending] : () => true,
+        [fetchAllJobsPosts.fulfilled] : () => false,
+        [fetchAllJobsPosts.rejected] : () => false
     }
 })
 
-
 export const selectLoading = state => state.loading
-
 export const { toggleLoading } = loadingSlice.actions
 export default loadingSlice.reducer
