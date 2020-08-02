@@ -7,7 +7,10 @@ export const errorSlice = createSlice( {
     initialState: "",
     extraReducers: {
         [fetchAllJobsPosts.pending]: () => "",
-        [fetchAllJobsPosts.rejected] : (action) =>  action.error.message
+        [fetchAllJobsPosts.rejected] : (action) =>  {
+            console.log(action.error)
+            return action.error.message
+        }
     }
 })
 

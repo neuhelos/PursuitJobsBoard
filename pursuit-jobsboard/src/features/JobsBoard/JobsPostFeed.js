@@ -30,18 +30,18 @@ const JobsPostFeed = () => {
         )
     }
 
-    if(error){
-        return(
-            <JobsFeedError>
-                <Error errorMessage={error}/>
-                <StyledButton onClick={() => dispatch(fetchAllJobsPosts())}>FETCH JOB POSTS</StyledButton>
-            </JobsFeedError>
-        )
-    }
+    // if(error){
+    //     return(
+    //         <JobsFeedError>
+    //             <Error errorMessage={error}/>
+    //             <StyledButton onClick={() => dispatch(fetchAllJobsPosts())}>FETCH JOB POSTS</StyledButton>
+    //         </JobsFeedError>
+    //     )
+    // }
     
-    let jobsPosts = jobsPostFeed.map( jobsPost => {
-        <JobsPost key={} value/>
-    })
+    // let jobsPosts = jobsPostFeed.map( jobsPost => {
+    //     <JobsPost key={} value/>
+    // })
     
     return (
         <div>

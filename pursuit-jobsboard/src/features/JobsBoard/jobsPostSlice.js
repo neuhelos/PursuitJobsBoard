@@ -6,11 +6,11 @@ import { APIURL } from '../../utilitron/APIURL'
 const apiURL = APIURL()
 
 export const fetchAllJobsPosts = createAsyncThunk(
-    'post/fetchAllJobsPosts',
+    'get/fetchAllJobsPosts',
     async () => {
         try {
             const res = await axios.get(`${apiURL}/jobs`)
-            return res.payload.reverse()
+            return res.payload
         } catch (error) {
             throw Error(error)
         }

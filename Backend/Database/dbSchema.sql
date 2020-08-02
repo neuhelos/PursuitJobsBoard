@@ -26,23 +26,26 @@ CREATE TABLE jobs (
     job_location VARCHAR,
     job_type TEXT,
     remote_status TEXT,
-    job_closingdate VARCHAR,
+    job_closingdate TIMESTAMPTZ,
     user_id VARCHAR REFERENCES users(id)
 );
 
 CREATE TABLE savedjobs (
     id serial Primary Key,
     users_id VARCHAR REFERENCES users(id),
-    jobs_id INT REFERENCES jobs(id) ON DELETE CASCADE
+    jobs_id VARCHAR REFERENCES jobs(id) ON DELETE CASCADE
 );
 
 CREATE TABLE appliedjobs (
     id serial Primary Key,
     users_id VARCHAR REFERENCES users(id),
-    jobs_id INT REFERENCES jobs(id) ON DELETE CASCADE
+    jobs_id VARCHAR REFERENCES jobs(id) ON DELETE CASCADE
 );
 
 INSERT INTO users (id, email, preferred_name, profile_image, linkedin_link, github_link)
     VALUES 
-    ('9kpHHly62nOnVvEGHPSOnAP55og1','guest@nilber.dev', 'Guest', 'https://pursuitjobsboard.herokuapp.com/ImageUploads/Guest_Avatar.jpg', 'www.linkedin.com', 'www.github.com')
+    ('9kpHHly62nOnVvEGHPSOnAP55og1','guest@nilber.dev', 'Guest', 'https://pursuitjobsboard.herokuapp.com/ImageUploads/Guest_Avatar.jpg', 'www.linkedin.com', 'www.github.com');
 
+INSERT INTO jobs (id, posted, job_title, job_link, job_description, job_location, job_type, remote_status, job_closingdate)
+    VALUES
+    ()

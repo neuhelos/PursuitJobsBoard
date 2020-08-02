@@ -68,7 +68,7 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-       l et res = await axios.post(`${apiURL}/users/${userId}/jobs`, {
+        let res = await axios.post(`${apiURL}/users/${userId}/jobs`, {
             job_title: jobTitle.value,
             job_link: jobLink.value,
             job_description: jobDescription.value,
