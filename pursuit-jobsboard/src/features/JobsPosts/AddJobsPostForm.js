@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import axios from 'axios'
+import { geocodeByAddress, geocodeByPlaceId, getLatLng, } from 'react-places-autocomplete';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
