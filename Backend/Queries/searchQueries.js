@@ -3,7 +3,9 @@ const db = require("../Database/database");
 const searchJobs = async (req, res, next) => {
     try {
         let searchQuery = await db.any(
-            "SELECT * FROM jobs WHERE job_description = $1", req.body
+            "SELECT * FROM jobs WHERE job_description LIKE $1", req.body
+            
+            
             //SELECT to_tsvector('job_description field')  @@ to_tsquery('query');
         )
         res.status(200).json({

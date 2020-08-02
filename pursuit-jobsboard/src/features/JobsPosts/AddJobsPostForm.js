@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
   
 
 
-
 const PJBAddJobPostForm = ({ toggleModal }) => {
     
     const apiURL = APIURL()
@@ -69,7 +68,7 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        let res = await axios.post(`${apiURL}/users/${userId}/jobs`, {
+       l et res = await axios.post(`${apiURL}/users/${userId}/jobs`, {
             job_title: jobTitle.value,
             job_link: jobLink.value,
             job_description: jobDescription.value,
