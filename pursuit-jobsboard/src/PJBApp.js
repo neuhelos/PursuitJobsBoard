@@ -9,9 +9,9 @@ import { setCurrentUser } from './features/Authentication/authenticationSlice'
 import { getFirebaseIdToken } from './utilitron/firebaseFunctions'
 
 import GlobalStyle from './styling/GlobalStyle'
-import LandingPage from './features/LandingPage.js/LandingPage'
+import LandingPage from './features/Pages/LandingPage'
 import NavBar from './features/NavBar/Navbar'
-import JobsBoard from './features/JobsBoard/JobsBoard'
+import JobsBoard from './features/Pages/JobsBoard'
 import Profile from './features/Profile/Profile'
 import { PublicRoute, ProtectedRoute } from './utilitron/AuthRouting'
 
