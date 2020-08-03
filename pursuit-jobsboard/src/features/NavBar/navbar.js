@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { signOut } from '../../utilitron/firebaseFunctions'
 
 import PJBModal from '../BaseComponents/Modal'
-import AddJobsPostForm from '../JobsPosts/AddJobsPostForm'
+import AddJobsPostForm from '../AddJobsPosts/AddJobsPostForm'
 
 import { Button } from '../../styling/theme'
 
