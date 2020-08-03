@@ -9,12 +9,12 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 import LuxonUtils from '@date-io/luxon'
 
 import { APIURL } from '../../utilitron/APIURL'
-import { useInput, useSelect } from '../../utilitron/CustomHookery'
+import { useInput, useSelect, useScript } from '../../utilitron/CustomHookery'
 import { formValidator } from '../../utilitron/formValidation'
 import { selectCurrentUserId } from '../Authentication/authenticationSlice'
 
 import AddJobsPostSelect from './AddJobsPostSelect'
-import LocationsSearchInput from './LocationAutocompleteInput'
+import LocationSearchInput from './LocationAutocompleteInput'
 import { jobTypeSelectOptions } from './JobTypeSelectOptions'
 import { remoteStatusSelectOptions } from './RemoteStatusSelectOptions'
 import Input from '../BaseComponents/Input'
@@ -90,7 +90,8 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
             <TextField id="jobLink" label="Job URL" placeholder="Enter Job Link" onBlur={validateJobLink} variant="outlined"  {...jobLink} required/>
             { jobLinkError ? <Error errorMessage={jobLinkValidation.error} /> : null }
             <TextField id="jobDescription" label="Job Description" placeholder="Job Description" multiline variant="outlined"/>
-            <Input placeholder={"Enter Job Location"} input={jobLocation} required/>
+            <LocationSearchInput />
+            {/* <Input placeholder={"Enter Job Location"} input={jobLocation} required/> */}
             <AddJobsPostSelect select={jobTypeSelect} label={"Job Type"}>
                 {jobTypeSelectOptions}
             </AddJobsPostSelect>

@@ -1,36 +1,39 @@
 import React, { useState } from 'react';
-import PlacesAutocomplete, { geocodeByAddress, getLatLng, } from 'react-places-autocomplete';
+import PlacesAutocomplete from 'react-places-autocomplete';
+
+import TextField from '@material-ui/core/TextField';
 
 const LocationSearchInput = () => {
 
 
-  const [address, setAddress] = useState("")
+  const [location, setLocation] = useState("")
 
-  const handleChange = address => {
-    setAddress(address);
+  const handleChange = location => {
+    setLocation(location);
   };
 
-  const handleSelect = address => {
-    geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng))
-      .catch(error => console.error('Error', error));
+  const handleSelect = location => {
+    setLocation(location)
   };
 
     return (
       <PlacesAutocomplete
-        value={address}
+        value={location}
         onChange={handleChange}
         onSelect={handleSelect}
       >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
-            <input
+        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
+
+          return (
+          <>
+          <TextField id="jobLocation" placeholder="Job Location"  label="Job Location" variant="outlined" {...getInputProps()} required/>
+            {/* <input
               {...getInputProps({
                 placeholder: 'Search Places ...',
                 className: 'location-search-input',
               })}
-            />
+              required
+            /> */}
             <div className="autocomplete-dropdown-container">
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
@@ -53,8 +56,8 @@ const LocationSearchInput = () => {
                 );
               })}
             </div>
-          </div>
-        )}
+          </>
+        )}}
       </PlacesAutocomplete>
     );
 }
