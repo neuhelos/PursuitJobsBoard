@@ -46,6 +46,7 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
     const classes = useStyles()
 
     const jobTitle = useInput("", "alphanumeric")
+    const company = useInput("", 'alphanumeric')
     const jobDescription = useInput("", "alphanumeric")
     const jobLink = useInput("", "url")
     const jobLocation = useInput("", "alphanumeric")  
@@ -70,6 +71,7 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
         event.preventDefault()
         let res = await axios.post(`${apiURL}/users/${userId}/jobs`, {
             job_title: jobTitle.value,
+            company: company.value,
             job_link: jobLink.value,
             job_description: jobDescription.value,
             job_location: jobLocation.value,
@@ -82,10 +84,11 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
 
     return (
         <AddJobPostForm onSubmit={handleSubmit} className={classes.root}>
-            <Input placeholder={"Enter Job Title"} input={jobTitle} required/>
-            <TextField id="outlined-textarea" placeholder="Job Description" multiline variant="outlined"/>
-            <Input placeholder={"Enter Job Link"} onBlur={validateJobLink} input={jobLink} required/>
+            <TextField id="jobTitle" placeholder="Job Title"  label="Job Title" variant="outlined" {...jobTitle} required/>
+            <TextField id="company" label="Company" placeholder="Company Hiring" variant="outlined" {...company} required/>
+            <TextField id="jobLink" label="Job URL" placeholder="Enter Job Link" onBlur={validateJobLink} variant="outlined"  {...jobLink} required/>
             { jobLinkError ? <Error errorMessage={jobLinkValidation.error} /> : null }
+            <TextField id="jobDescription" label="Job Description" placeholder="Job Description" multiline variant="outlined"/>
             <Input placeholder={"Enter Job Location"} input={jobLocation} required/>
             <AddJobsPostSelect select={jobTypeSelect} label={"Job Type"}>
                 {jobTypeSelectOptions}
