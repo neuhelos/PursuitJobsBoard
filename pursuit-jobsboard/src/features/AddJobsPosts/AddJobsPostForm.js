@@ -14,6 +14,7 @@ import { formValidator } from '../../utilitron/formValidation'
 import { selectCurrentUserId } from '../Authentication/authenticationSlice'
 
 import AddJobsPostSelect from './AddJobsPostSelect'
+import LocationsSearchInput from './LocationAutocompleteInput'
 import { jobTypeSelectOptions } from './JobTypeSelectOptions'
 import { remoteStatusSelectOptions } from './RemoteStatusSelectOptions'
 import Input from '../BaseComponents/Input'
