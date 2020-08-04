@@ -9,7 +9,7 @@ export const errorSlice = createSlice( {
         [fetchAllJobsPosts.pending]: () => "",
         [fetchAllJobsPosts.rejected] : (action) =>  {
             console.log(action.error)
-            return action.error.message
+            return action.error
         }
     }
 })

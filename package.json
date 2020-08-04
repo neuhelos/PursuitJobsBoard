@@ -16,5 +16,7 @@
   "bugs": {
     "url": "https://github.com/neuhelos/PursuitJobsBoard/issues"
   },
-  "homepage": "https://github.com/neuhelos/PursuitJobsBoard#readme"
+  "homepage": "https://github.com/neuhelos/PursuitJobsBoard#readme",
+  "dependencies": {
+  }
 }

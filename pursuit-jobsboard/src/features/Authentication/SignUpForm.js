@@ -4,7 +4,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 
 import { useInput } from '../../utilitron/CustomHookery'
-import { APIURL } from '../../utilitron/APIURL'
+import { apiURL } from '../../utilitron/apiURL'
 import { signUp } from '../../utilitron/firebaseFunctions'
 import { formValidator } from '../../utilitron/formValidation'
 
@@ -25,7 +25,7 @@ const StyledButton = styled(Button)``
 const PJBSignUpForm = ({toggleModal}) => {
     
     const history = useHistory()
-    const apiURL = APIURL()
+    const apiURL = apiURL()
     
     const email = useInput("", "email")
     const password = useInput("", "password")

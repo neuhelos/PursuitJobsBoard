@@ -33,21 +33,24 @@ CREATE TABLE jobs (
 
 CREATE TABLE savedjobs (
     id SERIAL PRIMARY KEY,
-    users_id VARCHAR REFERENCES users(id),
+    user_id VARCHAR REFERENCES users(id),
     jobs_id INT REFERENCES jobs(id) ON DELETE CASCADE
 );
 
 CREATE TABLE appliedjobs (
     id SERIAL PRIMARY KEY,
-    users_id VARCHAR REFERENCES users(id),
+    user_id VARCHAR REFERENCES users(id),
     jobs_id INT REFERENCES jobs(id) ON DELETE CASCADE
 );
 
 INSERT INTO users (id, email, preferred_name, profile_image, linkedin_link, github_link)
-    VALUES 
+    VALUES
+    (1, 'nilberremon@pursuit.org', 'Nilber Remon', 'image', 'https://www.linkedin.com/in/nilberremon/', 'https://github.com/neuhelos')
+    (2, , 'uduakabasiabasiurua@pursuit.org', 'Uduakabasi Abasiurua','image', 'https://www.linkedin.com/in/uduakabasi-abasiurua-8ab113121/', 'https://github.com/darsuabasi')
+    (3, 'daniellecherry@pursuit.org', 'Danielle Cherry', 'image', 'https://www.linkedin.com/in/daniellercherry/','https://github.com/cherry-cloud')
     ('9kpHHly62nOnVvEGHPSOnAP55og1', 'guest@nilber.dev', 'Guest', 'https://pursuitjobsboard.herokuapp.com/ImageUploads/Guest_Avatar.jpg', 'www.linkedin.com', 'www.github.com');
 
-INSERT INTO jobs (id, posted, job_title, company, job_link, job_description, job_location, job_type, remote_status, job_closingdate)
+INSERT INTO jobs (id, posted, job_title, company, job_link, job_description, job_location, job_type, remote_status, job_closingdate, user_id)
     VALUES
     (1, '2020-07-31', 'Community Fellowship', 'Code for America','https://boards.greenhouse.io/cfa/jobs/2236820?gh_src=68afcadc1us', 'Calling all technologists! Would you like to participate in a once-in-a-lifetime opportunity to grow your skills, 
     build your network, and MAKE A HUGE DIFFERENCE in your community? 
@@ -57,28 +60,28 @@ INSERT INTO jobs (id, posted, job_title, company, job_link, job_description, job
     and provide timely resources to justice-impacted residents. This is a 9-month program.
     We’re looking for Fellows in four regions: Adams County, CO; Fort Collins, CO; Oakland, CA; and Santa Barbara County, CA.
     Black, Indigenous, and Latinx technologists are highly encouraged to apply!', 'Oakland, CA', 
-    'Full-Time', 'Temporarily Remote', '2020-08-30'),
+    'Full-Time', 'Temporarily Remote', '2020-08-30', 1),
     (2, '2020-08-01', 'Software Engineering Apprentice', 'Asana','https://boards.greenhouse.io/asana/jobs/2236571','We are looking for passionate, aspiring Software Engineers from non-traditional backgrounds to be apprentices in our AsanaUP program, a paid opportunity to gain the knowledge, tools, and skills that will allow you to thrive in the technology industry. 
     At the end of the program, based on your progress, we will consider you for a full-time Engineering role.', 'New York City, NY', 'Internship/Apprenticeship',
-    'Temporarily Remote', '2020-09-30'),
+    'Temporarily Remote', '2020-09-30', 2),
     (3, '2020-07-24', 'Software Engineer 1', 'Grubhub', 'https://careers-grubhub.icims.com/jobs/10296/software-engineer-i/job', 'Grubhub is dedicated to connecting hungry diners with our 
     wide network of restaurants across the country. Our innovative technology, easy-to-use platforms and streamlined delivery capabilities make us an industry leader today, and in the future of online food ordering.',
-    'New York City, NY', 'Full-Time', 'Office','2020-10-01'),
+    'New York City, NY', 'Full-Time', 'Office','2020-10-01', 3),
     (4, '2020-07-23', 'Junior Software Engineer', 'Able Health','https://ablehealth.com/jobs/junior-software-engineer/?utm_source=Diversify+Tech&utm_campaign=af22d17d5e-Diversify_Tech_99&utm_medium=email&utm_term=0_00b3f69566-af22d17d5e-1256484133',
     'Able Health is looking for Junior Software Engineers to build clinical care algorithms and delightful features as we rapidly scale our product and organization.',
-    'San Francisco, CA', 'Full-Time','Office','2020-10-15'),
+    'San Francisco, CA', 'Full-Time','Office','2020-10-15', 2),
     (5, '2020-06-25', 'Software Engineer', 'Fullstack Academy', 'https://apply.workable.com/fullstackacademy/j/CCCBFAA9E5/','Fullstack Academy is looking for a Fullstack Software Engineer to build and maintain highly performant and scalable learning management systems for our web development, cybersecurity, and University partner programs. You will work closely with key stakeholders across the company — including marketing, admissions, and academics — 
     to ensure all technical needs are met, and solutions are in place as programs rapidly evolve and grow.', 'New York City, NY',
-    'Full-Time', 'Temporarily Remote', '2020-10-31');
+    'Full-Time', 'Temporarily Remote', '2020-10-31', 1);
 
-INSERT INTO savedjobs (id, users_id, jobs_id)
+INSERT INTO savedjobs (id, user_id, jobs_id)
     VALUES
     (1, '9kpHHly62nOnVvEGHPSOnAP55og1', 1),
     (2, '9kpHHly62nOnVvEGHPSOnAP55og1', 2),
     (3, '9kpHHly62nOnVvEGHPSOnAP55og1', 4),
     (4, '9kpHHly62nOnVvEGHPSOnAP55og1', 5);
 
-INSERT INTO appliedjobs (id, users_id, jobs_id)
+INSERT INTO appliedjobs (id, user_id, jobs_id)
     VALUES
     (1, '9kpHHly62nOnVvEGHPSOnAP55og1', 2),
     (2, '9kpHHly62nOnVvEGHPSOnAP55og1', 5);
