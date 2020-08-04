@@ -8,13 +8,13 @@ import TextField from '@material-ui/core/TextField';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import LuxonUtils from '@date-io/luxon'
 
-import { APIURL } from '../../utilitron/APIURL'
-import { useInput, useSelect, useScript } from '../../utilitron/CustomHookery'
+import { apiURL } from '../../utilitron/apiURL'
+import { useInput, useSelect } from '../../utilitron/CustomHookery'
 import { formValidator } from '../../utilitron/formValidation'
 import { selectCurrentUserId } from '../Authentication/authenticationSlice'
 
 import AddJobsPostSelect from './AddJobsPostSelect'
-import LocationSearchInput from './LocationAutocompleteInput'
+import LocationSearchInput from '../BaseComponents/LocationAutocompleteInput'
 import { jobTypeSelectOptions } from './JobTypeSelectOptions'
 import { remoteStatusSelectOptions } from './RemoteStatusSelectOptions'
 import Input from '../BaseComponents/Input'
@@ -41,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
 
 const PJBAddJobPostForm = ({ toggleModal }) => {
     
-    const apiURL = APIURL()
     const userId = useSelector(selectCurrentUserId)
     
     const classes = useStyles()
@@ -70,7 +69,7 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        let res = await axios.post(`${apiURL}/users/${userId}/jobs`, {
+        let res = await axios.post(`${apiURL()}/users/${userId}/jobs`, {
             job_title: jobTitle.value,
             company: company.value,
             job_link: jobLink.value,
@@ -90,8 +89,7 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
             <TextField id="jobLink" label="Job URL" placeholder="Enter Job Link" onBlur={validateJobLink} variant="outlined"  {...jobLink} required/>
             { jobLinkError ? <Error errorMessage={jobLinkValidation.error} /> : null }
             <TextField id="jobDescription" label="Job Description" placeholder="Job Description" multiline variant="outlined"/>
-            <LocationSearchInput />
-            {/* <Input placeholder={"Enter Job Location"} input={jobLocation} required/> */}
+            <LocationSearchInput id={"jobLocation"} placeholder={"Enter Job Location"} label={"Job Location"}/>
             <AddJobsPostSelect select={jobTypeSelect} label={"Job Type"}>
                 {jobTypeSelectOptions}
             </AddJobsPostSelect>

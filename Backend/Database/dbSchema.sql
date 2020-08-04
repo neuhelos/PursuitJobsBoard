@@ -33,21 +33,26 @@ CREATE TABLE jobs (
 
 CREATE TABLE savedjobs (
     id SERIAL PRIMARY KEY,
-    users_id VARCHAR REFERENCES users(id),
+    user_id VARCHAR REFERENCES users(id),
     jobs_id INT REFERENCES jobs(id) ON DELETE CASCADE
 );
 
 CREATE TABLE appliedjobs (
     id SERIAL PRIMARY KEY,
-    users_id VARCHAR REFERENCES users(id),
+    user_id VARCHAR REFERENCES users(id),
     jobs_id INT REFERENCES jobs(id) ON DELETE CASCADE
 );
 
 INSERT INTO users (id, email, preferred_name, profile_image, linkedin_link, github_link)
-    VALUES 
+    VALUES
+    (1, 'nilberremon@pursuit.org', 'Nilber Remon', 'image', 'https://www.linkedin.com/in/nilberremon/', 'https://github.com/neuhelos')
+    (2, )
+    (3, )
+    (4, )
+    (5, )
     ('9kpHHly62nOnVvEGHPSOnAP55og1', 'guest@nilber.dev', 'Guest', 'https://pursuitjobsboard.herokuapp.com/ImageUploads/Guest_Avatar.jpg', 'www.linkedin.com', 'www.github.com');
 
-INSERT INTO jobs (id, posted, job_title, company, job_link, job_description, job_location, job_type, remote_status, job_closingdate)
+INSERT INTO jobs (id, posted, job_title, company, job_link, job_description, job_location, job_type, remote_status, job_closingdate, user_id)
     VALUES
     (1, '2020-07-31', 'Community Fellowship', 'Code for America','https://boards.greenhouse.io/cfa/jobs/2236820?gh_src=68afcadc1us', 'Calling all technologists! Would you like to participate in a once-in-a-lifetime opportunity to grow your skills, 
     build your network, and MAKE A HUGE DIFFERENCE in your community? 
@@ -71,14 +76,14 @@ INSERT INTO jobs (id, posted, job_title, company, job_link, job_description, job
     to ensure all technical needs are met, and solutions are in place as programs rapidly evolve and grow.', 'New York City, NY',
     'Full-Time', 'Temporarily Remote', '2020-10-31');
 
-INSERT INTO savedjobs (id, users_id, jobs_id)
+INSERT INTO savedjobs (id, user_id, jobs_id)
     VALUES
     (1, '9kpHHly62nOnVvEGHPSOnAP55og1', 1),
     (2, '9kpHHly62nOnVvEGHPSOnAP55og1', 2),
     (3, '9kpHHly62nOnVvEGHPSOnAP55og1', 4),
     (4, '9kpHHly62nOnVvEGHPSOnAP55og1', 5);
 
-INSERT INTO appliedjobs (id, users_id, jobs_id)
+INSERT INTO appliedjobs (id, user_id, jobs_id)
     VALUES
     (1, '9kpHHly62nOnVvEGHPSOnAP55og1', 2),
     (2, '9kpHHly62nOnVvEGHPSOnAP55og1', 5);

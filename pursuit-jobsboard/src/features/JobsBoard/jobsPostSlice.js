@@ -1,15 +1,26 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import { APIURL } from '../../utilitron/APIURL'
+import { apiURL } from '../../utilitron/apiURL'
 
-const apiURL = APIURL()
 
 export const fetchAllJobsPosts = createAsyncThunk(
     'get/fetchAllJobsPosts',
     async () => {
         try {
-            const res = await axios.get(`${apiURL}/jobs`)
+            const res = await axios.get(`${apiURL()}/jobs`)
+            return res.payload
+        } catch (error) {
+            throw Error(error)
+        }
+    }
+)
+
+export const fetchJobsPostsSearch = createAsyncThunk(
+    'post/fetchJobsPostsSearch',
+    async () => {
+        try {
+            const res = await axios.get(`${apiURL()}/search`)
             return res.payload
         } catch (error) {
             throw Error(error)
@@ -23,7 +34,8 @@ export const jobsPostsFeedSlice = createSlice( {
     reducers: {
     },
     extraReducers: {
-        [fetchAllJobsPosts.fulfilled]: (state, action) => action.payload
+        [fetchAllJobsPosts.fulfilled]: (state, action) => action.payload,
+        [fetchJobsPostsSearch.fulfilled]: (state, action) => action.payload
     }
 })
 
