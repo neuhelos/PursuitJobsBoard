@@ -28,14 +28,13 @@ const LocationSearchInput = ( props ) => {
       onChange={handleChange}
       onSelect={handleSelect}
       searchOptions={searchOptions}
-      shouldFetchSuggestions={location.length >= 3}
+      shouldFetchSuggestions={location.length >= 2}
     >
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
 
         return (
           <Autocomplete
             id="locationSearch"
-            freeSolo
             options={suggestions.map(suggestion => suggestion.description)}
             renderInput={(params) => (
             <TextField {...params} placeholder={props.placeholder} label={props.label} margin="normal" variant="outlined" {...getInputProps()} required />

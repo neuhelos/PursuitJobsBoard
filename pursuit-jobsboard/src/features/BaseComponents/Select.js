@@ -21,9 +21,9 @@ const AddJobsPostSelect = ( { children , ...props } ) => {
     const classes = useStyles();
 
     return (
-        <FormControl variant="filled" className={classes.formControl}>
-        <InputLabel id="demo-simple-select-filled-label">{props.label}</InputLabel>
-        <Select labelId="demo-simple-select-filled-label" id="demo-simple-select-filled" {...props.select}>
+        <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel id="select">{props.label}</InputLabel>
+        <Select labelId="select" id="select" label={props.label} {...props.select}>
           <MenuItem value="" disabled>{`Select a ${props.label}`}</MenuItem>
           {children}
         </Select>
