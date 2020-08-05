@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const jobTypesFilterSlice = createSlice({
-  name: 'jobTypeStatusFilter',
+  name: 'jobTypesFilter',
   initialState: 'All',
   reducers: {
-    setJobTypeStatusFilter(state, action) {
+    setJobTypesFilter(state, action) {
       return action.payload
     }
   }
 })
 
-export const { setJobTypeStatusFilter } = jobTypesFilterSlice.actions
+export const { setJobTypesFilter } = jobTypesFilterSlice.actions
 
 export default jobTypesFilterSlice.reducer
