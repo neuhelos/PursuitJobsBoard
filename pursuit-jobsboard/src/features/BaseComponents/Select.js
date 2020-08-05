@@ -16,14 +16,14 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const AddJobsPostSelect = ( { children , ...props } ) => {
+const PJBSelect = ( { children , ...props } ) => {
     
     const classes = useStyles();
 
     return (
         <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel id="select">{props.label}</InputLabel>
-        <Select labelId="select" id="select" label={props.label} {...props.select}>
+        <Select labelId="select" id="select" label={props.label} value={props.value} onChange={props.onChange}>
           <MenuItem value="" disabled>{`Select a ${props.label}`}</MenuItem>
           {children}
         </Select>
@@ -31,4 +31,4 @@ const AddJobsPostSelect = ( { children , ...props } ) => {
     )
 }
 
-export default AddJobsPostSelect;
+export default PJBSelect;
