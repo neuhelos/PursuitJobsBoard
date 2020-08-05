@@ -5,8 +5,7 @@ import Select from '../BaseComponents/Select'
 import { jobTypeSelectOptions } from '../BaseComponents/JobTypeSelectOptions'
 import { remoteStatusSelectOptions } from '../BaseComponents/RemoteStatusSelectOptions'
 
-import { setJobTypesFilter } from './jobTypesFilterSlice'
-import { setRemoteStatusFilter } from './remoteStatusFilterSlice'
+import { setJobTypesFilter, setRemoteStatusFilter  } from './jobsPostsSearchFilterSlice'
 
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
@@ -16,13 +15,13 @@ const JobsSearchFilter = () => {
     
     const dispatch = useDispatch()
 
-    const [jobTypes, setJobTypes] = useState("")
+    const [jobTypes, setJobTypes] = useState('All')
     const jobTypesSelect = (event) => {
         setJobTypes(event.target.value)
         dispatch(setJobTypesFilter(event.target.value))
     }
     
-    const [remoteStatus, setRemoteStatus] = useState("")
+    const [remoteStatus, setRemoteStatus] = useState('All')
     const remoteStatusSelect = (event) => {
         setRemoteStatus(event.target.value)
         dispatch(setRemoteStatusFilter(event.target.value))

@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import { fetchAllJobsPosts, selectJobsPosts } from './jobsPostsFeedSlice'
+import { selectJobTypesFilter, selectRemoteStatusFilter } from './jobsPostsSearchFilterSlice'
 import { selectLoading } from '../Loading/loadingSlice'
 import { selectError } from '../Error/errorSlice'
+
 
 import Error from '../Error/Error'
 import Loading from '../Loading/Loading'
@@ -14,7 +16,9 @@ const StyledButton = styled(Button)``
 
 const JobsPostFeed = () => {
     
-    const jobsPostFeed = useSelector(selectJobsPosts)
+    const jobsPosts = useSelector(selectJobsPosts)
+    const jobTypes = useSelector(selectJobTypesFilter)
+    const remoteStatus = useSelector(selectRemoteStatusFilter)
     const loading = useSelector(selectLoading)
     const error = useSelector(selectError)
 
@@ -23,6 +27,10 @@ const JobsPostFeed = () => {
     useEffect( () => {
         dispatch(fetchAllJobsPosts())
     }, [])
+
+    
+
+
 
     if(loading) {
         return(

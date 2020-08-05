@@ -31,7 +31,7 @@ export const fetchJobsPostsSearch = createAsyncThunk(
 )
 
 export const jobsPostsFeedSlice = createSlice( {
-    name: "jobsPostFeed",
+    name: "jobsPostsFeed",
     initialState: [],
     reducers: {
         jobRecentlyPostedFeedSort: (state, action) => {
