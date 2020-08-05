@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
 
-import { fetchAllJobsPosts, jobClosingDateFeedSort } from './jobsPostSlice'
+import { fetchAllJobsPosts, jobClosingDateFeedSort } from './jobsPostsFeedSlice'
 
 import Grid from '@material-ui/core/Grid'
 import Switch from '@material-ui/core/Switch';

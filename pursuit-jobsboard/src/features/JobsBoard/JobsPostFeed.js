@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
-import { fetchAllJobsPosts, selectJobsPosts } from './jobsPostSlice'
+import { fetchAllJobsPosts, selectJobsPosts } from './jobsPostsFeedSlice'
 import { selectLoading } from '../Loading/loadingSlice'
 import { selectError } from '../Error/errorSlice'
 

@@ -10,6 +10,6 @@ const remoteStatusFilterSlice = createSlice({
     }
 })
 
-export const { setRemoteStatusFilter } = remotesFilterSlice.actions
+export const { setRemoteStatusFilter } = remoteStatusFilterSlice.actions
 
 export default remoteStatusFilterSlice.reducer

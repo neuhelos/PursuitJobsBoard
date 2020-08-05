@@ -34,9 +34,9 @@ export const jobsPostsFeedSlice = createSlice( {
     name: "jobsPostFeed",
     initialState: [],
     reducers: {
-        // jobRecentlyPostedFeedSort: (state, action) => {
-        //     return state.sort((a,b) => (new Date(a.posted) - new Date(b.posted)))  
-        // },
+        jobRecentlyPostedFeedSort: (state, action) => {
+            return state.sort((a,b) => (new Date(a.posted) - new Date(b.posted)))  
+        },
         jobClosingDateFeedSort: (state, action) => {
             return state.sort((a,b) => (new Date(a.job_closingdate) > new Date(b.job_closingdate)) ? 1 : (a.job_closingdate === b.job_closingdate) ? ((a.posted > b.posted) ? 1 : -1) : -1)  
         }
@@ -48,5 +48,5 @@ export const jobsPostsFeedSlice = createSlice( {
 })
 
 export const selectJobsPosts = state => state.jobsPosts
-export const {jobClosingDateFeedSort} = jobsPostFeedSlice.actions
+export const {jobClosingDateFeedSort} = jobsPostsFeedSlice.actions
 export default jobsPostsFeedSlice.reducer 
