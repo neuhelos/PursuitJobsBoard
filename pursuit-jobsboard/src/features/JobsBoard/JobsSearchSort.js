@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
 
-import { fetchAllJobsPosts, jobClosingDateFeedSort } from './jobsPostsFeedSlice'
+import { jobRecentlyPostedFeedSort, jobClosingDateFeedSort } from './jobsPostsFeedSlice'
 
 import Grid from '@material-ui/core/Grid'
 import Switch from '@material-ui/core/Switch';
@@ -67,7 +67,7 @@ const JobsSearchSort = () => {
     
     const handleChange = (event) => {
         setToggle(event.target.checked)
-        event.target.checked ? dispatch(jobClosingDateFeedSort()) : dispatch()
+        event.target.checked ? dispatch(jobClosingDateFeedSort()) : dispatch(jobRecentlyPostedFeedSort())
     }
 
     return (
