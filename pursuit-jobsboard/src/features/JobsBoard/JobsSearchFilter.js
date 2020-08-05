@@ -17,21 +17,25 @@ const JobsSearchFilter = () => {
         
     }
 
-    const jobTypeSelect = {
+    const jobTypeSelect = () => {
         value: '',
         onChange: handleChange
+        return ""
     }
     
+    const remoteSelect = () => {
+        return ""
+    }
     
     return (
         <Grid>
             <Typography>Filter</Typography>
             <Select select={jobTypeSelect} label={"Job Type"}>
-                <MenuItem key='All Job Types' value={'all'}>All Job Types</MenuItem>
+                <MenuItem key='All Job Types' value={'All'}>All Job Types</MenuItem>
                 {jobTypeSelectOptions}
             </Select>
             <Select select={remoteSelect} label={"Remote Status"}>
-                <MenuItem key='All Status Options' value={'all'}>All Status Options</MenuItem>
+                <MenuItem key='All Status Options' value={'All'}>All Status Options</MenuItem>
                 {remoteStatusSelectOptions}
             </Select>
         </Grid>
