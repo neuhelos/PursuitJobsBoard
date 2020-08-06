@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const jobPostsSearchFilterSlice = createSlice({
-  name: 'jobPostsSearchFilter',
+  name: 'jobsPostsSearchFilter',
   initialState: {
     jobTypesFilter: 'All',
     remoteStatusFilter: 'All'
@@ -17,6 +17,6 @@ const jobPostsSearchFilterSlice = createSlice({
 })
 
 export const { setJobTypesFilter, setRemoteStatusFilter } = jobPostsSearchFilterSlice.actions
-export const selectJobTypesFilter = state => state.jobTypesFilter
-export const selectRemoteStatusFilter = state => state.remoteStatusFilter
+export const selectJobTypesFilter = state => state.jobsPostsSearchFilter.jobTypesFilter
+export const selectRemoteStatusFilter = state => state.jobsPostsSearchFilter.remoteStatusFilter
 export default jobPostsSearchFilterSlice.reducer
