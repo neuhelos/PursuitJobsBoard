@@ -22,7 +22,7 @@ const createAppliedJob = async (req, res, next) => {
 const getAppliedJobsByUser = async (req, res, next) => {
     try {
         let getAppliedJobs = await db.any(
-            "SELECT * FROM appliedJobs JOIN jobs ON jobs.id = appliedjobs.jobs_id JOIN users ON users.id = jobs.users_id HAVING users.id = $1", 
+            "SELECT * FROM appliedJobs JOIN jobs ON jobs.id = appliedjobs.jobs_id JOIN users ON users.users_id = jobs.users_id HAVING users.users_id = $1", 
             req.params.id
         )
         res.status(200).json({
@@ -41,7 +41,7 @@ const getAppliedJobsByUser = async (req, res, next) => {
 const getAppliedJob = async (req, res, next) => {
     try {
         let getAppliedJob = await db.one(
-            "SELECT * FROM appliedJobs JOIN jobs ON jobs.id = appliedjobs.jobs_id JOIN users ON users.id = jobs.users_id HAVING users.id = $1 AND jobs.id = $2", 
+            "SELECT * FROM appliedJobs JOIN jobs ON jobs.jobs_id = appliedjobs.jobs_id JOIN users ON users.users_id = jobs.users_id HAVING users.users_id = $1 AND jobs.jobs_id = $2", 
             [req.body.user, req.params.id]
         )
         res.status(200).json({
@@ -59,7 +59,7 @@ const getAppliedJob = async (req, res, next) => {
 
 const deleteAppliedJob = async (req, res) => {
     try {
-        await db.none("DELETE FROM appliedjobs WHERE id = $1", req.params.id);
+        await db.none("DELETE FROM appliedjobs WHERE appliedjobs_id = $1", req.params.id);
         res.status(200).json({
         status: "Success",
         message: "Applied Job Deleted"

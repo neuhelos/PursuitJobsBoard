@@ -40,7 +40,7 @@ const getJobsPostsByUser = async (req, res, next) => {
 const getJobPost = async (req, res, next) => {
     try {
         let job = await db.one(
-        "SELECT * FROM jobs WHERE id = $1",
+        "SELECT * FROM jobs WHERE jobs_id = $1",
         req.params.id
         );
         res.status(200).json({
@@ -60,7 +60,7 @@ const getJobPost = async (req, res, next) => {
 const getAllJobsPosts = async (req, res, next) => {
     try {
         let allJobsPosts = await db.any(
-        "SELECT * FROM jobs JOIN users ON jobs.user_id = users.id"
+        "SELECT * FROM jobs JOIN users ON jobs.user_id = users.users_id"
         );
         res.status(200).json({
         status: "Success",
@@ -77,7 +77,7 @@ const getAllJobsPosts = async (req, res, next) => {
 
 const deleteJobsPost = async (req, res, next) => {
     try {
-        await db.none("DELETE FROM jobs WHERE id = $1", req.params.id);
+        await db.none("DELETE FROM jobs WHERE jobs_id = $1", req.params.id);
         res.status(200).json({
         status: "Success",
         message: "Jobs Post Deleted"
