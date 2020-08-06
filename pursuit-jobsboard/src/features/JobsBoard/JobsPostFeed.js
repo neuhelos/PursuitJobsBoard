@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import { fetchAllJobsPosts, selectJobsPosts } from './jobsPostsFeedSlice'
-import { selectJobTypesFilter, selectRemoteStatusFilter } from './jobsPostsSearchFilterSlice'
+import { selectJobsPostsSearchFilter } from './JobsPostsFeedFilterSelector'
 import { selectLoading } from '../Loading/loadingSlice'
 import { selectError } from '../Error/errorSlice'
 
+import Grid from '@material-ui/core/Grid'
 
 import Error from '../Error/Error'
 import Loading from '../Loading/Loading'
@@ -16,9 +17,10 @@ const StyledButton = styled(Button)``
 
 const JobsPostFeed = () => {
     
+    const filteredJobsPosts = useSelector(selectJobsPostsSearchFilter)
     const jobsPosts = useSelector(selectJobsPosts)
-    const jobTypes = useSelector(selectJobTypesFilter)
-    const remoteStatus = useSelector(selectRemoteStatusFilter)
+    
+
     const loading = useSelector(selectLoading)
     const error = useSelector(selectError)
 
@@ -47,14 +49,14 @@ const JobsPostFeed = () => {
     //     )
     // }
     
-    // let jobsPosts = jobsPostFeed.map( jobsPost => {
-    //     <JobsPost key={} value/>
-    // })
+    let jobsPosts = filteredJobsPosts.map( jobsPost => {
+        <JobsPost key={jobsPost.id} value={jobsPost.id} jobsPost={jobsPost}/>
+    })
     
     return (
-        <div>
-            
-        </div>
+        <Grid>
+            {jobsPosts}
+        </Grid>
     )
 }
 

@@ -1,15 +1,19 @@
 import { createSelector } from '@reduxjs/toolkit'
 
+import { selectJobTypesFilter, selectRemoteStatusFilter } from './jobsPostsSearchFilterSlice'
+import { selectJobsPosts } from './jobsPostsFeedSlice'
+
 
 export const selectJobsPostsSearchFilter = createSelector(
 
-)
+  [selectJobTypesFilter, selectRemoteStatusFilter, selectJobsPosts],
+  (jobTypeFilter, remoteStatusFilter, jobsPosts) => {
+    jobsPosts = jobsPosts.filter( jobPost => {
+      return (
+        (jobPost.job_type === 'All' || jobPost.job_type === jobTypeFilter) &&
+        (jobPost.remote_status === 'All' || jobPost.remote_status === remoteStatusFilter)
+      )
+    })
+  }
 
-["bender", "nation", "person", "show"].forEach(function(filterBy) {
-    var filterValue = state[filterBy];
-    if (filterValue) {
-      filteredItems = filteredItems.filter(function(item) {
-        return item[filterBy] === filterValue;
-      });
-    }
-  });
+)
