@@ -20,6 +20,7 @@ const JobsPostFeed = () => {
     
     const jobsPosts = useSelector(selectJobsPosts)
     const filteredJobsPosts = useSelector(selectJobsPostsSearchFilter)
+
     
 
     const loading = useSelector(selectLoading)
