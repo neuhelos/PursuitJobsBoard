@@ -4,7 +4,7 @@ const getUser = async (req, res) => {
 
   try {
     let user = await db.one(
-      "SELECT * FROM users WHERE id = $1",
+      "SELECT * FROM users WHERE users_id = $1",
       req.params.id
     );
     res.status(200).json({
@@ -23,7 +23,7 @@ const getUser = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     let newUser = await db.one(
-      "INSERT INTO users (id, email, preferred_name, profile_image, linkedin_link, github_link) VALUES(${id}, ${email}, ${preferred_name}, ${profile_image}, ${linkedin_link}, ${github_link}) RETURNING *",
+      "INSERT INTO users (users_id, email, preferred_name, profile_image, linkedin_link, github_link) VALUES(${id}, ${email}, ${preferred_name}, ${profile_image}, ${linkedin_link}, ${github_link}) RETURNING *",
       req.body
     );
     res.status(200).json({
@@ -41,7 +41,7 @@ const createUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   try {
-    await db.none("DELETE FROM users WHERE id = $1", req.params.id);
+    await db.none("DELETE FROM users WHERE users_id = $1", req.params.id);
     res.status(200).json({
       status: "Success",
       message: "User Deleted"

@@ -22,7 +22,7 @@ const createSavedJob = async (req, res, next) => {
 const getSavedJobsByUser = async (req, res, next) => {
     try {
         let getSavedJobs = await db.any(
-            "SELECT savedjobs.id FROM savedJobs JOIN jobs ON jobs.id = savedjobs.jobs_id JOIN users ON users.id = jobs.users_id HAVING users.id = $1", req.params.id
+            "SELECT savedjobs.id FROM savedJobs JOIN jobs ON jobs.jobs_id = savedjobs.jobs_id JOIN users ON users.users_id = jobs.users_id HAVING users.users_id = $1", req.params.id
         )
         res.status(200).json({
             status: "Success",
@@ -40,7 +40,7 @@ const getSavedJobsByUser = async (req, res, next) => {
 const getSavedJob = async (req, res, next) => {
     try {
         let getSavedJob = await db.one(
-            "SELECT * FROM savedjobs JOIN jobs ON jobs.id = savedjobs.jobs_id JOIN users ON users.id = jobs.users_id HAVING users.id = $1 AND jobs.id = $2", 
+            "SELECT * FROM savedjobs JOIN jobs ON jobs.jobs_id = savedjobs.jobs_id JOIN users ON users.users_id = jobs.users_id HAVING users.users_id = $1 AND jobs.jobs_id = $2", 
             [req.body.user, req.params.id]
         )
         res.status(200).json({
@@ -58,7 +58,7 @@ const getSavedJob = async (req, res, next) => {
 
 const deleteSavedJob = async (req, res) => {
     try {
-        await db.none("DELETE FROM savedjobs WHERE id = $1", req.params.id);
+        await db.none("DELETE FROM savedjobs WHERE savedjobs_id = $1", req.params.id);
         res.status(200).json({
         status: "Success",
         message: "Saved Job Deleted"
