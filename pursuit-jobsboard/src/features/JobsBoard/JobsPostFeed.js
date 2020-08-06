@@ -18,9 +18,8 @@ const StyledButton = styled(Button)``
 
 const JobsPostFeed = () => {
     
-    const filteredJobsPosts = useSelector(selectJobsPostsSearchFilter)
     const jobsPosts = useSelector(selectJobsPosts)
-    
+    const filteredJobsPosts = useSelector(selectJobsPostsSearchFilter)
 
     const loading = useSelector(selectLoading)
     const error = useSelector(selectError)
@@ -31,25 +30,27 @@ const JobsPostFeed = () => {
         dispatch(fetchAllJobsPosts())
     }, [])
 
+    useEffect( () => {
+        
+    }, [jobsPosts, filteredJobsPosts])
+
     
-
-
-
     if(loading) {
         return(
             <Loading />
         )
     }
 
-    // if(error){
-    //     return(
-    //         <JobsFeedError>
-    //             <Error errorMessage={error}/>
-    //             <StyledButton onClick={() => dispatch(fetchAllJobsPosts())}>FETCH JOB POSTS</StyledButton>
-    //         </JobsFeedError>
-    //     )
-    // }
-    
+    if(error){
+        return(
+            <div>
+                <Error errorMessage={error}/>
+                <StyledButton onClick={() => dispatch(fetchAllJobsPosts())}>FETCH JOB POSTS</StyledButton>
+            </div>
+        )
+    }
+
+
     let jobsPostsFeed = filteredJobsPosts.map( jobsPost => {
         return <JobsPost key={jobsPost.id} value={jobsPost.id} jobsPost={jobsPost}/>
     })

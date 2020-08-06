@@ -8,11 +8,10 @@ export const selectJobsPostsSearchFilter = createSelector(
 
   [selectJobTypesFilter, selectRemoteStatusFilter, selectJobsPosts],
   (jobTypeFilter, remoteStatusFilter, jobsPosts) => {
-    debugger
-    jobsPosts = jobsPosts.filter( jobPost => {
+    return jobsPosts = jobsPosts.filter( jobPost => {
       return (
-        (jobPost.job_type === 'All' || jobPost.job_type === jobTypeFilter) &&
-        (jobPost.remote_status === 'All' || jobPost.remote_status === remoteStatusFilter)
+        (jobTypeFilter === 'All' || jobPost.job_type === jobTypeFilter) &&
+        (remoteStatusFilter === 'All' || jobPost.remote_status === remoteStatusFilter)
       )
     })
   }

@@ -51,9 +51,7 @@ const JobsPost = ( props ) => {
     <Card className={classes.root}>
         <CardHeader
         avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-            </Avatar>
+            <Avatar aria-label="user" className={classes.avatar}>{props.profile_image}</Avatar>
         }
         action={
             <IconButton aria-label="settings">
