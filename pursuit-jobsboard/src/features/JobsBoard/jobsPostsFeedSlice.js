@@ -47,6 +47,6 @@ export const jobsPostsFeedSlice = createSlice( {
     }
 })
 
-export const selectJobsPosts = state => state.jobsPosts
+export const selectJobsPosts = state => state.jobsPostsFeed
 export const {jobClosingDateFeedSort, jobRecentlyPostedFeedSort} = jobsPostsFeedSlice.actions
 export default jobsPostsFeedSlice.reducer 

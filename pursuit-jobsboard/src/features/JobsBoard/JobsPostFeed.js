@@ -18,8 +18,8 @@ const StyledButton = styled(Button)``
 
 const JobsPostFeed = () => {
     
-    const filteredJobsPosts = useSelector(selectJobsPostsSearchFilter)
     const jobsPosts = useSelector(selectJobsPosts)
+    const filteredJobsPosts = useSelector(selectJobsPostsSearchFilter)
     
 
     const loading = useSelector(selectLoading)
@@ -41,18 +41,21 @@ const JobsPostFeed = () => {
         )
     }
 
-    // if(error){
-    //     return(
-    //         <JobsFeedError>
-    //             <Error errorMessage={error}/>
-    //             <StyledButton onClick={() => dispatch(fetchAllJobsPosts())}>FETCH JOB POSTS</StyledButton>
-    //         </JobsFeedError>
-    //     )
-    // }
-    
-    let jobsPostsFeed = filteredJobsPosts.map( jobsPost => {
-        return <JobsPost key={jobsPost.id} value={jobsPost.id} jobsPost={jobsPost}/>
-    })
+    if(error){
+        return(
+            <div>
+                <Error errorMessage={error}/>
+                <StyledButton onClick={() => dispatch(fetchAllJobsPosts())}>FETCH JOB POSTS</StyledButton>
+            </div>
+        )
+    }
+
+    let jobsPostsFeed
+    if(jobsPosts.length){
+        jobsPostsFeed = filteredJobsPosts.map( jobsPost => {
+            return <JobsPost key={jobsPost.id} value={jobsPost.id} jobsPost={jobsPost}/>
+        })
+    }
     
     return (
         <Grid>
