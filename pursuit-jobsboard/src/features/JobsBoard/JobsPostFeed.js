@@ -21,8 +21,6 @@ const JobsPostFeed = () => {
     const jobsPosts = useSelector(selectJobsPosts)
     const filteredJobsPosts = useSelector(selectJobsPostsSearchFilter)
 
-    
-
     const loading = useSelector(selectLoading)
     const error = useSelector(selectError)
 
@@ -32,10 +30,11 @@ const JobsPostFeed = () => {
         dispatch(fetchAllJobsPosts())
     }, [])
 
+    useEffect( () => {
+        
+    }, [jobsPosts, filteredJobsPosts])
+
     
-
-
-
     if(loading) {
         return(
             <Loading />
@@ -51,12 +50,10 @@ const JobsPostFeed = () => {
         )
     }
 
-    let jobsPostsFeed
-    if(jobsPosts.length){
-        jobsPostsFeed = filteredJobsPosts.map( jobsPost => {
-            return <JobsPost key={jobsPost.id} value={jobsPost.id} jobsPost={jobsPost}/>
-        })
-    }
+
+    let jobsPostsFeed = filteredJobsPosts.map( jobsPost => {
+        return <JobsPost key={jobsPost.id} value={jobsPost.id} jobsPost={jobsPost}/>
+    })
     
     return (
         <Grid>
