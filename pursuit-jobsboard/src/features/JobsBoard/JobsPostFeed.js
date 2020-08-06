@@ -9,6 +9,7 @@ import { selectError } from '../Error/errorSlice'
 
 import Grid from '@material-ui/core/Grid'
 
+import JobsPost from './JobsPost'
 import Error from '../Error/Error'
 import Loading from '../Loading/Loading'
 import { Button } from '../../styling/theme'
@@ -49,13 +50,13 @@ const JobsPostFeed = () => {
     //     )
     // }
     
-    let jobsPosts = filteredJobsPosts.map( jobsPost => {
-        <JobsPost key={jobsPost.id} value={jobsPost.id} jobsPost={jobsPost}/>
+    let jobsPostsFeed = filteredJobsPosts.map( jobsPost => {
+        return <JobsPost key={jobsPost.id} value={jobsPost.id} jobsPost={jobsPost}/>
     })
     
     return (
         <Grid>
-            {jobsPosts}
+            {jobsPostsFeed}
         </Grid>
     )
 }
