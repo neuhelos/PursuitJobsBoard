@@ -17,7 +17,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-    maxWidth: 345,
+    width: '100%',
     },
     media: {
     height: 0,
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const JobsPost = ( props ) => {
+const JobsPost = ( { jobsPost } ) => {
     
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
@@ -47,19 +47,33 @@ const JobsPost = ( props ) => {
     setExpanded(!expanded);
     };
 
+    const pad = (value) => value.toString().length === 1 ? `0${value}` : value
+    const dateFormatter = (date) => {
+        let formattedDate = new Date(date)
+        let year = pad(formattedDate.getFullYear())
+        let month = pad(formattedDate.getMonth() + 1)
+        let day = pad(formattedDate.getDate())
+        return `${year}-${month}-${day}`
+    }
+
+
     return (
     <Card className={classes.root}>
         <CardHeader
         avatar={
-            <Avatar aria-label="user" className={classes.avatar}>{props.profile_image}</Avatar>
+            <Avatar aria-label="user" className={classes.avatar}>{jobsPost.profile_image}</Avatar>
         }
-        action={
-            <IconButton aria-label="settings">
-            <MoreVertIcon />
-            </IconButton>
+        title={ 
+            <Typography>
+                <a href={jobsPost.job_link} target="_blank">{jobsPost.job_title}</a>
+            </Typography>
         }
-        title=""
-        subheader=""
+        subheader={
+            <>
+            <Typography>{`Posted: ${dateFormatter(jobsPost.posted)}`}</Typography>
+            <Typography>{`Job Closing Date: ${dateFormatter(jobsPost.job_closingdate)}`}</Typography>
+            </>
+        }
         />
         <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -67,10 +81,10 @@ const JobsPost = ( props ) => {
         </Typography>
         </CardContent>
         <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="Save Job">
             <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton aria-label="Share Job">
             <ShareIcon />
         </IconButton>
         <IconButton
@@ -86,10 +100,7 @@ const JobsPost = ( props ) => {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-            <Typography paragraph></Typography>
-            <Typography paragraph>
-
-            </Typography>
+            <Typography paragraph>{jobsPost.job_description}</Typography>
         </CardContent>
         </Collapse>
     </Card>

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 
 import { fetchJobsPostsSearch } from './jobsPostsFeedSlice'
+import { setJobTypesFilter, setRemoteStatusFilter  } from './jobsPostsSearchFilterSlice'
 import { useInput } from '../../utilitron/CustomHookery'
 
 import TextField from '@material-ui/core/TextField';
@@ -27,6 +28,7 @@ const JobsSearchForm = () => {
             query: searchQuery.value,
             location: locationSearch.value
         }))
+        
     }
 
     return (
