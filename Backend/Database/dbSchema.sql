@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS savedjobs;
 DROP TABLE IF EXISTS appliedjobs;
 
 CREATE TABLE users  (
-    id VARCHAR PRIMARY KEY NOT NULL,
+    users_id VARCHAR PRIMARY KEY NOT NULL,
     email VARCHAR NOT NULL UNIQUE,
     preferred_name VARCHAR,
     profile_image VARCHAR,
@@ -18,7 +18,7 @@ CREATE TABLE users  (
 );
 
 CREATE TABLE jobs (
-    id SERIAL PRIMARY KEY,
+    jobs_id SERIAL PRIMARY KEY,
     posted TIMESTAMPTZ DEFAULT NOW(),
     job_title VARCHAR,
     company VARCHAR,
@@ -28,29 +28,29 @@ CREATE TABLE jobs (
     job_type VARCHAR,
     remote_status VARCHAR,
     job_closingdate TIMESTAMPTZ,
-    user_id VARCHAR REFERENCES users(id)
+    user_id VARCHAR REFERENCES users(users_id)
 );
 
 CREATE TABLE savedjobs (
-    id SERIAL PRIMARY KEY,
-    user_id VARCHAR REFERENCES users(id),
-    jobs_id INT REFERENCES jobs(id) ON DELETE CASCADE
+    savedjobs_id SERIAL PRIMARY KEY,
+    user_id VARCHAR REFERENCES users(users_id),
+    jobs_id INT REFERENCES jobs(jobs_id) ON DELETE CASCADE
 );
 
 CREATE TABLE appliedjobs (
-    id SERIAL PRIMARY KEY,
-    user_id VARCHAR REFERENCES users(id),
-    jobs_id INT REFERENCES jobs(id) ON DELETE CASCADE
+    appliedjobs_id SERIAL PRIMARY KEY,
+    user_id VARCHAR REFERENCES users(users_id),
+    jobs_id INT REFERENCES jobs(jobs_id) ON DELETE CASCADE
 );
 
-INSERT INTO users (id, email, preferred_name, profile_image, linkedin_link, github_link)
+INSERT INTO users (users_id, email, preferred_name, profile_image, linkedin_link, github_link)
     VALUES
     (1, 'nilberremon@pursuit.org', 'Nilber Remon', 'image', 'https://www.linkedin.com/in/nilberremon/', 'https://github.com/neuhelos'),
     (2, 'uduakabasiabasiurua@pursuit.org', 'Uduakabasi Abasiurua','image', 'https://www.linkedin.com/in/uduakabasi-abasiurua-8ab113121/', 'https://github.com/darsuabasi'),
     (3, 'daniellecherry@pursuit.org', 'Danielle Cherry', 'image', 'https://www.linkedin.com/in/daniellercherry/','https://github.com/cherry-cloud'),
     ('9kpHHly62nOnVvEGHPSOnAP55og1', 'guest@nilber.dev', 'Guest', 'https://pursuitjobsboard.herokuapp.com/ImageUploads/Guest_Avatar.jpg', 'www.linkedin.com', 'www.github.com');
 
-INSERT INTO jobs (id, posted, job_title, company, job_link, job_description, job_location, job_type, remote_status, job_closingdate, user_id)
+INSERT INTO jobs (jobs_id, posted, job_title, company, job_link, job_description, job_location, job_type, remote_status, job_closingdate, user_id)
     VALUES
     (1, '2020-07-31', 'Community Fellowship', 'Code for America','https://boards.greenhouse.io/cfa/jobs/2236820?gh_src=68afcadc1us', 'Calling all technologists! Would you like to participate in a once-in-a-lifetime opportunity to grow your skills, 
     build your network, and MAKE A HUGE DIFFERENCE in your community? 
@@ -74,14 +74,14 @@ INSERT INTO jobs (id, posted, job_title, company, job_link, job_description, job
     to ensure all technical needs are met, and solutions are in place as programs rapidly evolve and grow.', 'New York, NY, USA',
     'Full-Time', 'Temporarily Remote', '2020-10-31', 1);
 
-INSERT INTO savedjobs (id, user_id, jobs_id)
+INSERT INTO savedjobs (savedjobs_id, user_id, jobs_id)
     VALUES
     (1, '9kpHHly62nOnVvEGHPSOnAP55og1', 1),
     (2, '9kpHHly62nOnVvEGHPSOnAP55og1', 2),
     (3, '9kpHHly62nOnVvEGHPSOnAP55og1', 4),
     (4, '9kpHHly62nOnVvEGHPSOnAP55og1', 5);
 
-INSERT INTO appliedjobs (id, user_id, jobs_id)
+INSERT INTO appliedjobs (appliedjobs_id, user_id, jobs_id)
     VALUES
     (1, '9kpHHly62nOnVvEGHPSOnAP55og1', 2),
     (2, '9kpHHly62nOnVvEGHPSOnAP55og1', 5);
