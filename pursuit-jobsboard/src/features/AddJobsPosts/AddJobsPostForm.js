@@ -89,10 +89,10 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
             { jobLinkError ? <Error errorMessage={jobLinkValidation.error} /> : null }
             <TextField id="jobDescription" label="Job Description" placeholder="Job Description" multiline variant="outlined"/>
             <LocationSearchInput id={"jobLocation"} placeholder={"Enter Job Location"} label={"Job Location"}/>
-            <AddJobsPostSelect select={jobTypeSelect} label={"Job Type"}>
+            <AddJobsPostSelect value={jobTypeSelect.value} onChange={jobTypeSelect.onChange} label={"Job Type"}>
                 {jobTypeSelectOptions}
             </AddJobsPostSelect>
-            <AddJobsPostSelect select={remoteSelect} label={"Remote Status"}>
+            <AddJobsPostSelect value={remoteSelect.value} onChange={remoteSelect.onChange} label={"Remote Status"}>
                 {remoteStatusSelectOptions}
             </AddJobsPostSelect>
             <MuiPickersUtilsProvider utils={LuxonUtils}>

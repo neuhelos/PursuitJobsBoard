@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 
-import { fetchJobsPostsSearch } from './jobsPostSlice'
+import { fetchJobsPostsSearch } from './jobsPostsFeedSlice'
 import { useInput } from '../../utilitron/CustomHookery'
 
 import TextField from '@material-ui/core/TextField';

@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import Select from '../BaseComponents/Select'
 import { jobTypeSelectOptions } from '../BaseComponents/JobTypeSelectOptions'
 import { remoteStatusSelectOptions } from '../BaseComponents/RemoteStatusSelectOptions'
+
+import { setJobTypesFilter, setRemoteStatusFilter  } from './jobsPostsSearchFilterSlice'
 
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
@@ -13,25 +15,27 @@ const JobsSearchFilter = () => {
     
     const dispatch = useDispatch()
 
-    const handleChange = (event) => {
-        
+    const [jobTypes, setJobTypes] = useState('All')
+    const jobTypesSelect = (event) => {
+        setJobTypes(event.target.value)
+        dispatch(setJobTypesFilter(event.target.value))
+    }
+    
+    const [remoteStatus, setRemoteStatus] = useState('All')
+    const remoteStatusSelect = (event) => {
+        setRemoteStatus(event.target.value)
+        dispatch(setRemoteStatusFilter(event.target.value))
     }
 
-    const jobTypeSelect = {
-        value: '',
-        onChange: handleChange
-    }
-    
-    
     return (
         <Grid>
             <Typography>Filter</Typography>
-            <Select select={jobTypeSelect} label={"Job Type"}>
-                <MenuItem key='All Job Types' value={'all'}>All Job Types</MenuItem>
+            <Select label={"Job Type"} value={jobTypes} onChange={jobTypesSelect}>
+                <MenuItem key='All Job Types' value='All'>All Job Types</MenuItem>
                 {jobTypeSelectOptions}
             </Select>
-            <Select select={remoteSelect} label={"Remote Status"}>
-                <MenuItem key='All Status Options' value={'all'}>All Status Options</MenuItem>
+            <Select label={"Remote Status"} value={remoteStatus} onChange={remoteStatusSelect}>
+                <MenuItem key='All Status Options' value='All'>All Status Options</MenuItem>
                 {remoteStatusSelectOptions}
             </Select>
         </Grid>

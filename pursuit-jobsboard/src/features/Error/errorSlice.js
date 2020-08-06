@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { fetchAllJobsPosts } from '../JobsBoard/jobsPostSlice'
+import { fetchAllJobsPosts } from '../JobsBoard/jobsPostsFeedSlice'
 
 export const errorSlice = createSlice( {
     name: 'error',

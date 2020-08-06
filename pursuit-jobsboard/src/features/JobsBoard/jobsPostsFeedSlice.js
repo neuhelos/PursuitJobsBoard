@@ -31,9 +31,15 @@ export const fetchJobsPostsSearch = createAsyncThunk(
 )
 
 export const jobsPostsFeedSlice = createSlice( {
-    name: "jobsPostFeed",
+    name: "jobsPostsFeed",
     initialState: [],
     reducers: {
+        jobRecentlyPostedFeedSort: (state, action) => {
+            return state.sort((a,b) => (new Date(a.posted) - new Date(b.posted)))  
+        },
+        jobClosingDateFeedSort: (state, action) => {
+            return state.sort((a,b) => (new Date(a.job_closingdate) > new Date(b.job_closingdate)) ? 1 : (a.job_closingdate === b.job_closingdate) ? ((a.posted > b.posted) ? 1 : -1) : -1)  
+        }
     },
     extraReducers: {
         [fetchAllJobsPosts.fulfilled]: (state, action) => action.payload,
@@ -42,4 +48,5 @@ export const jobsPostsFeedSlice = createSlice( {
 })
 
 export const selectJobsPosts = state => state.jobsPosts
+export const {jobClosingDateFeedSort, jobRecentlyPostedFeedSort} = jobsPostsFeedSlice.actions
 export default jobsPostsFeedSlice.reducer 

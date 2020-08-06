@@ -2,9 +2,12 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
-import { fetchAllJobsPosts, selectJobsPosts } from './jobsPostSlice'
+import { fetchAllJobsPosts, selectJobsPosts } from './jobsPostsFeedSlice'
+import { selectJobsPostsSearchFilter } from './JobsPostsFeedFilterSelector'
 import { selectLoading } from '../Loading/loadingSlice'
 import { selectError } from '../Error/errorSlice'
+
+import Grid from '@material-ui/core/Grid'
 
 import Error from '../Error/Error'
 import Loading from '../Loading/Loading'
@@ -14,7 +17,10 @@ const StyledButton = styled(Button)``
 
 const JobsPostFeed = () => {
     
-    const jobsPostFeed = useSelector(selectJobsPosts)
+    const filteredJobsPosts = useSelector(selectJobsPostsSearchFilter)
+    const jobsPosts = useSelector(selectJobsPosts)
+    
+
     const loading = useSelector(selectLoading)
     const error = useSelector(selectError)
 
@@ -23,6 +29,10 @@ const JobsPostFeed = () => {
     useEffect( () => {
         dispatch(fetchAllJobsPosts())
     }, [])
+
+    
+
+
 
     if(loading) {
         return(
@@ -39,14 +49,14 @@ const JobsPostFeed = () => {
     //     )
     // }
     
-    // let jobsPosts = jobsPostFeed.map( jobsPost => {
-    //     <JobsPost key={} value/>
-    // })
+    let jobsPosts = filteredJobsPosts.map( jobsPost => {
+        <JobsPost key={jobsPost.id} value={jobsPost.id} jobsPost={jobsPost}/>
+    })
     
     return (
-        <div>
-            
-        </div>
+        <Grid>
+            {jobsPosts}
+        </Grid>
     )
 }
 
