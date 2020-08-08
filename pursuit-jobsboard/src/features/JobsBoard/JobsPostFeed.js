@@ -52,7 +52,7 @@ const JobsPostFeed = () => {
 
 
     let jobsPostsFeed = filteredJobsPosts.map( jobsPost => {
-        return <JobsPost key={jobsPost.id} value={jobsPost.id} jobsPost={jobsPost}/>
+        return <JobsPost key={jobsPost.jobs_id} value={jobsPost.jobs_id} jobsPost={jobsPost}/>
     })
     
     return (

@@ -25,7 +25,6 @@ const StyledButton = styled(Button)``
 const PJBSignUpForm = ({toggleModal}) => {
     
     const history = useHistory()
-    const apiURL = apiURL()
     
     const email = useInput("", "email")
     const password = useInput("", "password")
@@ -90,10 +89,10 @@ const PJBSignUpForm = ({toggleModal}) => {
                 headers: {"content-type": "multipart/form-data"}
             };
             try {
-                let upload = await axios.post(`${apiURL}/upload`, formData, config);
+                let upload = await axios.post(`${apiURL()}/upload`, formData, config);
                 let imageUrl = upload.data.imageUrl;
                 let res = await signUp(email.value, password.value)
-                let createUser = await axios.post(`${apiURL}/users`, {
+                let createUser = await axios.post(`${apiURL()}/users`, {
                     id: res.user.uid,
                     "email": email.value,
                     "preferred_name": name.value,

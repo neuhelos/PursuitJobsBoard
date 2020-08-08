@@ -60,7 +60,7 @@ const getJobPost = async (req, res, next) => {
 const getAllJobsPosts = async (req, res, next) => {
     try {
         let allJobsPosts = await db.any(
-        "SELECT * FROM jobs JOIN users ON jobs.user_id = users.users_id"
+        "SELECT * FROM jobs JOIN users ON jobs.user_id = users.users_id ORDER BY jobs.posted"
         );
         res.status(200).json({
         status: "Success",

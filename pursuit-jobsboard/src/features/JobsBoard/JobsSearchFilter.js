@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
+import { setJobTypesFilter, setRemoteStatusFilter } from './jobsPostsSearchFilterSlice'
 import Select from '../BaseComponents/Select'
 import { jobTypeSelectOptions } from '../BaseComponents/JobTypeSelectOptions'
 import { remoteStatusSelectOptions } from '../BaseComponents/RemoteStatusSelectOptions'
-
-import { setJobTypesFilter, setRemoteStatusFilter  } from './jobsPostsSearchFilterSlice'
+import { selectJobTypesFilter, selectRemoteStatusFilter } from './jobsPostsSearchFilterSlice'
 
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
@@ -15,15 +15,14 @@ const JobsSearchFilter = () => {
     
     const dispatch = useDispatch()
 
-    const [jobTypes, setJobTypes] = useState('All')
+    const jobTypes = useSelector(selectJobTypesFilter)
+    const remoteStatus = useSelector(selectRemoteStatusFilter)
+
     const jobTypesSelect = (event) => {
-        setJobTypes(event.target.value)
         dispatch(setJobTypesFilter(event.target.value))
     }
     
-    const [remoteStatus, setRemoteStatus] = useState('All')
     const remoteStatusSelect = (event) => {
-        setRemoteStatus(event.target.value)
         dispatch(setRemoteStatusFilter(event.target.value))
     }
 

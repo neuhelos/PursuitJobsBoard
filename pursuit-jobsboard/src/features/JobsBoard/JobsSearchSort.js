@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
 
-import { jobRecentlyPostedFeedSort, jobClosingDateFeedSort } from './jobsPostsFeedSlice'
-
 import Grid from '@material-ui/core/Grid'
 import Switch from '@material-ui/core/Switch';
 import { makeStyles } from '@material-ui/core/styles'
@@ -57,19 +55,11 @@ const useStyles = makeStyles( theme => {
 })
 
 
-const JobsSearchSort = () => {
+const JobsSearchSort = ( {handleChange, toggle} ) => {
     
-    const dispatch = useDispatch()
 
-    const [toggle, setToggle] = useState(false);
-    
     const classes = useStyles();
     
-    const handleChange = (event) => {
-        setToggle(event.target.checked)
-        event.target.checked ? dispatch(jobClosingDateFeedSort()) : dispatch(jobRecentlyPostedFeedSort())
-    }
-
     return (
         <div>
             <Grid component="label" container alignItems="center" spacing={1}>
