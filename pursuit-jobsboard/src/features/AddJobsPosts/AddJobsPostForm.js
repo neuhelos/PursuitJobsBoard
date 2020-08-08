@@ -48,7 +48,14 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
     const company = useInput("", 'alphanumeric')
     const jobDescription = useInput("", "alphanumeric")
     const jobLink = useInput("", "url")
-    const jobLocation = useInput("", "alphanumeric")  
+
+    const [location, setLocation] = useState("")
+    const locationHandleChange = location => {
+        setLocation(location);
+    };
+    const locationHandleSelect = location => {
+        setLocation(location)
+    };
 
     const jobTypeSelect = useSelect("")
     const remoteSelect = useSelect("")
@@ -73,7 +80,7 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
             company: company.value,
             job_link: jobLink.value,
             job_description: jobDescription.value,
-            job_location: jobLocation.value,
+            job_location: location,
             job_type: jobTypeSelect.value,
             remote_status: remoteSelect.value,
             job_closingdate: date,
@@ -88,8 +95,8 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
             <TextField id="jobLink" label="Job URL" placeholder="Enter Job Link" onBlur={validateJobLink} variant="outlined"  {...jobLink} required/>
             { jobLinkError ? <Error errorMessage={jobLinkValidation.error} /> : null }
             <TextField id="jobDescription" label="Job Description" placeholder="Job Description" multiline variant="outlined"/>
-            <LocationSearchInput id={"jobLocation"} placeholder={"Enter Job Location"} label={"Job Location"}/>
-            <AddJobsPostSelect value={jobTypeSelect.value} onChange={jobTypeSelect.onChange} label={"Job Type"}>
+            <LocationSearchInput id={"jobLocation"} placeholder={"Enter Job Location"} label={"Job Location"} input={{location, locationHandleChange, locationHandleSelect}} />
+            <AddJobsPostSelect value={jobTypeSelect.value} onChange={jobTypeSelect.onChange} label={"Job Type"} >
                 {jobTypeSelectOptions}
             </AddJobsPostSelect>
             <AddJobsPostSelect value={remoteSelect.value} onChange={remoteSelect.onChange} label={"Remote Status"}>

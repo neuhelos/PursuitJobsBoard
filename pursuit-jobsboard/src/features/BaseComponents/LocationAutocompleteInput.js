@@ -3,19 +3,18 @@ import PlacesAutocomplete from 'react-places-autocomplete';
 
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography'
 
 
 const LocationSearchInput = ( props ) => {
 
-  const [location, setLocation] = useState("")
+  const { input, placeholder, label } = props
+ 
 
-  const handleChange = location => {
-    setLocation(location);
-  };
-
-  const handleSelect = location => {
-    setLocation(location)
-  };
+  const locationHandleSelectClick = (event) => {
+    debugger
+    input.locationHandleSelect(event.target.getAttribute("value"))
+  }
 
   const searchOptions = {
     types: ['(regions)']
@@ -24,21 +23,26 @@ const LocationSearchInput = ( props ) => {
   return (
 
     <PlacesAutocomplete
-      value={location}
-      onChange={handleChange}
-      onSelect={handleSelect}
+      value={input.locationInput}
+      onChange={input.locationHandleChange}
+      onSelect={input.locationHandleSelect}
       searchOptions={searchOptions}
-      shouldFetchSuggestions={location.length >= 2}
+      shouldFetchSuggestions={input.locationInput.length >= 2}
     >
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
-
+        
         return (
           <Autocomplete
             id="locationSearch"
+            autoComplete={true}
+            value={input.LocationInput}
             options={suggestions.map(suggestion => suggestion.description)}
-            renderInput={(params) => (
-            <TextField {...params} placeholder={props.placeholder} label={props.label} margin="normal" variant="outlined" {...getInputProps()} required />
+            renderInput={ ( params ) => (
+            <TextField {...params} {...getInputProps()} placeholder={placeholder} label={label} margin="normal" variant="outlined" />
             )}
+            renderOption={(option) => {
+            return <Typography onClick={locationHandleSelectClick} key={option} noWrap>{option}</Typography>
+            }}
             loading={loading}
           />
       )}}
