@@ -13,7 +13,7 @@ const LocationSearchInput = ( props ) => {
 
   const locationHandleSelectClick = (event) => {
     debugger
-    input.locationHandleSelect(event.target.getAttribute("value"))
+    input.locationHandleSelect(event.target.getAttribute('value'))
   }
 
   const searchOptions = {
@@ -41,7 +41,7 @@ const LocationSearchInput = ( props ) => {
             <TextField {...params} {...getInputProps()} placeholder={placeholder} label={label} margin="normal" variant="outlined" />
             )}
             renderOption={(option) => {
-            return <Typography onClick={locationHandleSelectClick} key={option} noWrap>{option}</Typography>
+            return <Typography onClick={locationHandleSelectClick} value={option} noWrap>{option}</Typography>
             }}
             loading={loading}
           />
