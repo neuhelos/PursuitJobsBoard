@@ -59,7 +59,7 @@ const JobsSearchForm = () => {
     return (
         <>
         <StyledSearchForm onSubmit={handleSubmit}>
-            <TextField id="jobDescription" label="Jobs Search" placeholder="Search by Title or Keywords" variant="outlined" {...searchQuery}/>
+            <TextField id="jobDescription" label="Jobs Search" placeholder="Search by Title or Keywords" variant="outlined" {...searchQuery} required/>
             <LocationSearchInput id={"jobLocation"} placeholder={"Search by Location"} label={"Jobs Location Search"} input={{locationInput, locationHandleChange, locationHandleSelect }} />
             <StyledButton type='submit'>SEARCH JOBS</StyledButton>
         </StyledSearchForm>
