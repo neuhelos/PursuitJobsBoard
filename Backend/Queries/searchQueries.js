@@ -3,10 +3,10 @@ const db = require("../Database/database");
 const searchJobs = async (req, res, next) => {
     
     try {
-        let searchQuery = await db.any(
-            "SELECT * FROM jobs JOIN users ON jobs.user_id = users.users_id WHERE (job_description LIKE $1 OR job_title LIKE $1) OR job_location LIKE $2", 
-            [`%${req.body.query}%`, `%${req.body.location}%`]       
-            //SELECT to_tsvector('job_description field')  @@ to_tsquery('query');
+        let searchQuery =    await db.any(
+        "SELECT * FROM jobs JOIN users ON jobs.user_id = users.users_id WHERE (job_description LIKE $1 OR job_title LIKE $1) OR job_location LIKE $2", 
+        [`%${req.body.query}%`, `%${req.body.location}%`]       
+        //SELECT to_tsvector('job_description field')  @@ to_tsquery('query');
         )
         res.status(200).json({
             status: "Success",
