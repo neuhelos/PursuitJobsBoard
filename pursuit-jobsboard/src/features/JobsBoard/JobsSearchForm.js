@@ -7,7 +7,7 @@ import { setJobTypesFilter, setRemoteStatusFilter } from './jobsPostsSearchFilte
 import { jobRecentlyPostedFeedSort, jobClosingDateFeedSort } from './jobsPostsFeedSlice'
 import { useInput } from '../../utilitron/CustomHookery'
 
-import JobsSearchSort from '../JobsBoard/JobsSearchSort'
+import JobsSearchSort from './JobsSearchSort'
 import TextField from '@material-ui/core/TextField';
 import LocationSearchInput from '../BaseComponents/LocationAutocompleteInput'
 import { Button } from '../../styling/theme'
