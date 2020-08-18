@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux'
+
+import { selectJobsPostsSearchFilter } from './JobsPostsFeedFilterSelector'
+
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -40,12 +44,18 @@ const useStyles = makeStyles((theme) => ({
 
 const JobsPost = ( { jobsPost } ) => {
     
+    const filteredJobsPosts = useSelector(selectJobsPostsSearchFilter)
+
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
+    const [expanded, setExpanded] = useState(false);
 
     const handleExpandClick = () => {
     setExpanded(!expanded);
     };
+
+    useEffect( () => {
+        setExpanded(false)
+    }, [filteredJobsPosts])
 
     const pad = (value) => value.toString().length === 1 ? `0${value}` : value
     const dateFormatter = (date) => {

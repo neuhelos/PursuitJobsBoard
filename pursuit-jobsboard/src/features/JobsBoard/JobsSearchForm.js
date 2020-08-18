@@ -54,7 +54,6 @@ const JobsSearchForm = () => {
         setSortToggle(false)
         searchQuery.clearinput()
         setLocationInput(event.target[2].value)
-        debugger
     }
 
     return (
