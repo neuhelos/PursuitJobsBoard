@@ -3,8 +3,8 @@ const jobs = require("express").Router()
 const {getJobPost, getAllJobsPosts, deleteJobsPost} = require("../../Queries/jobsQueries")
 
 //Nested Jobs Routes
-const appliedJobsRouter = require("./NestedJobsRoutes/appliedJobs")
-const savedJobsRouter = require("./NestedJobsRoutes/savedJobs")
+const appliedJobsRouter = require("./NestedJobsRoutes/appliedJobsNested")
+const savedJobsRouter = require("./NestedJobsRoutes/savedJobsNested")
 const jobsSearchRouter = require('./NestedJobsRoutes/jobsSearch')
 
 //const jobsCommentsRouter = require("./NestedJobsRoutes/jobsComments")
