@@ -44,7 +44,6 @@ const PJBApp = () => {
 
   const { REACT_APP_GOOGLEMAPS_APIKEY } = process.env
   const [googleMapsAPIScriptLoaded, googleMapsAPIScriptError] = useScript(`https://maps.googleapis.com/maps/api/js?key=${REACT_APP_GOOGLEMAPS_APIKEY}&libraries=places`)
-
   
   return (
     

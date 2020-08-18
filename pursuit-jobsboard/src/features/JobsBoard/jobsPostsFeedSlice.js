@@ -20,9 +20,9 @@ export const fetchJobsPostsSearch = createAsyncThunk(
     'post/fetchJobsPostsSearch',
     async (search) => {
         try {
-            const res = await axios.post(`${apiURL()}/jobs/search`,{
+            const res = await axios.post(`${apiURL()}/jobs/search`,
                 search
-            })
+            )
             return res.data.payload
         } catch (error) {
             throw Error(error)
