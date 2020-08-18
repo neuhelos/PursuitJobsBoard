@@ -49,12 +49,13 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
     const jobDescription = useInput("", "alphanumeric")
     const jobLink = useInput("", "url")
 
-    const [location, setLocation] = useState("")
-    const locationHandleChange = location => {
-        setLocation(location);
-    };
-    const locationHandleSelect = location => {
-        setLocation(location)
+    const [locationInput, setLocationInput] = useState("")
+
+    const locationHandleChange  = (location) => {
+        setLocationInput(location)
+    } 
+    const locationHandleSelect = ( location ) => {
+        setLocationInput(location)
     };
 
     const jobTypeSelect = useSelect("")
@@ -80,7 +81,7 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
             company: company.value,
             job_link: jobLink.value,
             job_description: jobDescription.value,
-            job_location: location,
+            job_location: locationInput,
             job_type: jobTypeSelect.value,
             remote_status: remoteSelect.value,
             job_closingdate: date,
@@ -95,7 +96,7 @@ const PJBAddJobPostForm = ({ toggleModal }) => {
             <TextField id="jobLink" label="Job URL" placeholder="Enter Job Link" onBlur={validateJobLink} variant="outlined"  {...jobLink} required/>
             { jobLinkError ? <Error errorMessage={jobLinkValidation.error} /> : null }
             <TextField id="jobDescription" label="Job Description" placeholder="Job Description" multiline variant="outlined"/>
-            <LocationSearchInput id={"jobLocation"} placeholder={"Enter Job Location"} label={"Job Location"} input={{location, locationHandleChange, locationHandleSelect}} />
+            <LocationSearchInput id={"jobLocation"} placeholder={"Search by Location"} label={"Jobs Location Search"} input={{locationInput, locationHandleChange, locationHandleSelect }}/>
             <AddJobsPostSelect value={jobTypeSelect.value} onChange={jobTypeSelect.onChange} label={"Job Type"} >
                 {jobTypeSelectOptions}
             </AddJobsPostSelect>
