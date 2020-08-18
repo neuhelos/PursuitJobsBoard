@@ -6,6 +6,7 @@ const {getJobPost, getAllJobsPosts, deleteJobsPost} = require("../../Queries/job
 const appliedJobsRouter = require("./NestedJobsRoutes/appliedJobs")
 const savedJobsRouter = require("./NestedJobsRoutes/savedJobs")
 const jobsSearchRouter = require('./NestedJobsRoutes/jobsSearch')
+
 //const jobsCommentsRouter = require("./NestedJobsRoutes/jobsComments")
 
 jobs.use('/', appliedJobsRouter)
