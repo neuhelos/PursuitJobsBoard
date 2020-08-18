@@ -7,7 +7,7 @@ import { setJobTypesFilter, setRemoteStatusFilter } from './jobsPostsSearchFilte
 import { jobRecentlyPostedFeedSort, jobClosingDateFeedSort } from './jobsPostsFeedSlice'
 import { useInput } from '../../utilitron/CustomHookery'
 
-import JobsSearchSort from '../JobsBoard/JobsSearchSort'
+import JobsSearchSort from './JobsSearchSort'
 import TextField from '@material-ui/core/TextField';
 import LocationSearchInput from '../BaseComponents/LocationAutocompleteInput'
 import { Button } from '../../styling/theme'
@@ -29,7 +29,7 @@ const JobsSearchForm = () => {
     const [locationInput, setLocationInput] = useState("")
 
     const locationHandleChange  = (location) => {
-        setLocationInput(location) 
+        setLocationInput(location)
     } 
     
     const locationHandleSelect = ( location ) => {
@@ -37,9 +37,9 @@ const JobsSearchForm = () => {
     };
 
 
-    const [toggle, setToggle] = useState(false);    
+    const [sortToggle, setSortToggle] = useState(false);    
     const sortHandleChange = (event) => {
-        setToggle(event.target.checked)
+        setSortToggle(event.target.checked)
         event.target.checked ? dispatch(jobClosingDateFeedSort()) : dispatch(jobRecentlyPostedFeedSort())
     }
 
@@ -51,19 +51,20 @@ const JobsSearchForm = () => {
         }))
         dispatch(setJobTypesFilter('All'))
         dispatch(setRemoteStatusFilter('All'))
-        setToggle(false)
+        setSortToggle(false)
         searchQuery.clearinput()
-        setLocationInput("")
+        setLocationInput(event.target[2].value)
+        debugger
     }
 
     return (
         <>
         <StyledSearchForm onSubmit={handleSubmit}>
-            <TextField id="jobDescription" label="Jobs Search" placeholder="Search by Title or Keywords" variant="outlined" {...searchQuery}/>
+            <TextField id="jobDescription" label="Jobs Search" placeholder="Search by Title or Keywords" variant="outlined" {...searchQuery} required/>
             <LocationSearchInput id={"jobLocation"} placeholder={"Search by Location"} label={"Jobs Location Search"} input={{locationInput, locationHandleChange, locationHandleSelect }} />
             <StyledButton type='submit'>SEARCH JOBS</StyledButton>
         </StyledSearchForm>
-        <JobsSearchSort handleChange={sortHandleChange} toggle={toggle}/>
+        <JobsSearchSort handleChange={sortHandleChange} toggle={sortToggle}/>
         </>
     )
 }
