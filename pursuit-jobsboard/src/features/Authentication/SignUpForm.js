@@ -4,7 +4,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 
 import { useInput } from '../../utilitron/CustomHookery'
-import { apiURL } from '../../utilitron/apiURL'
+import { apiURL } from '../../utilitron/apiURLDev'
 import { signUp } from '../../utilitron/firebaseFunctions'
 import { formValidator } from '../../utilitron/formValidation'
 

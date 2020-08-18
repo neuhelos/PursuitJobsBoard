@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import { apiURL } from '../../utilitron/apiURL'
+import { apiURL } from '../../utilitron/apiURLDev'
 
 
 export const fetchAllJobsPosts = createAsyncThunk(

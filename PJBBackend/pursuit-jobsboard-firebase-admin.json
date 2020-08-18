@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pursuit-jobsboard",
+  "private_key_id": "0f27db64d8b10a910237043d856a0a42de95e648",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDGZTUqJfeBU6Eo\n0ppRe3uyGa51CiscgzUEOWdQNGkgHVVvGwM+5pGgN7HSUASZFO8Rel+bvGQ9ACFm\nuHTCVJKD78wn1stRW6WJ3mKEiXKq7KHltl7dz6JGv/el6yLGLu3HxN+x+gVb4F2x\nCC7K/CP21ShTdqAKMBAWX63WqqgdhKiVQL0KmdxmtTmFQ4OZ6WklT1FlG4arHNVx\nQvyppewgx9PmGjOuQxK+Q0mNtQNIrG2tv0gjM1NLoJnP7BGK0YwnDO6Qhs7Uj9St\ndaPljZ4rj/Zrq3nx9Gboc6ZWHo+VPZqQUZUFNRYCRts/3Fwt02VecN7ojL6qLKzt\n8YMHYvIxAgMBAAECggEACBJ1G85oqBvpejo7aiZOjZwK45syztmtzgqx3+sJ/fMD\nl14vfx8tfKnXc9mqnjniUkE646DCKVM4iK/nnEKJpZGbqmFMa3aBoT7pnj/jaP3w\nxmJpsLeygBNudZNAGnUtWovxmBG2pxrVZQ8SrFKe+fuJRQAWGeQDu41QCuRtq6m4\nROzTO3WfriIW4LGBQC6Zgr3ETmsl0v8Bkp8lEkIxpileZc6JMPN1E+RFZeBdqg2J\no3jWjft8dJzE4oak/LRWm/sVF/EDP2odnrFRb/eL7xMA3OqQIBPdVURXvyO9puqb\nPNhrNFewfh8dIOXdideiekfs2GLhe3XdawEHpHRMgwKBgQDkuvS22C6DdVBI2dtq\nM/WQwhuhOYdBfRc+cymu53kkIFhhT/FVAhkpwsSljm5urxVCPWgb50D3WwVzn5G/\nbikcyVaMFRKVtTThtCnVAxFreN7BaQ/aIZyx/uZNpcKAfu5Vk50GcYCGpE0fexFP\n3QrcCSz+FqB0vB+3b8Ymop6bUwKBgQDeDGctxaiJsHfmdz0YCUXpcZ/JTlZ3kbE9\n70sELd5B2OEQpMJJn9xVoLACBVjFCvRG8ZEcH1VAVCSItfE9rVsScxp2vLpWXQEV\njetbjdt+VtIMEkOVMRHSqVrxJeuPVghm+laP8ahJfizhczBK5DtgfZjU1l2Wp2el\n9ublAv2P6wKBgDuf8MLpP9bM8gzLncLloJIHx6QTlwqfTTveUXNiq9WbCO71I/gB\nAAY+23w80NTRlz0ZPNZpRio09ArcAeZhFR6H7aO+qoWUIyDjEjSRBC176LWKabN3\nJ53O0MJU/4r3i7GLNVfEprhyhBg8wJqNCJOrYKsrwtAraikrXgAcTDQ5AoGAJFIj\nDnmmd99FvY0DkUrzBJxxZpxJyIUsWNUrkCNwl5TCO9a3cROVFuyR3cLCInkIPBKH\nifIWH8+jqjkYnN4eZ4Ysbf+w+y97Xes49GDf5mqNMSxLobvFDpBlL8zkGy4XccDB\nKAp/XIYnETmmTJnInJ/uv+HQrTP04FDis9MpZsECgYEAq/dItjSmAKs+FD94zN3Y\nzyzF87tdkJimlCP2HgguJzMXQ1L9YRmGWPjWeXsEsRn9jpCklV4MKNjUsrtbZ5my\nRn4C/AJco+4NIxCbudm68Jm/g60u4jhIDMJwzlfPtTuoZMweQi5qIc4XqxLNBMNM\nXq1G/v9xvSFjdK8ZoICprlU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-i64l2@pursuit-jobsboard.iam.gserviceaccount.com",
+  "client_id": "103882539432165818670",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-i64l2%40pursuit-jobsboard.iam.gserviceaccount.com"
+}
