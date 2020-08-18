@@ -55,7 +55,7 @@ const useStyles = makeStyles( theme => {
 })
 
 
-const JobsSearchSort = ( {handleChange, toggle} ) => {
+const JobsSearchSort = ( {handleChange, sortToggle} ) => {
     
 
     const classes = useStyles();
@@ -67,7 +67,7 @@ const JobsSearchSort = ( {handleChange, toggle} ) => {
                 <Grid item>
                     <Switch
                         classes={classes}
-                        checked={toggle}
+                        checked={sortToggle}
                         onChange={handleChange}
                     />
                 </Grid>
