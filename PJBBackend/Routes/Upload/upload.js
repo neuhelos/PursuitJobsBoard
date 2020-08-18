@@ -1,7 +1,7 @@
 const upload = require("../../multer")
 const uploadRoute = require("express").Router()
 
-const apiURL = require('../../Utilitique/APIURL')
+const apiURL = require('../../Utilitique/apiURLDev')
 
 uploadRoute.post("/", upload.single("image"), (req, res, next) => {
     try {
