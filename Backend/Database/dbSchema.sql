@@ -1,12 +1,12 @@
-DROP DATABASE IF EXISTS pursuitjobsboard;
-CREATE DATABASE pursuitjobsboard;
+-- DROP DATABASE IF EXISTS pursuitjobsboard;
+-- CREATE DATABASE pursuitjobsboard;
 
-\c pursuitjobsboard;
+-- \c pursuitjobsboard;
 
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS jobs;
-DROP TABLE IF EXISTS savedjobs;
-DROP TABLE IF EXISTS appliedjobs;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS jobs CASCADE;
+DROP TABLE IF EXISTS savedjobs CASCADE;
+DROP TABLE IF EXISTS appliedjobs CASCADE;
 
 CREATE TABLE users  (
     users_id VARCHAR PRIMARY KEY NOT NULL,
