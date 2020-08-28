@@ -35,14 +35,15 @@ const StyledButton = styled(Button)`
     },
     container: {
         margin: theme.spacing(2),
+        height: '100%'
     },
     title: {
         flexGrow: 1,
         lineHeight: '3rem'
     },
     image: {
-        width: '60%',
-        height: '60%'
+        width: '50%',
+        height: '50%'
     }
 }));
 
@@ -63,25 +64,25 @@ const PublicNavBar = ( ) => {
     }
 
     return (
-        <div className={classes.root}>
-            <AppBar position="static">
-            <Toolbar>
-                <Grid className={classes.logoContainer} container item display='flex' justify='center' alignItems='flex-end' xs={7}>
-                    <img className={classes.image} src={PursuitTitleLogo} alt='Pursuit'/>
-                    <Typography variant="h3" className={classes.title}>JOBS BOARD</Typography>
-                </Grid>
-                <Grid className={classes.container} container item display='flex' justify='flex-end' alignItems='flex-end' xs={5}>
-                    <StyledButton onClick={toggleModal}>CREATE AN ACCOUNT</StyledButton>
-                    <StyledButton onClick={handleGuestLogin}>GUEST LOGIN</StyledButton>
-                </Grid>
-            </Toolbar>
-            </AppBar>
-
+        <AppBar position="static" className={classes.root}>
+        <Toolbar className={classes.title}>
+            <Grid className={classes.logoContainer} container item display='flex' justify='center' alignItems='flex-end' xs={7}>
+                    <Typography variant="h4" className={classes.title}>
+                        <span><img className={classes.image} src={PursuitTitleLogo} alt='Pursuit'/></span>
+                        JOBS BOARD
+                    </Typography>
+            </Grid>
+            <Grid className={classes.container} container item display='flex' justify='flex-end' alignItems='center' xs={5}>
+                <StyledButton onClick={toggleModal}>CREATE AN ACCOUNT</StyledButton>
+                <StyledButton onClick={handleGuestLogin}>GUEST LOGIN</StyledButton>
+            </Grid>
+        
             <Modal isOpen={isOpen} toggleModal={toggleModal}>
                 <SignUpForm toggleModal={toggleModal} />
             </Modal>
 
-        </div>
+        </Toolbar>
+        </AppBar>
     )
 }
 
