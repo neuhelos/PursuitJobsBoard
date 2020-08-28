@@ -1,32 +1,42 @@
-import React, { useState } from "react";
-import styled from 'styled-components'
+import React from "react";
 
+import { makeStyles } from '@material-ui/core/styles'
+
+import PublicNavBar from '../NavBar/PublicNavBar'
 import SignInForm from '../Authentication/SignInForm'
-import SignUpForm from '../Authentication/SignUpForm'
-import Modal from '../BaseComponents/Modal'
 
-import { Button } from '../../styling/theme'
+import Grid from '@material-ui/core/Grid'
 
-const StyledButton = styled(Button)``
+import PursuitYellowBackground from '../../assets/media/PursuitYellowBackground.png'
+
+
+const useStyles = makeStyles ( (theme) => ({
+      root: {
+        height: '100%',
+      },
+      main: {
+        backgroundImage: `url(${PursuitYellowBackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        flex: 1,
+      }
+  })
+)
 
 const LandingPage = () => {
     
-    const [isOpen,setIsOpen] = useState(false)
-
-    const toggleModal = () => {
-      setIsOpen(!isOpen)
-    }
+  const classes = useStyles();
 
 
   return (
 
-    <div>
+    <Grid className={classes.root} container item direction="column" wrap='nowrap'>
+        <PublicNavBar  />
+        <div className={classes.main}>
         <SignInForm />
-        <StyledButton onClick={toggleModal}> CREATE AN ACCOUNT </StyledButton>
-        <Modal isOpen={isOpen} toggleModal={toggleModal}>
-          <SignUpForm toggleModal={toggleModal} />
-        </Modal>
-    </div>
+
+        </div>
+    </Grid>
 
   );
 };

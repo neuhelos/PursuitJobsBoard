@@ -18,5 +18,6 @@
   },
   "homepage": "https://github.com/neuhelos/PursuitJobsBoard#readme",
   "dependencies": {
+    "typeface-poppins": "0.0.72"
   }
 }
