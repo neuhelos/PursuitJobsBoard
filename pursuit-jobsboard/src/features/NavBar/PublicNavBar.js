@@ -18,7 +18,9 @@ import { Button } from '../../styling/theme'
 
 import PursuitTitleLogo from '../../assets/media/PursuitTitleLogo.png'
 
-const StyledButton = styled(Button)``
+const StyledButton = styled(Button)`
+    line-height: 1.5rem;
+`
 
 
     const useStyles = makeStyles((theme) => ({
@@ -67,7 +69,7 @@ const PublicNavBar = ( ) => {
                     <Typography variant="h6" className={classes.title}>JOBS BOARD</Typography>
                 </Grid>
                 <Grid container item display='flex' justify='flex-end' alignItems='center' xs={6}>
-                    <StyledButton onClick={toggleModal}> CREATE AN ACCOUNT </StyledButton>
+                    <StyledButton onClick={toggleModal}>CREATE AN ACCOUNT</StyledButton>
                     <StyledButton onClick={handleGuestLogin}>GUEST LOGIN</StyledButton>
                 </Grid>
             </Toolbar>
