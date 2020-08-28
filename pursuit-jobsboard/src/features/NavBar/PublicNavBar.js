@@ -35,7 +35,6 @@ const StyledButton = styled(Button)`
     },
     container: {
         margin: theme.spacing(2),
-        height: '100%'
     },
     title: {
         flexGrow: 1,
@@ -64,6 +63,7 @@ const PublicNavBar = ( ) => {
     }
 
     return (
+        <div>
         <AppBar position="static" className={classes.root}>
         <Toolbar className={classes.title}>
             <Grid className={classes.logoContainer} container item display='flex' justify='center' alignItems='flex-end' xs={7}>
@@ -76,13 +76,13 @@ const PublicNavBar = ( ) => {
                 <StyledButton onClick={toggleModal}>CREATE AN ACCOUNT</StyledButton>
                 <StyledButton onClick={handleGuestLogin}>GUEST LOGIN</StyledButton>
             </Grid>
-        
-            <Modal isOpen={isOpen} toggleModal={toggleModal}>
-                <SignUpForm toggleModal={toggleModal} />
-            </Modal>
-
         </Toolbar>
         </AppBar>
+        
+        <Modal isOpen={isOpen} toggleModal={toggleModal}>
+            <SignUpForm toggleModal={toggleModal} />
+        </Modal>
+        </div>
     )
 }
 
