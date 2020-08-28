@@ -3,6 +3,10 @@ import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 
+import { makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
+import Paper from '@material-ui/core/Paper'
+
 import { useInput } from '../../utilitron/CustomHookery'
 import { apiURL } from '../../utilitron/apiURLDev'
 import { signUp } from '../../utilitron/firebaseFunctions'
@@ -13,17 +17,52 @@ import Error from '../Error/Error'
 
 import { Button } from '../../styling/theme'
 
-const SignUpForm = styled.form`
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        width: '100%',
+        '& *': {
+            fontFamily: 'poppins',
+        },
+        padding: theme.spacing(2),
+        backgroundColor: 'rgba(69, 67, 231, 0.75)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignContent: 'center',
+    },
+    input: {
+        fontFamily: 'poppins',
+        marginBottom: theme.spacing(2),
+        backgroundColor: '#F5F5F5',
+        borderRadius: '4px'
+    },
+  }));
+
+const SignUpForm = styled.form`
+    width: 100%;
 `
 const SignUpFormTitle = styled.h1`
     font-size: 2rem;
+    font-family: poppins;
+    color: #000000;
+    margin-bottom: 1rem;
 `
 
-const StyledButton = styled(Button)``
+const StyledButton = styled(Button)`
+    color: black;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0.5rem;
+    border: 2px solid black;
+    border-radius: 3px;
+    justify-center: center;
+    width: 100%;
+`
 
 const PJBSignUpForm = ({toggleModal}) => {
     
+    const classes = useStyles()
     const history = useHistory()
     
     const email = useInput("", "email")
@@ -113,21 +152,23 @@ const PJBSignUpForm = ({toggleModal}) => {
 
     return (
 
-        <SignUpForm onSubmit={handleSubmit}>
-            <SignUpFormTitle>FIND YOUR DREAM JOB</SignUpFormTitle>
-            <Input placeholder={"Enter Your Email"} onBlur={validateEmail} input={email} required/>
-            { emailError ? <Error errorMessage={emailValidation.error} /> : null }
-            <Input type={"password"} placeholder={"Enter Your Password"} onBlur={validatePassword} input={password} autoComplete="on" required />
-            { passwordError ? <Error errorMessage={passwordValidation.error} /> : null }
-            <Input placeholder={"Enter Your Preferred Name"} onBlur={validateName} input={name} required />
-            { nameError ? <Error errorMessage={nameValidation.error} /> : null }
-            <input type={"file"} name="image" onChange={event => handleImageUpload(event)} />
-            <Input placeholder={"Enter Your LinkedIn Profile Link"} onBlur={validateLinkedIn} input={linkedIn} />
-            { linkedInError ? <Error errorMessage={linkedInValidation.error } /> : null }
-            <Input placeholder={"Enter Your GitHub Profile Link"} onBlur={validateGithub} input={github} />
-            { githubError ? <Error errorMessage={githubValidation.error} /> : null }
-            <StyledButton type="submit"> CREATE YOUR PROFILE</StyledButton>
-        </SignUpForm>
+        <Paper className={classes.root}>
+            <SignUpForm onSubmit={handleSubmit}>
+                <SignUpFormTitle>FIND YOUR DREAM JOB</SignUpFormTitle>
+                <TextField className={classes.input} label="Email" placeholder="Enter Your Email" onBlur={validateEmail} fullWidth variant="outlined" {...email} required/>
+                { emailError ? <Error errorMessage={emailValidation.error} /> : null }
+                <TextField className={classes.input} type="password" label="Password" placeholder="Enter Password" fullWidth onBlur={validatePassword} variant="outlined" {...password} required/>
+                { passwordError ? <Error errorMessage={passwordValidation.error} /> : null }
+                <TextField className={classes.input} label="Preferred Name" placeholder="Enter Your Preferred Name" fullWidth variant="outlined" onBlur={validateName} {...name} required />
+                { nameError ? <Error errorMessage={nameValidation.error} /> : null }
+                <TextField className={classes.input} id="linkedin" label="LinkedIn" placeholder="Enter Your LinkedIn Profile Link" fullWidth onBlur={validateLinkedIn} variant="outlined" {...linkedIn}/>
+                { linkedInError ? <Error errorMessage={linkedInValidation.error } /> : null }
+                <TextField className={classes.input} label="Github" placeholder="Enter Your GitHub Profile Link" fullWidth onBlur={validateGithub} variant="outlined" {...github}/>
+                { githubError ? <Error errorMessage={githubValidation.error} /> : null }
+                <input className={classes.input} type={"file"} placeholder="Choose a Profile Picture" name="image" onChange={event => handleImageUpload(event)} />
+                <StyledButton type="submit"> CREATE YOUR PROFILE</StyledButton>
+            </SignUpForm>
+        </Paper>
     )
 }
 

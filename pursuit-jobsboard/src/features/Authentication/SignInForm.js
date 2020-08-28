@@ -27,7 +27,7 @@ const SignInFormTitle = styled.h1`
 const StyledButton = styled.button`
     color: black;
     font-size: 1rem;
-    margin: 0.5rem;
+    margin: 1rem;
     padding: 0.5rem;
     border: 2px solid black;
     border-radius: 3px;
