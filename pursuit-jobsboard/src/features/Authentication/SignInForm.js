@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
         '& *': {
             fontFamily: 'poppins',
         },
-        margin: theme.spacing(5),
+        margin: theme.spacing(6),
         padding: theme.spacing(2),
         backgroundColor: 'rgba(245, 245, 245, 0.75)',
         color: 'white',

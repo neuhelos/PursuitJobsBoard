@@ -31,12 +31,14 @@ const StyledButton = styled(Button)`
         backgroundColor: '#4543E7',
     },
     logoContainer: {
-        width: '50%',
         padding: theme.spacing(3)
+    },
+    container: {
+        margin: theme.spacing(2),
     },
     title: {
         flexGrow: 1,
-        lineHeight: '1rem'
+        lineHeight: '3rem'
     },
     image: {
         width: '60%',
@@ -64,11 +66,11 @@ const PublicNavBar = ( ) => {
         <div className={classes.root}>
             <AppBar position="static">
             <Toolbar>
-                <Grid className={classes.logoContainer} container item display='flex' justify='center' alignItems='flex-end' xs={6}>
+                <Grid className={classes.logoContainer} container item display='flex' justify='center' alignItems='flex-end' xs={7}>
                     <img className={classes.image} src={PursuitTitleLogo} alt='Pursuit'/>
-                    <Typography variant="h6" className={classes.title}>JOBS BOARD</Typography>
+                    <Typography variant="h3" className={classes.title}>JOBS BOARD</Typography>
                 </Grid>
-                <Grid container item display='flex' justify='flex-end' alignItems='center' xs={6}>
+                <Grid className={classes.container} container item display='flex' justify='flex-end' alignItems='flex-end' xs={5}>
                     <StyledButton onClick={toggleModal}>CREATE AN ACCOUNT</StyledButton>
                     <StyledButton onClick={handleGuestLogin}>GUEST LOGIN</StyledButton>
                 </Grid>
