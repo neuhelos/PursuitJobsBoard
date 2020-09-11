@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
         '& *': {
             fontFamily: 'poppins',
         },
-        padding: theme.spacing(2),
+        padding: theme.spacing(3),
         backgroundColor: 'rgba(69, 67, 231, 0.75)',
         display: 'flex',
         flexDirection: 'column',

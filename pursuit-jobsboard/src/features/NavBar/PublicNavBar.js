@@ -28,7 +28,8 @@ const StyledButton = styled(Button)`
         '& *': {
             fontFamily: 'poppins'
         },
-        backgroundColor: '#4543E7',
+        //backgroundColor: '#4543E7',
+        backgroundColor: '#282828'
     },
     logoContainer: {
         padding: theme.spacing(3)

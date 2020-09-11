@@ -43,10 +43,10 @@ const JobsPostFeed = () => {
 
     if(error){
         return(
-            <div>
+            <Grid container item display='flex' justify='center' alignItems='center' >
                 <Error errorMessage={error}/>
                 <StyledButton onClick={() => dispatch(fetchAllJobsPosts())}>FETCH JOB POSTS</StyledButton>
-            </div>
+            </Grid>
         )
     }
 
@@ -56,7 +56,7 @@ const JobsPostFeed = () => {
     })
     
     return (
-        <Grid>
+        <Grid container item display='flex' justify='center' alignItems='center'>
             {jobsPostsFeed}
         </Grid>
     )
