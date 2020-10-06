@@ -23,12 +23,13 @@ const StyledButton = styled(Button)`
 `
 
 
-    const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
     root: {
         '& *': {
             fontFamily: 'poppins'
         },
-        backgroundColor: '#4543E7',
+        //backgroundColor: '#4543E7',
+        backgroundColor: '#282828'
     },
     logoContainer: {
         padding: theme.spacing(3)
@@ -54,7 +55,7 @@ const PublicNavBar = ( ) => {
 
     const handleGuestLogin = async () => {
         await signIn("guest@nilber.dev","nilber");
-        history.push("/jobboard")
+        history.push("/jobsboard")
     }
 
     const [isOpen,setIsOpen] = useState(false)

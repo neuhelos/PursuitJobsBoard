@@ -11,7 +11,7 @@ import { useScript } from './utilitron/CustomHookery'
 
 import GlobalStyle from './styling/GlobalStyle'
 import LandingPage from './features/Pages/LandingPage'
-import NavBar from './features/NavBar/Navbar'
+import AuthNavBar from './features/NavBar/AuthNavbar'
 import JobsBoard from './features/Pages/JobsBoard'
 import Profile from './features/Profile/Profile'
 import { PublicRoute, ProtectedRoute } from './utilitron/AuthRouting'
@@ -50,12 +50,12 @@ const PJBApp = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <ModalProvider backgroundComponent={ModalOverlay}>
-        { currentUser ? <NavBar /> : null }
+        { currentUser ? <AuthNavBar /> : null }
         <Switch>
           <PublicRoute exact path="/">
             <LandingPage />
           </PublicRoute>
-          <ProtectedRoute path="/jobboard">
+          <ProtectedRoute path="/jobsboard">
             <JobsBoard />
           </ProtectedRoute>
           <ProtectedRoute path="/profile">
