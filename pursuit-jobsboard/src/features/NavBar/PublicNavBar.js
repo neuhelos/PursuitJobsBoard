@@ -23,7 +23,7 @@ const StyledButton = styled(Button)`
 `
 
 
-    const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
     root: {
         '& *': {
             fontFamily: 'poppins'

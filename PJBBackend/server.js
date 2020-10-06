@@ -16,7 +16,6 @@ const usersRouter = require("./Routes/Users/users");
 const jobsRouter = require("./Routes/Jobs/jobs");
 //const uploadRouter = require("./Routes/Upload/upload")
 
-
 app.use("/users", usersRouter);
 app.use("/jobs", jobsRouter);
 //app.use("/upload", uploadRouter)

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import { signOut } from '../../utilitron/firebaseFunctions'
 
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -21,6 +22,62 @@ import PJBModal from '../BaseComponents/Modal'
 import AddJobsPostForm from '../AddJobsPosts/AddJobsPostForm'
 
 import { Button } from '../../styling/theme'
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        background: 'linear-gradient(90deg, hsla(238, 34%, 32%, 1) 0%, hsla(333, 100%, 53%, 1) 50%, hsla(33, 94%, 57%, 1) 100%)',
+        '& *': {
+                fontFamily: 'audiowide'
+        },
+    },
+    grow: {
+        flexGrow: 1,
+    },
+    title: {
+        fontFamily: 'audiowide',
+        '&:hover': {
+            cursor: 'pointer',
+            color: '#F89B29',
+            filter: `drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.25))`,
+        // display: 'none',
+        // [theme.breakpoints.up('sm')]: {
+        //   display: 'block',
+        // },
+    }
+    },
+    spacer: {
+        height: '6rem',
+        width: '100%',
+        marginBottom: theme.spacing(1),
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: 0,
+        },
+    },
+    iconButton: {
+        margin: theme.spacing(1),
+        //filter: 'drop-shadow(1px 2px 3px #36386D)'
+        },
+        sectionDesktop: {
+        display: 'none',
+        [theme.breakpoints.up('md')]: {
+            display: 'flex',
+        },
+    },
+    sectionMobile: {
+        display: 'flex',
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
+    },
+    badge: {
+        height: '2rem',
+        minWidth: '2rem',
+        fontSize: '1.5rem',
+        background: '#36386D',
+        border: 'solid 2px #FFFFFF'
+    },
+}));
 
 const NavBar = styled.nav`
         background-color: #282828;
@@ -41,8 +98,30 @@ const PJBNavBar = () => {
         setNavButton(!NavButton)
     }
     
+    const navProfile = () => {
+        handleMobileMenuClose()
+        if(window.location.pathname === `/Profile/${currentUser.uid}`){
+            history.push(`/Profile/${currentUser.uid}`)
+            history.goBack()
+        }
+        history.push(`/Profile/${currentUser.uid}`)
+    }
+    
+    const navDashboard = () => {
+        handleMobileMenuClose()
+        if(window.location.pathname === `/CommunityDashboard`){
+            history.push(`/CommunityDashboard`)
+            history.goBack()
+        }
+        history.push(`/CommunityDashboard`)
+    }
+
     const toggleModal = () => {
         setIsOpen(!isOpen)
+    }
+
+    const handleScrollToTop = () => {
+        window.scrollTo({top: 0, behavior: 'smooth'});     
     }
 
     const signout = () => {
@@ -68,6 +147,11 @@ const PJBNavBar = () => {
                 </Typography>
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
+                <Tooltip title="Dashboard">
+                    <IconButton className={classes.iconButton} edge="start" color="inherit" onClick={navDashboard}>
+                        <Dashboard style={{ fontSize: 50 }} />
+                    </IconButton>
+                </Tooltip>
                 <Tooltip title="Add Workshop">
                     <IconButton className={classes.iconButton}  edge="end" aria-label="Add Workshop" onClick={toggleModal} color="inherit" >
                     <AddBoxIcon style={{ fontSize: 50 }} />
@@ -97,7 +181,7 @@ const PJBNavBar = () => {
                 </div>
             </Toolbar>
             </AppBar>
-            <MobileNavMenu mobileMoreAnchorEl={mobileMoreAnchorEl} handleMobileMenuClose={handleMobileMenuClose} nav={{navProfile, navDashboard, navMessaging, signout}} toggleModal={toggleModal} unreadCount={unreadCount}/>
+            <MobileNavMenu mobileMoreAnchorEl={mobileMoreAnchorEl} handleMobileMenuClose={handleMobileMenuClose} nav={{navProfile, navDashboard, navMessaging, signout}} toggleModal={toggleModal}/>
 
             <PJBModal isOpen={isOpen} toggleModal={toggleModal}>
                         <AddJobsPostForm toggleModal={toggleModal}/>
