@@ -55,7 +55,7 @@ const PublicNavBar = ( ) => {
 
     const handleGuestLogin = async () => {
         await signIn("guest@nilber.dev","nilber");
-        history.push("/jobboard")
+        history.push("/jobsboard")
     }
 
     const [isOpen,setIsOpen] = useState(false)

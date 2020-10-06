@@ -99,21 +99,21 @@ const PJBNavBar = () => {
     }
     
     const navProfile = () => {
-        handleMobileMenuClose()
-        if(window.location.pathname === `/Profile/${currentUser.uid}`){
-            history.push(`/Profile/${currentUser.uid}`)
+        //handleMobileMenuClose()
+        if(window.location.pathname === `/profile`){
+            history.push(`/profile`)
             history.goBack()
         }
-        history.push(`/Profile/${currentUser.uid}`)
+        history.push(`/profile`)
     }
-    
-    const navDashboard = () => {
-        handleMobileMenuClose()
-        if(window.location.pathname === `/CommunityDashboard`){
-            history.push(`/CommunityDashboard`)
+
+    const navJobsboard = () => {
+        //handleMobileMenuClose()
+        if(window.location.pathname === `/jobsboard`){
+            history.push(`/jobsboard`)
             history.goBack()
         }
-        history.push(`/CommunityDashboard`)
+        history.push(`/jobsboard`)
     }
 
     const toggleModal = () => {
@@ -148,7 +148,7 @@ const PJBNavBar = () => {
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
                 <Tooltip title="Dashboard">
-                    <IconButton className={classes.iconButton} edge="start" color="inherit" onClick={navDashboard}>
+                    <IconButton className={classes.iconButton} edge="start" color="inherit" onClick={navJobsboard}>
                         <Dashboard style={{ fontSize: 50 }} />
                     </IconButton>
                 </Tooltip>
@@ -168,20 +168,20 @@ const PJBNavBar = () => {
                     </IconButton>
                 </Tooltip>
                 </div>
-                <div className={classes.sectionMobile}>
-                <IconButton
-                    aria-label="show more"
-                    aria-controls='mobileHamburgerMenu'
-                    aria-haspopup="true"
-                    onClick={handleMobileMenuOpen}
-                    color="inherit"
-                >
-                    <MoreIcon style={{ fontSize: 60 }} />
-                </IconButton>
-                </div>
+                {/* <div className={classes.sectionMobile}>
+                    <IconButton
+                        aria-label="show more"
+                        aria-controls='mobileHamburgerMenu'
+                        aria-haspopup="true"
+                        onClick={handleMobileMenuOpen}
+                        color="inherit"
+                    >
+                        <MoreIcon style={{ fontSize: 60 }} />
+                    </IconButton>
+                </div> */}
             </Toolbar>
             </AppBar>
-            <MobileNavMenu mobileMoreAnchorEl={mobileMoreAnchorEl} handleMobileMenuClose={handleMobileMenuClose} nav={{navProfile, navDashboard, navMessaging, signout}} toggleModal={toggleModal}/>
+            {/* <MobileNavMenu mobileMoreAnchorEl={mobileMoreAnchorEl} handleMobileMenuClose={handleMobileMenuClose} nav={{navProfile, navJobsboard, signout}} toggleModal={toggleModal}/> */}
 
             <PJBModal isOpen={isOpen} toggleModal={toggleModal}>
                         <AddJobsPostForm toggleModal={toggleModal}/>

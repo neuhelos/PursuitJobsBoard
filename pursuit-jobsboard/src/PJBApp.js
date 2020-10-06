@@ -55,7 +55,7 @@ const PJBApp = () => {
           <PublicRoute exact path="/">
             <LandingPage />
           </PublicRoute>
-          <ProtectedRoute path="/jobboard">
+          <ProtectedRoute path="/jobsboard">
             <JobsBoard />
           </ProtectedRoute>
           <ProtectedRoute path="/profile">
