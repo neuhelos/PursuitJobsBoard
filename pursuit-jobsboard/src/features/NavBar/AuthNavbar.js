@@ -32,6 +32,7 @@ const StyledButton = styled(Button)``
 const PJBNavBar = () => {
 
     const history = useHistory();
+    const classes = useStyles();
 
     const [NavButton, setNavButton] = useState(false)
     const [isOpen,setIsOpen] = useState(false)
@@ -67,18 +68,6 @@ const PJBNavBar = () => {
                 </Typography>
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
-                <Tooltip title="Dashboard">
-                    <IconButton className={classes.iconButton} edge="start" color="inherit" onClick={navDashboard}>
-                        <Dashboard style={{ fontSize: 50 }} />
-                    </IconButton>
-                </Tooltip>
-                    <Tooltip title="Instant Messaging">
-                    <IconButton className={classes.iconButton}  aria-label="unread messages" color="inherit" onClick={navMessaging} >
-                    <Badge badgeContent={unreadCount} classes={{ badge: classes.badge }} overlap='circle' showZero>
-                        <MailIcon style={{ fontSize: 50 }} />
-                    </Badge>
-                    </IconButton>
-                </Tooltip>
                 <Tooltip title="Add Workshop">
                     <IconButton className={classes.iconButton}  edge="end" aria-label="Add Workshop" onClick={toggleModal} color="inherit" >
                     <AddBoxIcon style={{ fontSize: 50 }} />
@@ -110,9 +99,9 @@ const PJBNavBar = () => {
             </AppBar>
             <MobileNavMenu mobileMoreAnchorEl={mobileMoreAnchorEl} handleMobileMenuClose={handleMobileMenuClose} nav={{navProfile, navDashboard, navMessaging, signout}} toggleModal={toggleModal} unreadCount={unreadCount}/>
 
-    <PJBModal isOpen={isOpen} toggleModal={toggleModal}>
-                <AddJobsPostForm toggleModal={toggleModal}/>
-    </PJBModal>
+            <PJBModal isOpen={isOpen} toggleModal={toggleModal}>
+                        <AddJobsPostForm toggleModal={toggleModal}/>
+            </PJBModal>
 
     </div>
     </>

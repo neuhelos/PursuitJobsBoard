@@ -114,8 +114,30 @@ const PJBSignUpForm = ({toggleModal}) => {
     }
 
 
-    const handleImageUpload = event => {
-        setImage(event.target.files[0]);
+    const handleUpload = (image) => {
+        const uploadImage = storage.ref(`image/${image.name}`).put(image);
+        uploadImage.on(
+        "state_changed",
+        snapshot => {},
+        error => {
+            console.log(error);
+        },
+        () => {
+            storage
+            .ref("image")
+            .child(image.name)
+            .getDownloadURL()
+            .then(imageUrl => {
+                setImage(imageUrl)
+            })
+        }
+        )
+    }
+
+    const handleImageChange = (imageFile) => {
+        if(imageFile[0]){
+            handleUpload(imageFile[0])
+        }
     }
     
     const handleSubmit = async event => {
