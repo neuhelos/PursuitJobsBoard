@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
+import { storage } from '../../utilitron/firebase'
+import Dropzone from '../BaseComponents/FileDropzone'
 
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
@@ -37,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#F5F5F5',
         borderRadius: '4px'
     },
-  }));
+}));
 
 const SignUpForm = styled.form`
     width: 100%;
@@ -69,6 +71,7 @@ const PJBSignUpForm = ({toggleModal}) => {
     const password = useInput("", "password")
     const name = useInput("", "alphanumeric")
     const [image, setImage] = useState(null, "file")
+    const [imageUrl, setImageUrl] = useState("https://firebasestorage.googleapis.com/v0/b/pursuit-jobsboard.appspot.com/o/profileImages%2FDefaultAvatar.png?alt=media&token=fae8010f-27b0-4f45-b524-1e33da66be53", "url")
     const linkedIn = useInput("", "url")
     const github = useInput("", "url")    
 
@@ -114,45 +117,37 @@ const PJBSignUpForm = ({toggleModal}) => {
     }
 
 
-    const handleUpload = (image) => {
-        const uploadImage = storage.ref(`image/${image.name}`).put(image);
+    const handleImageUpload = (image) => {
+        const uploadImage = storage.ref(`profileImage/${image.name}`).put(image);
         uploadImage.on(
-        "state_changed",
-        snapshot => {},
-        error => {
-            console.log(error);
-        },
-        () => {
-            storage
-            .ref("image")
-            .child(image.name)
-            .getDownloadURL()
-            .then(imageUrl => {
-                setImage(imageUrl)
-            })
-        }
+            "state_changed",
+            //snapshot => {},
+            // error => {
+            //     setError(error.code)
+            // },
+            () => {
+                storage
+                .ref("profileImage")
+                .child(image.name)
+                .getDownloadURL()
+                .then(imageUrl => {
+                    setImageUrl(imageUrl)
+                })
+            }
         )
     }
 
     const handleImageChange = (imageFile) => {
-        if(imageFile[0]){
-            handleUpload(imageFile[0])
-        }
+        setImage(imageFile[0])
     }
     
     const handleSubmit = async event => {
         if (emailValidation.formIsValid && passwordValidation.formIsValid && nameValidation.formIsValid) {
             event.preventDefault();
             event.target.image.value = null;
-            const formData = new FormData();
-            formData.append("image", image);
-            const config = {
-                headers: {"content-type": "multipart/form-data"}
-            };
             try {
-                let upload = await axios.post(`${apiURL()}/upload`, formData, config);
-                let imageUrl = upload.data.imageUrl;
                 let res = await signUp(email.value, password.value)
+                await handleImageUpload(image)
                 let createUser = await axios.post(`${apiURL()}/users`, {
                     id: res.user.uid,
                     "email": email.value,
@@ -187,7 +182,7 @@ const PJBSignUpForm = ({toggleModal}) => {
                 { linkedInError ? <Error errorMessage={linkedInValidation.error } /> : null }
                 <TextField className={classes.input} label="Github" placeholder="Enter Your GitHub Profile Link" fullWidth onBlur={validateGithub} variant="outlined" {...github}/>
                 { githubError ? <Error errorMessage={githubValidation.error} /> : null }
-                <input className={classes.input} type={"file"} placeholder="Choose a Profile Picture" name="image" onChange={event => handleImageUpload(event)} />
+                <Dropzone className={classes.container} handleImageChange={handleImageChange} dropzoneText={"Drop or Select Your Profile Image"}/>
                 <StyledButton type="submit"> CREATE YOUR PROFILE</StyledButton>
             </SignUpForm>
         </Paper>
