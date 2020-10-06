@@ -75,7 +75,6 @@ const PJBSignUpForm = ({toggleModal}) => {
     const linkedIn = useInput("", "url")
     const github = useInput("", "url")    
 
-
     const [emailError, setEmailError] = useState(false)
     const emailValidation = formValidator(email)
     const validateEmail = () => {
@@ -115,7 +114,6 @@ const PJBSignUpForm = ({toggleModal}) => {
             setLinkedInError(true)
         }
     }
-
 
     const handleImageUpload = (image) => {
         const uploadImage = storage.ref(`profileImage/${image.name}`).put(image);
