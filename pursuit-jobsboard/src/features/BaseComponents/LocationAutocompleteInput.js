@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography'
 const LocationSearchInput = ( props ) => {
 
   const { input, placeholder, label } = props
- 
 
   const locationHandleSelectClick = (event) => {
     input.locationHandleSelect(event.target.dataset.value)

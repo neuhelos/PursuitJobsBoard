@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
         '& *': {
             fontFamily: 'poppins'
         },
+        minWidth: '100%',
     },
     grow: {
         flexGrow: 1,
@@ -57,10 +58,10 @@ const useStyles = makeStyles((theme) => ({
         //filter: 'drop-shadow(1px 2px 3px #36386D)'
         },
         sectionDesktop: {
-        display: 'none',
-        [theme.breakpoints.up('md')]: {
-            display: 'flex',
-        },
+            display: 'none',
+            [theme.breakpoints.up('md')]: {
+                display: 'flex',
+            },
     },
     sectionMobile: {
         display: 'flex',
@@ -102,13 +103,13 @@ const PJBNavBar = () => {
         <div className={classes.spacer}>
             <div className={classes.spacer}></div>
             <AppBar position={'fixed'} className={classes.root}>
-            <Toolbar>
+            <Toolbar className={classes.root}>
                 <Typography className={classes.title} variant="h2" noWrap onClick={handleScrollToTop}>
                     Pursuit Jobs Board
                 </Typography>
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
-                <Tooltip title="Dashboard">
+                <Tooltip title="Jobs Board">
                     <NavLink to={"/jobsboard"}>
                         <IconButton className={classes.iconButton} edge="start" color="inherit">
                             <Dashboard style={{ fontSize: 50 }} />
