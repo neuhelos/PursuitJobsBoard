@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#282828'
     },
     logoContainer: {
-        padding: theme.spacing(3)
+        padding: theme.spacing(1)
     },
     container: {
         margin: theme.spacing(2),

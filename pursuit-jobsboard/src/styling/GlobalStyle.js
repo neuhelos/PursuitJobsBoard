@@ -23,6 +23,7 @@ const GlobalStyle = createGlobalStyle`
         height: 100%;
         margin: 0;
         width: 100%;
+        background-color: #4242EA;
     }
     a{text-decoration:none; color:inherit; cursor:pointer;}
     figure{margin:0;}
