@@ -17,7 +17,6 @@ const useStyles = makeStyles( theme => {
         width,
         height,
         padding: 0,
-        margin: theme.spacing(1),
         overflow: 'unset',
     },
     switchBase: {
