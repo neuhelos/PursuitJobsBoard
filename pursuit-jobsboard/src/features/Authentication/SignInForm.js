@@ -22,6 +22,7 @@ const SignInFormTitle = styled.h1`
     font-family: poppins;
     color: #000000;
     margin-bottom: 1rem;
+    text-align: center;
 `
 
 const StyledButton = styled.button`
@@ -37,6 +38,7 @@ const StyledButton = styled.button`
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '30%',
+        height: '50%',
         '& *': {
             fontFamily: 'poppins',
         },
@@ -85,13 +87,13 @@ const SignInForm = () => {
 
     return (
         <Paper className={classes.root}>
-        <form className={classes.form} onSubmit={handleSubmit}>
-            <SignInFormTitle>FIND YOUR FUTURE</SignInFormTitle>
-            <TextField className={classes.input} label="Email" id="email" placeholder="Enter Your Email" fullWidth variant="outlined" {...email} required/>
-            <TextField className={classes.input} label="Password" id="password" type="password" autoComplete="on" fullWidth placeholder="Enter Your Password" variant="outlined" {...password} required/>
-            <StyledButton variant="contained" color="primary" type="submit"> SIGN IN </StyledButton>
-        </form>
-            {error ? <Error errorMessage={error} /> : null}
+            <form className={classes.form} onSubmit={handleSubmit}>
+                <SignInFormTitle>FIND YOUR FUTURE</SignInFormTitle>
+                <TextField className={classes.input} label="Email" id="email" placeholder="Enter Your Email" fullWidth variant="outlined" {...email} required/>
+                <TextField className={classes.input} label="Password" id="password" type="password" autoComplete="on" fullWidth placeholder="Enter Your Password" variant="outlined" {...password} required/>
+                <StyledButton variant="contained" color="primary" type="submit"> SIGN IN </StyledButton>
+            </form>
+                {error ? <Error errorMessage={error} /> : null}
         </Paper>
     )
 };

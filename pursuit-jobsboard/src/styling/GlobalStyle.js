@@ -23,6 +23,7 @@ const GlobalStyle = createGlobalStyle`
         height: 100%;
         margin: 0;
         width: 100%;
+        background-color: #4242EA;
     }
     a{text-decoration:none; color:inherit; cursor:pointer;}
     figure{margin:0;}
@@ -39,8 +40,8 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Roboto', sans-serif;
         margin: 0;
         padding: 0;
-        height: 100vh;
         width: 100%;
+        height: 100%
     }
 
 `

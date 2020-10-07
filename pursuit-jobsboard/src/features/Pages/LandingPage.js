@@ -18,7 +18,8 @@ const useStyles = makeStyles ( (theme) => ({
         backgroundImage: `url(${PursuitYellowBackground})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        flex: 1,
+        display: 'flex',
+        flex: 1
       }
   })
 )
