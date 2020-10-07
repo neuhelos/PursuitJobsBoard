@@ -128,11 +128,11 @@ const PJBNavBar = () => {
                         </IconButton>
                     </NavLink>
                 </Tooltip>
-                <Tooltip title="Sign Out">
+                {/* <Tooltip title="Sign Out">
                     <IconButton className={classes.iconButton}  edge="end" aria-label="Sign Out" color="inherit" onClick={signout}>
                     <ExitToAppIcon style={{ fontSize: 50 }} />
                     </IconButton>
-                </Tooltip>
+                </Tooltip> */}
                 </div>
                 {/* <div className={classes.sectionMobile}>
                     <IconButton
@@ -149,7 +149,7 @@ const PJBNavBar = () => {
             </AppBar>
             {/* <MobileNavMenu mobileMoreAnchorEl={mobileMoreAnchorEl} handleMobileMenuClose={handleMobileMenuClose} nav={{navProfile, navJobsboard, signout}} toggleModal={toggleModal}/> */}
 
-            <PJBModal isOpen={isOpen} toggleModal={toggleModal}>
+            <PJBModal open={isOpen} toggleModal={toggleModal}>
                         <AddJobsPostForm toggleModal={toggleModal}/>
             </PJBModal>
 

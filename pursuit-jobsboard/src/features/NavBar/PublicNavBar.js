@@ -80,7 +80,7 @@ const PublicNavBar = ( ) => {
         </Toolbar>
         </AppBar>
         
-        <Modal isOpen={isOpen} toggleModal={toggleModal}>
+        <Modal open={isOpen} toggleModal={toggleModal}>
             <SignUpForm toggleModal={toggleModal} />
         </Modal>
         </div>
