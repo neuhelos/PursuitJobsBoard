@@ -26,16 +26,15 @@ import { Button } from '../../styling/theme'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        background: 'linear-gradient(90deg, hsla(238, 34%, 32%, 1) 0%, hsla(333, 100%, 53%, 1) 50%, hsla(33, 94%, 57%, 1) 100%)',
         '& *': {
-                fontFamily: 'audiowide'
+            fontFamily: 'poppins'
         },
     },
     grow: {
         flexGrow: 1,
     },
     title: {
-        fontFamily: 'audiowide',
+        fontFamily: 'poppins',
         '&:hover': {
             cursor: 'pointer',
             color: '#F89B29',
@@ -49,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
     spacer: {
         height: '6rem',
         width: '100%',
-        marginBottom: theme.spacing(1),
         [theme.breakpoints.down('sm')]: {
             marginBottom: 0,
         },
@@ -69,13 +67,6 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('md')]: {
             display: 'none',
         },
-    },
-    badge: {
-        height: '2rem',
-        minWidth: '2rem',
-        fontSize: '1.5rem',
-        background: '#36386D',
-        border: 'solid 2px #FFFFFF'
     },
 }));
 
