@@ -91,30 +91,7 @@ const PJBNavBar = () => {
     const history = useHistory();
     const classes = useStyles();
 
-    const [NavButton, setNavButton] = useState(false)
     const [isOpen,setIsOpen] = useState(false)
-
-    const handleNavButton = () => {
-        setNavButton(!NavButton)
-    }
-    
-    const navProfile = () => {
-        //handleMobileMenuClose()
-        if(window.location.pathname === `/profile`){
-            history.push(`/profile`)
-            history.goBack()
-        }
-        history.push(`/profile`)
-    }
-
-    const navJobsboard = () => {
-        //handleMobileMenuClose()
-        if(window.location.pathname === `/jobsboard`){
-            history.push(`/jobsboard`)
-            history.goBack()
-        }
-        history.push(`/jobsboard`)
-    }
 
     const toggleModal = () => {
         setIsOpen(!isOpen)
@@ -131,42 +108,39 @@ const PJBNavBar = () => {
 
 
     return(
-        <NavBar>
-            
-            { NavButton ? <NavLink to={"/jobboard"}><StyledButton onClick={handleNavButton}>HOME</StyledButton></NavLink> : <NavLink to={"/profile"}><StyledButton onClick={handleNavButton}>PROFILE</StyledButton></NavLink> }
-            <StyledButton onClick={toggleModal}>ADD JOB POST</StyledButton>
-            <StyledButton onClick={signout}>SIGN OUT</StyledButton>
-
-        <>
-            <div className={classes.spacer}>
+        <div className={classes.spacer}>
             <div className={classes.spacer}></div>
             <AppBar position={'fixed'} className={classes.root}>
             <Toolbar>
                 <Typography className={classes.title} variant="h2" noWrap onClick={handleScrollToTop}>
-                WeRise
+                    Pursuit Jobs Board
                 </Typography>
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
                 <Tooltip title="Dashboard">
-                    <IconButton className={classes.iconButton} edge="start" color="inherit" onClick={navJobsboard}>
-                        <Dashboard style={{ fontSize: 50 }} />
-                    </IconButton>
+                    <NavLink to={"/jobsboard"}>
+                        <IconButton className={classes.iconButton} edge="start" color="inherit">
+                            <Dashboard style={{ fontSize: 50 }} />
+                        </IconButton>
+                    </NavLink>
                 </Tooltip>
                 <Tooltip title="Add Workshop">
                     <IconButton className={classes.iconButton}  edge="end" aria-label="Add Workshop" onClick={toggleModal} color="inherit" >
-                    <AddBoxIcon style={{ fontSize: 50 }} />
+                        <AddBoxIcon style={{ fontSize: 50 }} />
                     </IconButton>
                 </Tooltip>
                 <Tooltip title="Profile">
-                    <IconButton className={classes.iconButton}  aria-label="account of current user" onClick={navProfile} color="inherit" >
-                    <AccountCircle style={{ fontSize: 50 }} />
-                    </IconButton>
+                    <NavLink to={"/jobsboard"}>
+                        <IconButton className={classes.iconButton}  aria-label="User Account" color="inherit" >
+                            <AccountCircle style={{ fontSize: 50 }} />
+                        </IconButton>
+                    </NavLink>
                 </Tooltip>
-                <Tooltip title="Sign Out">
+                {/* <Tooltip title="Sign Out">
                     <IconButton className={classes.iconButton}  edge="end" aria-label="Sign Out" color="inherit" onClick={signout}>
                     <ExitToAppIcon style={{ fontSize: 50 }} />
                     </IconButton>
-                </Tooltip>
+                </Tooltip> */}
                 </div>
                 {/* <div className={classes.sectionMobile}>
                     <IconButton
@@ -187,11 +161,7 @@ const PJBNavBar = () => {
                         <AddJobsPostForm toggleModal={toggleModal}/>
             </PJBModal>
 
-    </div>
-    </>
-
-
-        </NavBar>
+        </div>
     )
 }
 
