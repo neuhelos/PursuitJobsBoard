@@ -15,7 +15,7 @@
     "atomic-layout": "^0.16.1",
     "axios": "^0.19.2",
     "firebase": "^7.22.1",
-    "luxon": "^1.24.1",
+    "luxon": "^2.5.2",
     "material-ui-dropzone": "^3.5.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
